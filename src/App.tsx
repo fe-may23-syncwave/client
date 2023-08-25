@@ -1,6 +1,8 @@
 import './App.module.scss';
 
 function App() {
+  console.log('App');
+
   return (
     <div className="App">
       <h1>Hello, world!</h1>
