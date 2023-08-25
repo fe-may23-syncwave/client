@@ -1,0 +1,13 @@
+@import 'styles/utils/shared';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: 'Montserrat', sans-serif;
+  color: $color-primary;
+  scroll-behavior: smooth;
+}

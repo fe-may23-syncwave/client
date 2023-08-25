@@ -1,31 +1,40 @@
 {
   "name": "client",
-  "homepage": ".",
+  "homepage": " https://adv555.github.io/client",
   "version": "0.1.0",
   "author": "test",
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.1.2",
+    "@typescript-eslint/parser": "^6.4.1",
     "bulma": "^0.9.4",
     "classnames": "^2.3.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.3.0",
-    "react-scripts": "5.0.1"
+    "react-scripts": "5.0.1",
+    "sass": "^1.66.1"
   },
   "devDependencies": {
+    "@mate-academy/eslint-config-react-typescript": "^1.0.11",
+    "@mate-academy/stylelint-config": "*",
     "@types/node": "^17.0.45",
     "@types/react": "^18.2.21",
     "@types/react-dom": "^18.2.7",
+    "@typescript-eslint/eslint-plugin": "^6.4.1",
     "gh-pages": "^6.0.0",
-    "node-sass": "^7.0.1",
+    "prettier": "3.0.2",
     "typescript": "^4.9.5"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "predeploy": "rm -rf build && npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build",
+    "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,css,scss}\"",
+    "lint": "eslint \"src/**/*.{js,jsx,ts,tsx}\" --fix",
+    "lint:style": "stylelint \"src/**/*.{css,scss}\" --fix",
+    "fix-style": "npm run lint:style && npm run format && npm run lint"
   },
   "eslintConfig": {
     "extends": [
