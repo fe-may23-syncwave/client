@@ -1,0 +1,16 @@
+@import 'styles/utils/shared';
+
+.Logo {
+  &__link {
+    display: flex;
+    align-items: center;
+  }
+
+  &__image {
+    height: 22px;
+
+    @include onTablet {
+      height: 28px;
+    }
+  }
+}

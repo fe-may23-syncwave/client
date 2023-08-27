@@ -1,0 +1,15 @@
+@import 'styles/utils/shared';
+
+.Container {
+  width: 100%;
+  max-width: 320px;
+  margin: 0 auto;
+
+  @include onTablet {
+    max-width: 592px;
+  }
+
+  @include onDesktop {
+    max-width: 1136px;
+  }
+}

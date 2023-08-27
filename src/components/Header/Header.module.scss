@@ -1,0 +1,23 @@
+@import 'styles/utils/shared';
+
+.Header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid $color-elements;
+  overflow: hidden;
+  height: 64px;
+  line-height: 64px;
+
+  &__logo {
+    margin-left: 16px;
+
+    @include onTablet {
+      margin-right: 24px;
+    }
+
+    @include onDesktop {
+      margin: 0 64px;
+    }
+  }
+}
