@@ -7,18 +7,8 @@ type Props = {
   className?: string;
 };
 
-export const Container: React.FC<Props> = ({
-  children,
-  className,
-}) => {
+export const Container: React.FC<Props> = ({ children, className }) => {
   return (
-    <div
-      className={classNames(
-        styles.Container,
-        className,
-      )}
-    >
-      {children}
-    </div>
+    <div className={classNames(styles.Container, className)}>{children}</div>
   );
 };

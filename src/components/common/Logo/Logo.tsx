@@ -7,17 +7,11 @@ type Props = {
   className?: string;
 };
 
-export const Logo: React.FC<Props> = ({
-  className,
-}) => {
+export const Logo: React.FC<Props> = ({ className }) => {
   return (
     <div className={className}>
       <Link to="/" className={styles.Logo__link}>
-        <img
-          src={logo}
-          alt="Logo"
-          className={styles.Logo__image}
-        />
+        <img src={logo} alt="Logo" className={styles.Logo__image} />
       </Link>
     </div>
   );
