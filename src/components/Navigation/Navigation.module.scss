@@ -24,6 +24,7 @@
   }
 
   &__link {
+    position: relative;
     display: flex;
     align-items: center;
     color: $color-secondary;
@@ -31,7 +32,7 @@
     font-weight: 700;
     letter-spacing: 0.04em;
 
-    transition: color $duration ease-in-out;
+    @include transition;
 
     &:hover {
       color: $color-primary;
@@ -49,8 +50,20 @@
       }
     }
 
-    &_active {
-      color: $color-primary;
+    &--active {
+      @include onTablet {
+        color: $color-primary;
+
+        &::after {
+          content: '';
+          position: absolute;
+          left: 0;
+          bottom: 0;
+          width: 100%;
+          height: 3px;
+          background-color: $color-primary;
+        }
+      }
     }
   }
 
@@ -60,6 +73,7 @@
     justify-content: center;
     height: inherit;
     width: 64px;
+    border-left: 1px solid $color-elements;
 
     &__icon {
       position: relative;
