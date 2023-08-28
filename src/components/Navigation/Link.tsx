@@ -22,17 +22,20 @@ interface Props {
   title?: string;
   to: string;
   icon?: React.ReactNode;
+  counter?: number;
 }
 
-export const Link: React.FC<Props> = ({ title, to, icon }) => {
+export const Link: React.FC<Props> = ({
+  title, to, icon, counter = 0,
+}) => {
   return (
     <NavLink to={to} className={title ? getLinkClass : IconLink}>
-      {title && title.toLocaleUpperCase()}
+      {title?.toLocaleUpperCase()}
 
       {icon && (
         <div className={Icon}>
           {icon}
-          <span className={IconCounter}>0</span>
+          {counter > 0 && <span className={IconCounter}>{counter}</span>}
         </div>
       )}
     </NavLink>

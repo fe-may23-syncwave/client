@@ -2,9 +2,11 @@
 import React from 'react';
 import { ReactComponent as FavoritesIcon } from '../../assets/icons/heart_dark.svg';
 import { ReactComponent as CartIcon } from '../../assets/icons/cart.svg';
+import { ReactComponent as MenuIcon } from '../../assets/icons/menu.svg';
+
+import { Link } from './Link';
 
 import styles from './Navigation.module.scss';
-import { Link } from './Link';
 
 export enum NavBarLink {
   Home = '/',
@@ -23,8 +25,12 @@ export const Navigation: React.FC = () => {
       </div>
 
       <div className={styles.Nav__right_container}>
-        <Link to="/favorites" icon={<FavoritesIcon />} />
-        <Link to="/cart" icon={<CartIcon />} />
+        <Link to="/favorites" icon={<FavoritesIcon />} counter={0} />
+        <Link to="/cart" icon={<CartIcon />} counter={3} />
+      </div>
+
+      <div className={styles.Nav__mobile}>
+        <Link to="/menu" icon={<MenuIcon />} />
       </div>
     </nav>
   );
