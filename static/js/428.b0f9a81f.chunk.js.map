@@ -1,0 +1,1 @@
+{"version":3,"file":"static/js/428.b0f9a81f.chunk.js","mappings":"yKAEaA,EAAwB,WACnC,OAAOC,EAAAA,EAAAA,KAAA,OAAAC,SAAK,eACd,C","sources":["pages/ProductPage/ProductPage.tsx"],"sourcesContent":["import React from 'react';\n\nexport const ProductPage: React.FC = () => {\n  return <div>ProductPage</div>;\n};\n"],"names":["ProductPage","_jsx","children"],"sourceRoot":""}

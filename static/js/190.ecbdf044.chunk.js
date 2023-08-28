@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkclient=self.webpackChunkclient||[]).push([[190],{190:function(n,e,t){t.r(e),t.d(e,{CartPage:function(){return c}});t(791);var r=t(184),c=function(){return(0,r.jsx)("div",{children:"CartPage"})}}}]);
+//# sourceMappingURL=190.ecbdf044.chunk.js.map

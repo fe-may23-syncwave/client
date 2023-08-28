@@ -1,0 +1,1 @@
+{"version":3,"file":"static/js/190.ecbdf044.chunk.js","mappings":"sKAEaA,EAAqB,WAChC,OAAOC,EAAAA,EAAAA,KAAA,OAAAC,SAAK,YACd,C","sources":["pages/CartPage/CartPage.tsx"],"sourcesContent":["import React from 'react';\n\nexport const CartPage: React.FC = () => {\n  return <div>CartPage</div>;\n};\n"],"names":["CartPage","_jsx","children"],"sourceRoot":""}
