@@ -11,3 +11,13 @@ html {
   color: $color-primary;
   scroll-behavior: smooth;
 }
+
+li {
+  list-style: none;
+}
+
+a {
+  display: inline-flex;
+  color: inherit;
+  text-decoration: none;
+}
