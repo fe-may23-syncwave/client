@@ -2,7 +2,7 @@ const BASE_URL = 'http://localhost:3000/client/api/phones.json';
 // the link should be changed when the server is ready
 
 function wait(delay: number) {
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     setTimeout(resolve, delay);
   });
 }
@@ -10,7 +10,7 @@ function wait(delay: number) {
 function request<T>(): Promise<T> {
   return wait(300)
     .then(() => fetch(BASE_URL))
-    .then(response => {
+    .then((response) => {
       if (!response.ok) {
         throw new Error();
       }
