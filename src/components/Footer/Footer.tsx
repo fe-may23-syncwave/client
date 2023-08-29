@@ -2,6 +2,7 @@ import React from 'react';
 import { Container } from 'components/common/Container';
 import classNames from 'classnames';
 import { Logo } from 'components/common/Logo';
+import { Typography } from 'components/common/Typography';
 import { ReactComponent as ArrowUpIcon } from 'assets/icons/arrow_up.svg';
 
 import styles from './Footer.module.scss';
@@ -24,13 +25,19 @@ export const Footer: React.FC<Props> = ({ className }) => {
           <Logo type="medium" />
           <div className={styles.Footer__list}>
             {Object.entries(FooterLink).map(([title, link]) => (
-              <a key={title} href={link} target="blank" rel="noreferrer">
-                {title.toUpperCase()}
+              <a
+                key={title}
+                href={link}
+                target="blank"
+                rel="noreferrer"
+                className={styles.Footer__list__link}
+              >
+                <Typography type="uppercase">{title}</Typography>
               </a>
             ))}
           </div>
           <button type="button" className={styles.Footer__button}>
-            Back to top
+            <Typography type="text-small">Back to top</Typography>
             <span className={styles.Footer__button__icon}>
               <ArrowUpIcon />
             </span>

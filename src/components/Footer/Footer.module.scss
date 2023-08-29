@@ -6,6 +6,7 @@
   // font-size: 14px;
   // line-height: 1.5;
   // text-align: center;
+
   border: 1px solid $color-elements;
 
   @include onTablet {
@@ -21,6 +22,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
+    color: $color-secondary;
 
     padding: 32px 0;
     gap: 32px;
@@ -44,6 +46,16 @@
       justify-content: space-between;
       align-items: center;
     }
+
+    &__link {
+      color: $color-secondary;
+
+      @include transition;
+
+      &:hover {
+        color: $color-primary;
+      }
+    }
   }
 
   &__button {
@@ -54,6 +66,13 @@
     width: 100%;
     border: none;
     background: none;
+    color: $color-secondary;
+
+    @include transition;
+
+    &:hover {
+      color: $color-primary;
+    }
 
     &__icon {
       display: flex;
