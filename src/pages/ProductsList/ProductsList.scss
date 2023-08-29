@@ -1,0 +1,10 @@
+.products {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  row-gap: 40px;
+
+  @media (max-width: 730px) {
+    justify-content: space-around;
+  }
+}

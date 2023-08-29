@@ -7,10 +7,20 @@
   padding: 32px;
   transition: all $duration;
   border: 1px solid $color-elements;
+  box-sizing: border-box;
 
-  @include onMobile {
-    width: 288px;
+  @media (max-width: 910px) {
+    max-width: 229px;
   }
+
+  @media (max-width: 730px) {
+    max-width: 288px;
+    justify-content: space-around;
+  }
+
+  // @include onMobile {
+  //   width: 288px;
+  // }
 
   @include onTablet {
     width: 288px;
@@ -38,6 +48,14 @@
     object-fit: contain;
     width: 208px;
     height: 196px;
+
+    @media (max-width: 910px) {
+      width: 165px;
+    }
+
+    @media (max-width: 730px) {
+      width: 224px;
+    }
   }
 
   &__title {
@@ -114,6 +132,14 @@
     transition:
       background-color $duration,
       color $duration;
+
+    @media (max-width: 910px) {
+      width: 117px;
+    }
+
+    @media (max-width: 730px) {
+      width: 160px;
+    }
 
     &--active {
       border-color: $color-elements;
