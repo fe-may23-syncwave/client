@@ -6,8 +6,13 @@
   align-items: center;
   border-bottom: 1px solid $color-elements;
   overflow: hidden;
-  height: 64px;
-  line-height: 64px;
+  height: 48px;
+  line-height: 48px;
+
+  @include onDesktop {
+    height: 64px;
+    line-height: 64px;
+  }
 
   &__logo {
     margin-left: 16px;
