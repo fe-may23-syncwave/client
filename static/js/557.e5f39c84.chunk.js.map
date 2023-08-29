@@ -1,1 +1,0 @@
-{"version":3,"file":"static/js/557.e5f39c84.chunk.js","mappings":"0KAEaA,EAAyB,WACpC,OAAOC,EAAAA,EAAAA,KAAA,OAAAC,SAAK,gBACd,C","sources":["pages/NotFoundPage/NotFoundPage.tsx"],"sourcesContent":["import React from 'react';\n\nexport const NotFoundPage: React.FC = () => {\n  return <div>NotFoundPage</div>;\n};\n"],"names":["NotFoundPage","_jsx","children"],"sourceRoot":""}

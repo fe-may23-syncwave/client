@@ -1,1 +1,0 @@
-{"version":3,"file":"static/js/220.6f0d26e0.chunk.js","mappings":"yKAEaA,EAAwB,WACnC,OAAOC,EAAAA,EAAAA,KAAA,OAAAC,SAAK,eACd,C","sources":["pages/CatalogPage/CatalogPage.tsx"],"sourcesContent":["import React from 'react';\n\nexport const CatalogPage: React.FC = () => {\n  return <div>CatalogPage</div>;\n};\n"],"names":["CatalogPage","_jsx","children"],"sourceRoot":""}
