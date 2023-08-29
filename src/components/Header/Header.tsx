@@ -11,7 +11,7 @@ type Props = {
 export const Header: React.FC<Props> = ({ className }) => {
   return (
     <div className={classNames(styles.Header, className)}>
-      <Logo className={styles.Header__logo} />
+      <Logo className={styles.Header__logo} type="small" />
 
       <Navigation />
     </div>

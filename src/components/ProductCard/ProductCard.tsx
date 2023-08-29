@@ -1,7 +1,6 @@
 import './ProductCard.scss';
 import { Link } from 'react-router-dom';
-import { FavouritesButton } from '../FavouritesButton';
-import { AddToCartButton } from '../AddToCartButton';
+import { AddToCartButton, FavouritesButton } from './buttons';
 
 export const ProductCard = () => {
   return (
