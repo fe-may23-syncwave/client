@@ -1,0 +1,154 @@
+@import 'styles/utils/shared';
+
+.product {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 32px;
+  transition: all $duration;
+  border: 1px solid $color-elements;
+
+  @include onMobile {
+    width: 288px;
+  }
+
+  @include onTablet {
+    width: 288px;
+  }
+
+  @include onDesktop {
+    width: 272px;
+  }
+
+  &:hover {
+    cursor: pointer;
+    transition: $duration;
+    box-shadow: 0 2px 16px 0 rgba(0, 0, 0, 0.1);
+  }
+
+  &__link {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__image {
+    display: flex;
+    align-items: center;
+    object-fit: contain;
+    width: 208px;
+    height: 196px;
+  }
+
+  &__title {
+    font-size: 14px;
+    line-height: 21px;
+    padding-top: 16px;
+    font-weight: 600;
+  }
+
+  &__prices {
+    display: flex;
+    align-items: center;
+    height: 40px;
+    gap: 8px;
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      border-radius: 8px;
+      background-color: $color-elements;
+      height: 1px;
+      opacity: 1;
+    }
+  }
+
+  &__price {
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 140%;
+  }
+
+  &__price-full {
+    font-size: 22px;
+    color: $color-secondary;
+    text-decoration: line-through;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+
+  &__info-block {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    font-weight: 700;
+  }
+
+  &__info-title {
+    color: $color-secondary;
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__add {
+    line-height: 38px;
+    width: 160px;
+    font-family: inherit;
+    font-size: 14px;
+    border: 1px solid $color-primary;
+    background-color: $color-primary;
+    color: $color-white;
+    transition:
+      background-color $duration,
+      color $duration;
+
+    &--active {
+      border-color: $color-elements;
+      background-color: $color-white;
+      color: $color-green;
+    }
+
+    &:hover {
+      cursor: pointer;
+      background-color: $color-white;
+      color: $color-primary;
+    }
+  }
+
+  &__favourites {
+    height: 40px;
+    width: 40px;
+    background-color: $color-white;
+    border: 1px solid $color-icons;
+    background-image: url(../../assets/icons/heart_dark.svg);
+    background-position: 50%;
+    background-repeat: no-repeat;
+    transition:
+      background-image $duration,
+      box-shadow $duration,
+      border $duration;
+
+    &--active {
+      background-image: url(../../assets/icons/heart_filled.svg);
+    }
+
+    &:hover {
+      cursor: pointer;
+      box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.1);
+      border: 1px solid $color-primary;
+    }
+  }
+}
