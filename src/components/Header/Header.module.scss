@@ -40,7 +40,6 @@
   border-left: 1px solid $color-elements;
 }
 
-
 .Modal {
   padding: 0;
   margin: 0;
@@ -84,9 +83,7 @@
   @include onTablet {
     display: none;
   }
-
 }
-
 
 .Overlay {
   background: rgba(0, 0, 0, 0.1);
@@ -128,4 +125,3 @@
     transform: translate3d(-100%, 0, 0);
   }
 }
-
