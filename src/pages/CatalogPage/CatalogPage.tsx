@@ -186,18 +186,20 @@ export const CatalogPage: React.FC<Props> = ({ title }) => {
   return (
     <>
       <h1 className="catalog__title">{title}</h1>
-      <p className="catalog__subtitle">{`${products.length} models`}</p>
-      {hasError ? (
-        <h2>There is some problems</h2>
-      ) : (
-        <ProductsList products={productsOnPage} />
+      {!hasError && (
+        <p className="catalog__subtitle">{`${products.length} models`}</p>
       )}
-      {products.length > 0 && (
-        <Pagination
-          currentPage={activePage}
-          totalPages={amountOfPages}
-          onPageChange={(selectedPage) => changeCurrentPage(selectedPage)}
-        />
+      {hasError && <h2 className="catalog__title">There is some problems</h2>}
+
+      {products.length > 0 && !hasError && (
+        <>
+          <ProductsList products={productsOnPage} />
+          <Pagination
+            currentPage={activePage}
+            totalPages={amountOfPages}
+            onPageChange={(selectedPage) => changeCurrentPage(selectedPage)}
+          />
+        </>
       )}
     </>
   );
