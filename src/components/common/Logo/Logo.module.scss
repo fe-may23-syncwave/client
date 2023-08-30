@@ -1,5 +1,27 @@
 @import 'styles/utils/shared';
 
+.Logo__wrapper {
+  &--small {
+    height: 22px;
+
+    @include onTablet {
+      height: 28px;
+    }
+  }
+
+  &--medium {
+    height: 32px;
+  }
+
+  &--large {
+    height: 42px;
+
+    @include onTablet {
+      height: 52px;
+    }
+  }
+}
+
 .Logo {
   &__link {
     display: flex;
@@ -7,10 +29,6 @@
   }
 
   &__image {
-    height: 22px;
-
-    @include onTablet {
-      height: 28px;
-    }
+    height: 100%;
   }
 }
