@@ -27,6 +27,20 @@
   }
 }
 
+.CloseIcon {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: -18px;
+  right: -14px;
+  width: 64px;
+  height: 48px;
+  cursor: pointer;
+  border-left: 1px solid $color-elements;
+}
+
+
 .Modal {
   padding: 0;
   margin: 0;
@@ -34,39 +48,45 @@
   min-width: 100%;
   height: 100vh;
   overflow: hidden;
-}
 
-.Content {
-  display: flex;
-  flex-direction: column;
-
-  height: 100%;
-
-  &__body {
+  &__Content {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
+
     height: 100%;
-    padding-top: 32px;
+
+    &__body {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      height: 100%;
+      padding-top: 32px;
+    }
+
+    &__block--links {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    &__block--icons {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      height: 64px;
+    }
   }
 
-  &__block--links {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    gap: 16px;
+  @include onTablet {
+    display: none;
   }
 
-  &__block--icons {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    height: 64px;
-  }
 }
+
 
 .Overlay {
   background: rgba(0, 0, 0, 0.1);
@@ -75,6 +95,10 @@
   left: 0;
   bottom: 0;
   right: 0;
+
+  @include onTablet {
+    display: none;
+  }
 }
 
 /* mobile/custom-animation.css from left to right */
@@ -105,15 +129,3 @@
   }
 }
 
-.CloseIcon {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  top: -18px;
-  right: -14px;
-  width: 64px;
-  height: 48px;
-  cursor: pointer;
-  border-left: 1px solid $color-elements;
-}

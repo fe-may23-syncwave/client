@@ -12,10 +12,10 @@ import 'react-responsive-modal/styles.css';
 import styles from './Header.module.scss';
 
 const {
-  Content: ModalContent,
-  Content__body: ContentBody,
-  'Content__block--links': ContentBlockLinks,
-  'Content__block--icons': ContentBlockIcons,
+  Modal__Content: ModalContent,
+  Modal__Content__body: ContentBody,
+  'Modal__Content__block--links': ContentBlockLinks,
+  'Modal__Content__block--icons': ContentBlockIcons,
 } = styles;
 
 type Props = {
