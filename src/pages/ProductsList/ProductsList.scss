@@ -1,7 +1,8 @@
 .products {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: flex-start;
+  column-gap: 16px;
   row-gap: 40px;
 
   @media (max-width: 730px) {

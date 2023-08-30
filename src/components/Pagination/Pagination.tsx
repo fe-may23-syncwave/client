@@ -19,12 +19,12 @@ export const Pagination = ({
     <ul className="pagination">
       <li className={cn(
         'page__item page__item__arrow',
-        { disabled: currentPage === 1 },
+        { page__item__disabled: currentPage === 1 },
       )}
       >
         <Link
           to={{
-            search: getSearchWith(searchParams, { page: 'prev' }),
+            search: getSearchWith(searchParams, { page: String(currentPage - 1) }),
           }}
           className="page__link"
           aria-disabled={currentPage !== 1 ? 'false' : 'true'}
@@ -43,7 +43,7 @@ export const Pagination = ({
               fillRule="evenodd"
               clipRule="evenodd"
               d="M10.4712 3.52851C10.2109 3.26816 9.78878 3.26816 9.52843 3.52851L5.52843 7.52851C5.26808 7.78886 5.26808 8.21097 5.52843 8.47132L9.52843 12.4713C9.78878 12.7317 10.2109 12.7317 10.4712 12.4713C10.7316 12.211 10.7316 11.7889 10.4712 11.5285L6.94265 7.99992L10.4712 4.47132C10.7316 4.21097 10.7316 3.78886 10.4712 3.52851Z"
-              fill="#313237"
+              fill={currentPage !== 1 ? '#313237' : '#e2e6e9'}
             />
           </svg>
         </Link>
@@ -67,12 +67,12 @@ export const Pagination = ({
 
       <li
         className={cn('page__item page__item__arrow', {
-          disabled: currentPage === totalPages.length,
+          page__item__disabled: currentPage === totalPages.length,
         })}
       >
         <Link
           to={{
-            search: getSearchWith(searchParams, { page: 'next' }),
+            search: getSearchWith(searchParams, { page: String(currentPage + 1) }),
           }}
           className="page__link"
           aria-disabled={currentPage !== totalPages.length ? 'false' : 'true'}
@@ -92,7 +92,7 @@ export const Pagination = ({
               fillRule="evenodd"
               clipRule="evenodd"
               d="M5.52876 3.52851C5.78911 3.26816 6.21122 3.26816 6.47157 3.52851L10.4716 7.52851C10.7319 7.78886 10.7319 8.21097 10.4716 8.47132L6.47157 12.4713C6.21122 12.7317 5.78911 12.7317 5.52876 12.4713C5.26841 12.211 5.26841 11.7889 5.52876 11.5285L9.05735 7.99992L5.52876 4.47132C5.26841 4.21097 5.26841 3.78886 5.52876 3.52851Z"
-              fill="#313237"
+              fill={currentPage !== totalPages.length ? '#313237' : '#e2e6e9'}
             />
           </svg>
         </Link>

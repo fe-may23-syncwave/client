@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { ProductsList } from 'pages/ProductsList';
 import './CatalogPage.scss';
 import { Pagination } from 'components/Pagination';
+import { getNumbers } from 'utils/getNumbers';
 
 interface Props {
   title: string;
@@ -147,16 +148,6 @@ const products = [
   },
 ];
 
-function getNumbers(from: number, to: number): number[] {
-  const numbers = [];
-
-  for (let n = from; n <= to; n += 1) {
-    numbers.push(n);
-  }
-
-  return numbers;
-}
-
 export const CatalogPage: React.FC<Props> = ({ title }) => {
   // const currentURL = window.location.href;
   // const typeOfProducts = currentURL.split('/').reverse()[0];
@@ -170,12 +161,11 @@ export const CatalogPage: React.FC<Props> = ({ title }) => {
   //     .catch(() => setHasError(true));
   // }, []);
 
-  const [itemsOnPage, setitemsOnPage] = useState(2);
+  const [itemsOnPage] = useState(2);
   const [activePage, setActivePage] = useState(1);
   const [startValue, setStartValue] = useState(1);
   const [endValue, setEndvalue] = useState(itemsOnPage);
   const totalAmount = products.length;
-  const items = getNumbers(1, totalAmount);
 
   const changeCurrentPage = (selectedPage: number) => {
     setActivePage(selectedPage);
@@ -191,24 +181,7 @@ export const CatalogPage: React.FC<Props> = ({ title }) => {
 
   const amountOfPages = calculateTotalPages(itemsOnPage);
 
-  function createContent() {
-    return items.slice(startValue - 1, endValue);
-  }
-
-  function changePages(event: React.ChangeEvent<HTMLSelectElement>) {
-    setitemsOnPage(+event.target.value);
-    setActivePage(1);
-    setEndvalue(+event.target.value);
-    setStartValue(1);
-  }
-
-  const currentContent = createContent();
-
-  const currentFromValue = currentContent[0];
-  const currentToValue = currentContent[currentContent.length - 1];
-
-  // eslint-disable-next-line no-console
-  console.log(changePages, currentFromValue, currentToValue);
+  const productsOnPage = products.slice(startValue - 1, endValue);
 
   return (
     <>
@@ -217,7 +190,7 @@ export const CatalogPage: React.FC<Props> = ({ title }) => {
       {hasError ? (
         <h2>There is some problems</h2>
       ) : (
-        <ProductsList products={products} />
+        <ProductsList products={productsOnPage} />
       )}
       {products.length > 0 && (
         <Pagination

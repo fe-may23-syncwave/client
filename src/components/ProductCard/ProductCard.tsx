@@ -17,7 +17,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
           alt={product.name}
           className="product__image"
         />
-        <h2 className="product__title">{`${product.name} (XXXXXXXX)`}</h2>
+        <h2 className="product__title">{`${product.name} (XXXXX)`}</h2>
       </Link>
 
       <div className="product__prices">
