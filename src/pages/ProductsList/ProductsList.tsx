@@ -1,10 +1,18 @@
 import React from 'react';
-import { ProductCard } from '../../components/ProductCard';
+import { ProductCard } from 'components/ProductCard';
+import { Phone } from 'types/PhoneType';
+import './ProductsList.scss';
 
-export const ProductsList: React.FC = () => {
+interface Props {
+  products: Phone[];
+}
+
+export const ProductsList: React.FC<Props> = ({ products }) => {
   return (
-    <div>
-      <ProductCard />
-    </div>
+    <section className="products">
+      {products.map((product) => (
+        <ProductCard product={product} key={product.id} />
+      ))}
+    </section>
   );
 };
