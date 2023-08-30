@@ -36,8 +36,39 @@
   overflow: hidden;
 }
 
+.Content {
+  display: flex;
+  flex-direction: column;
+
+  height: 100%;
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    padding-top: 32px;
+  }
+
+  &__block--links {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  &__block--icons {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    height: 64px;
+  }
+}
+
 .Overlay {
-  // background: transparent;
   background: rgba(0, 0, 0, 0.1);
   position: fixed;
   top: 0;
@@ -74,30 +105,15 @@
   }
 }
 
-/* mobile/custom-animation.css from right to left */
-
-// @keyframes customEnterOverlayAnimation {
-//   0% {
-//     transition: 0.3s 0.5s;
-//     opacity: 0;
-//     transform: translateX(100%);
-//   }
-//   100% {
-//     transition: 0.3s 0.5s;
-//     opacity: 1;
-//     transform: translateX(0);
-//   }
-// }
-
-// @keyframes customLeaveOverlayAnimation {
-//   0% {
-//     transition: 0.3s 0.5s;
-//     opacity: 1;
-//     transform: translateX(0);
-//   }
-//   100% {
-//     transition: 0.3s 0.5s;
-//     opacity: 0;
-//     transform: translateX(100%);
-//   }
-// }
+.CloseIcon {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: -18px;
+  right: -14px;
+  width: 64px;
+  height: 48px;
+  cursor: pointer;
+  border-left: 1px solid $color-elements;
+}

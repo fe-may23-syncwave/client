@@ -27,6 +27,7 @@
       align-items: center;
       justify-content: center;
       height: inherit;
+      width: 128px;
     }
   }
 
@@ -43,8 +44,12 @@
     align-items: center;
     color: $color-secondary;
     font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 0.04em;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 11px; /* 91.667% */
+    letter-spacing: 0.48px;
+    text-transform: uppercase;
+    padding: 8px;
 
     @include transition;
 
@@ -86,8 +91,9 @@
     align-items: center;
     justify-content: center;
     height: inherit;
-    width: 64px;
-    border-left: 1px solid $color-elements;
+    width: 50%;
+    min-width: 64px;
+    border: 1px solid $color-elements;
 
     &__icon {
       position: relative;
