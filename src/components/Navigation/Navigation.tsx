@@ -1,36 +1,32 @@
-/* eslint-disable max-len */
 import React from 'react';
-import { ReactComponent as FavoritesIcon } from '../../assets/icons/heart_dark.svg';
-import { ReactComponent as CartIcon } from '../../assets/icons/cart.svg';
+import { useLocation } from 'react-router-dom';
 import { ReactComponent as MenuIcon } from '../../assets/icons/menu.svg';
-
 import { Link } from './Link';
+import { NavBarLinks } from './NavBarLinks';
+import { NavBarIcons } from './NavBarIcons';
 
 import styles from './Navigation.module.scss';
 
-export enum NavBarLink {
-  Home = '/',
-  Phones = 'phones',
-  Tablets = 'tablets',
-  Accessories = 'accessories',
-}
+type Props = {
+  openModal?: () => void;
+};
 
-export const Navigation: React.FC = () => {
+export const Navigation: React.FC<Props> = ({ openModal }) => {
+  const location = useLocation();
+
   return (
     <nav className={styles.Nav}>
-      <div className={styles.Nav__left_container}>
-        {Object.entries(NavBarLink).map(([title, link]) => (
-          <Link key={title} to={link} title={title} />
-        ))}
-      </div>
+      <NavBarLinks className={styles.Nav__left_container} />
+      <NavBarIcons className={styles.Nav__right_container} />
 
-      <div className={styles.Nav__right_container}>
-        <Link to="/favorites" icon={<FavoritesIcon />} counter={0} />
-        <Link to="/cart" icon={<CartIcon />} counter={3} />
-      </div>
-
-      <div className={styles.Nav__mobile}>
-        <Link to="/menu" icon={<MenuIcon />} />
+      <div
+        className={styles.Nav__menu}
+        role="button"
+        tabIndex={0}
+        onClick={openModal}
+        onKeyDown={openModal}
+      >
+        <Link to={location.pathname} icon={<MenuIcon />} />
       </div>
     </nav>
   );

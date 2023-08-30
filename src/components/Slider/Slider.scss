@@ -36,6 +36,14 @@
       }
     }
 
+    &-button-next {
+      right: 0;
+    }
+
+    &-button-prev {
+      left: 0;
+    }
+
     &-button-next,
     &-button-prev {
       border: 1px solid $color-icons;
@@ -44,6 +52,10 @@
       top: 5%;
       width: 32px;
 
+      &:hover {
+        border: 1px solid $color-primary;
+      }
+
       &::after {
         color: $color-primary;
         font-size: 10px;
@@ -51,22 +63,6 @@
 
       @include onMobile {
         display: none;
-      }
-    }
-
-    &-button-next {
-      right: 0;
-
-      &:hover {
-        border: 1px solid $color-primary;
-      }
-    }
-
-    &-button-prev {
-      left: 0;
-
-      &:hover {
-        border: 1px solid $color-primary;
       }
     }
 
