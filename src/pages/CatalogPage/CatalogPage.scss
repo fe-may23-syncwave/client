@@ -1,6 +1,10 @@
-@import "styles/utils/shared";
+@import 'styles/utils/shared';
 
 .catalog {
+  &__page {
+    margin-bottom: 80px;
+  }
+  
   &__title {
     font-size: 48px;
     font-weight: 600;

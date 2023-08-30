@@ -1,11 +1,7 @@
 import { getFavorites } from 'api/favorites';
-import React, { createContext, useState } from 'react';
+import React, { createContext, useEffect, useState } from 'react';
+import { MainContextType } from 'types/MainContext';
 import { Phone } from 'types/PhoneType';
-
-type MainContextType = {
-  favProducts: Phone[];
-  hasErrorOnFav: boolean;
-};
 
 export const MainContext = createContext<MainContextType>({
   favProducts: [],
@@ -20,9 +16,11 @@ export const Context: React.FC<Props> = ({ children }) => {
   const [favProducts, setFavProducts] = useState<Phone[]>([]);
   const [hasErrorOnFav, setHasErrorOnFav] = useState(false);
 
-  getFavorites('/favorites')
-    .then(setFavProducts)
-    .catch(() => setHasErrorOnFav(true));
+  useEffect(() => {
+    getFavorites('/favorites')
+      .then(setFavProducts)
+      .catch(() => setHasErrorOnFav(true));
+  }, []);
 
   const params = {
     favProducts,

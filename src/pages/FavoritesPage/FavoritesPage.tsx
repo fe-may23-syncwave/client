@@ -1,4 +1,4 @@
-import { MainContext } from 'context/context';
+import { MainContext } from 'context/MainContext';
 import { ProductsList } from 'pages/ProductsList';
 import React from 'react';
 
