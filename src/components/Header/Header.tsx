@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-wrap-multilines */
 import React, { useState } from 'react';
 import classNames from 'classnames';
-// import { Navigation } from 'components/Navigation';
+import { Navigation } from 'components/Navigation';
 import { Modal } from 'react-responsive-modal';
 import { ReactComponent as CloseIcon } from 'assets/icons/close.svg';
 import { Logo } from '../common/Logo';
@@ -13,9 +13,9 @@ type Props = {
 };
 
 export const Header: React.FC<Props> = ({ className }) => {
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
 
-  // const onOpenModal = () => setOpen(true);
+  const onOpenModal = () => setOpen(true);
   const onCloseModal = () => setOpen(false);
 
   return (
@@ -55,7 +55,7 @@ export const Header: React.FC<Props> = ({ className }) => {
         </div>
       </Modal>
 
-      {/* <Navigation /> */}
+      <Navigation openModal={onOpenModal} />
     </div>
   );
 };
