@@ -7,6 +7,9 @@ import {
   EffectFade,
 } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import firstBanner from 'assets/images/banners/banner-phones.png';
+import secondBanner from 'assets/images/banners/banner-tablets.png';
+import thirdBanner from 'assets/images/banners/banner-accessories.png';
 import './Slider.scss';
 
 export const Slider = () => {
@@ -32,7 +35,7 @@ export const Slider = () => {
           <SwiperSlide>
             <img
               className="carousel-img"
-              src="client/img/banner-phones.png"
+              src={firstBanner}
               alt="Phones now available in our store!"
             />
           </SwiperSlide>
@@ -40,7 +43,7 @@ export const Slider = () => {
           <SwiperSlide>
             <img
               className="carousel-img"
-              src="client/img/banner-tablets.png"
+              src={secondBanner}
               alt="Tablets now available in our store!"
             />
           </SwiperSlide>
@@ -48,7 +51,7 @@ export const Slider = () => {
           <SwiperSlide>
             <img
               className="carousel-img"
-              src="client/img/banner-accessories.png"
+              src={thirdBanner}
               alt="Accessories now available in our store!"
             />
           </SwiperSlide>
