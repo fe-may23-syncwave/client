@@ -1,0 +1,100 @@
+@import 'styles/utils/shared';
+
+.Footer {
+  // margin-top: auto;
+
+  // font-size: 14px;
+  // line-height: 1.5;
+  // text-align: center;
+
+  border: 1px solid $color-elements;
+
+  @include onTablet {
+    font-size: 16px;
+  }
+
+  @include onDesktop {
+    font-size: 18px;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    color: $color-secondary;
+
+    padding: 32px 0;
+    gap: 32px;
+
+    @include onTablet {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 16px;
+
+    @include onTablet {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    &__link {
+      color: $color-secondary;
+
+      @include transition;
+
+      &:hover {
+        color: $color-primary;
+      }
+    }
+  }
+
+  &__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+    border: none;
+    background: none;
+    color: $color-secondary;
+
+    @include transition;
+
+    &:hover {
+      color: $color-primary;
+    }
+
+    &__icon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 32px;
+      height: 32px;
+      border: 1px solid $color-elements;
+
+      @include transition;
+
+      &:hover {
+        background-color: $color-elements;
+      }
+    }
+
+    @include onTablet {
+      width: auto;
+    }
+  }
+}
+
+// .Logo {
+//   height: 32px;
+// }
