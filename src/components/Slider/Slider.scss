@@ -1,5 +1,5 @@
-@import "../../styles/utils/mixins.scss";
-@import "../../styles/utils/variables";
+@import '../../styles/utils/mixins.scss';
+@import '../../styles/utils/variables';
 
 .fullWidth {
   @include onMobile {
@@ -44,10 +44,6 @@
       top: 5%;
       width: 32px;
 
-      &:hover {
-        border: 1px solid $color-primary;
-      }
-
       &::after {
         color: $color-primary;
         font-size: 10px;
@@ -60,10 +56,18 @@
 
     &-button-next {
       right: 0;
+
+      &:hover {
+        border: 1px solid $color-primary;
+      }
     }
 
     &-button-prev {
       left: 0;
+
+      &:hover {
+        border: 1px solid $color-primary;
+      }
     }
 
     &-slide {

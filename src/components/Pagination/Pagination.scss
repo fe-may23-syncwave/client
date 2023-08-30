@@ -1,4 +1,4 @@
-@import "styles/utils/shared";
+@import 'styles/utils/shared';
 
 .pagination {
   display: flex;
@@ -36,7 +36,8 @@
     margin-right: 4px;
     margin-left: 4px;
 
-    transition: background-image $duration,
+    transition:
+      background-image $duration,
       box-shadow $duration,
       border $duration;
 
