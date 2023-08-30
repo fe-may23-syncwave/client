@@ -1,6 +1,10 @@
 import 'swiper/swiper-bundle.css';
 import {
-  Autoplay, Navigation, Pagination, A11y, EffectFade,
+  Autoplay,
+  Navigation,
+  Pagination,
+  A11y,
+  EffectFade,
 } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import './Slider.scss';

@@ -1,4 +1,4 @@
-@import "styles/utils/shared";
+@import 'styles/utils/shared';
 
 h1 {
   font-weight: 800;
@@ -46,11 +46,12 @@ h4 {
 }
 
 .uppercase {
-  text-transform: uppercase;
-  font-weight: 800;
   font-size: 12px;
+  font-style: normal;
+  font-weight: 800;
   line-height: 11px;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.48px;
+  text-transform: uppercase;
 }
 
 .text {

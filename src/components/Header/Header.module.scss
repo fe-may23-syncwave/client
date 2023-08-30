@@ -1,4 +1,4 @@
-@import "styles/utils/shared";
+@import 'styles/utils/shared';
 
 .Header {
   position: relative;
@@ -24,5 +24,104 @@
     @include onDesktop {
       margin: 0 64px;
     }
+  }
+}
+
+.CloseIcon {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: -18px;
+  right: -14px;
+  width: 64px;
+  height: 48px;
+  cursor: pointer;
+  border-left: 1px solid $color-elements;
+}
+
+.Modal {
+  padding: 0;
+  margin: 0;
+  background: $color-white;
+  min-width: 100%;
+  height: 100vh;
+  overflow: hidden;
+
+  &__Content {
+    display: flex;
+    flex-direction: column;
+
+    height: 100%;
+
+    &__body {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      height: 100%;
+      padding-top: 32px;
+    }
+
+    &__block--links {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    &__block--icons {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      height: 64px;
+    }
+  }
+
+  @include onTablet {
+    display: none;
+  }
+}
+
+.Overlay {
+  background: rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+
+  @include onTablet {
+    display: none;
+  }
+}
+
+/* mobile/custom-animation.css from left to right */
+
+@keyframes customEnterOverlayAnimation {
+  0% {
+    transition: 0.3s 0.5s;
+    opacity: 0;
+    transform: translate3d(-100%, 0, 0);
+  }
+  100% {
+    transition: 0.3s 0.5s;
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes customLeaveOverlayAnimation {
+  0% {
+    transition: 0.3s 0.5s;
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transition: 0.3s 0.5s;
+    opacity: 0;
+    transform: translate3d(-100%, 0, 0);
   }
 }
