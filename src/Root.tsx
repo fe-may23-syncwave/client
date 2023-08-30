@@ -65,17 +65,17 @@ export const Root = () => {
             <Route path="home" element={<Navigate to="/" replace />} />
 
             <Route path="phones">
-              <Route index element={<CatalogPage />} />
+              <Route index element={<CatalogPage title="Mobile phones" />} />
               <Route path=":productId" element={<ProductPage />} />
             </Route>
 
             <Route path="tablets">
-              <Route index element={<CatalogPage />} />
+              <Route index element={<CatalogPage title="Tablets" />} />
               <Route path=":productId" element={<ProductPage />} />
             </Route>
 
             <Route path="accessories">
-              <Route index element={<CatalogPage />} />
+              <Route index element={<CatalogPage title="Accessories" />} />
               <Route path=":productId" element={<ProductPage />} />
             </Route>
 

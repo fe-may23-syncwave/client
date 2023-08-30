@@ -1,5 +1,6 @@
 export interface Phone {
   id: string;
+  phoneId: string;
   name: string;
   image: string;
   price: number;
@@ -7,4 +8,6 @@ export interface Phone {
   year: number;
   capacity: string;
   color: string;
+  screen: string;
+  ram: string;
 }
