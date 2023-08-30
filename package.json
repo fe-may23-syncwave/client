@@ -13,6 +13,7 @@
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
     "sass": "^1.66.1",
+    "stylelint": "^13.13.1",
     "swiper": "^10.2.0"
   },
   "devDependencies": {
@@ -28,6 +29,9 @@
     "husky": "^8.0.3",
     "lint-staged": "^14.0.1",
     "prettier": "3.0.2",
+    "typescript": "^5.2.2"
+  },
+  "overrides": {
     "typescript": "^5.2.2"
   },
   "scripts": {
