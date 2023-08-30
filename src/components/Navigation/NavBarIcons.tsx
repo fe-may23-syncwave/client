@@ -7,14 +7,24 @@ import { ReactComponent as CartIcon } from '../../assets/icons/cart.svg';
 
 type Props = {
   className?: string;
+  onClick?: () => void;
 };
 
-export const NavBarIcons: React.FC<Props> = ({ className }) => {
+export const NavBarIcons: React.FC<Props> = ({
+  className,
+  onClick = () => {},
+}) => {
   const [favoritesCounter] = useState(0);
   const [cartCounter] = useState(3);
 
   return (
-    <div className={className}>
+    <div
+      className={className}
+      onClick={onClick}
+      onKeyDown={onClick}
+      tabIndex={0}
+      role="button"
+    >
       <Link
         to={NavBarRoute.Favorites}
         icon={<FavoritesIcon />}

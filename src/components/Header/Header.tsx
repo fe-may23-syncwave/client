@@ -55,9 +55,9 @@ export const Header: React.FC<Props> = ({ className }) => {
           </div>
 
           <div className={ContentBody}>
-            <NavBarLinks className={ContentBlockLinks} />
+            <NavBarLinks className={ContentBlockLinks} onClick={onCloseModal} />
 
-            <NavBarIcons className={ContentBlockIcons} />
+            <NavBarIcons className={ContentBlockIcons} onClick={onCloseModal} />
           </div>
         </div>
       </Modal>

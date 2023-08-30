@@ -11,11 +11,21 @@ const NavBarLink = {
 
 type Props = {
   className?: string;
+  onClick?: () => void;
 };
 
-export const NavBarLinks: React.FC<Props> = ({ className }) => {
+export const NavBarLinks: React.FC<Props> = ({
+  className,
+  onClick = () => {},
+}) => {
   return (
-    <div className={className}>
+    <div
+      className={className}
+      onClick={onClick}
+      onKeyDown={onClick}
+      tabIndex={0}
+      role="button"
+    >
       {Object.entries(NavBarLink).map(([title, link]) => (
         <Link key={title} to={link} title={title} />
       ))}
