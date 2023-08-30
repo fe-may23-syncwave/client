@@ -1,5 +1,5 @@
-@import "../../styles/utils/mixins.scss";
-@import "../../styles/utils/variables";
+@import '../../styles/utils/mixins.scss';
+@import '../../styles/utils/variables';
 
 .fullWidth {
   @include onMobile {
@@ -36,6 +36,14 @@
       }
     }
 
+    &-button-next {
+      right: 0;
+    }
+
+    &-button-prev {
+      left: 0;
+    }
+
     &-button-next,
     &-button-prev {
       border: 1px solid $color-icons;
@@ -56,14 +64,6 @@
       @include onMobile {
         display: none;
       }
-    }
-
-    &-button-next {
-      right: 0;
-    }
-
-    &-button-prev {
-      left: 0;
     }
 
     &-slide {
