@@ -1,7 +1,5 @@
 import './ProductCard.scss';
 import { Link } from 'react-router-dom';
-import { FavouritesButton } from '../FavouritesButton';
-import { AddToCartButton } from '../AddToCartButton';
 import { Phone } from '../../types/PhoneType';
 import { AddToCartButton, FavouritesButton } from './buttons';
 

@@ -4,33 +4,35 @@ import './Pagination.scss';
 import { Link, useSearchParams } from 'react-router-dom';
 import { getSearchWith } from 'utils/searchHelper';
 
-interface Props{
-  currentPage: number,
-  totalPages: number[],
-  onPageChange: (item: number) => void,
+interface Props {
+  currentPage: number;
+  totalPages: number[];
+  onPageChange: (item: number) => void;
 }
 
 export const Pagination = ({
-  currentPage, totalPages, onPageChange,
+  currentPage,
+  totalPages,
+  onPageChange,
 }: Props) => {
   const [searchParams] = useSearchParams();
 
   return (
     <ul className="pagination">
-      <li className={cn(
-        'page__item page__item__arrow',
-        { page__item__disabled: currentPage === 1 },
-      )}
+      <li
+        className={cn('page__item page__item__arrow', {
+          page__item__disabled: currentPage === 1,
+        })}
       >
         <Link
           to={{
-            search: getSearchWith(searchParams, { page: String(currentPage - 1) }),
+            search: getSearchWith(searchParams, {
+              page: String(currentPage - 1),
+            }),
           }}
           className="page__link"
           aria-disabled={currentPage !== 1 ? 'false' : 'true'}
-          onClick={() => (
-            currentPage !== 1 && onPageChange(currentPage - 1)
-          )}
+          onClick={() => currentPage !== 1 && onPageChange(currentPage - 1)}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -50,7 +52,9 @@ export const Pagination = ({
       </li>
       {totalPages.map((item: number) => (
         <li
-          className={cn('page__item', { page__item__active: currentPage === item })}
+          className={cn('page__item', {
+            page__item__active: currentPage === item,
+          })}
           key={item}
         >
           <Link
@@ -72,14 +76,13 @@ export const Pagination = ({
       >
         <Link
           to={{
-            search: getSearchWith(searchParams, { page: String(currentPage + 1) }),
+            search: getSearchWith(searchParams, {
+              page: String(currentPage + 1),
+            }),
           }}
           className="page__link"
           aria-disabled={currentPage !== totalPages.length ? 'false' : 'true'}
-          onClick={() => (
-            currentPage !== totalPages.length
-              && onPageChange(currentPage + 1)
-          )}
+          onClick={() => currentPage !== totalPages.length && onPageChange(currentPage + 1)}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
