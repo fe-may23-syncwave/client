@@ -8,7 +8,6 @@ export function App() {
   return (
     <div className={styles.App}>
       <Header className={styles.App__Header} />
-
       <Container>
         <Outlet />
       </Container>
