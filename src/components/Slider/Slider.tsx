@@ -3,7 +3,7 @@ import {
   Autoplay, Navigation, Pagination, A11y, EffectFade,
 } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import './Slider.module.scss';
+import './Slider.scss';
 
 export const Slider = () => {
   return (

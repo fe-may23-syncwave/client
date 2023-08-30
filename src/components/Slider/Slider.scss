@@ -1,5 +1,5 @@
-@import '../../styles/utils/mixins.scss';
-@import '../../styles/utils/variables';
+@import "../../styles/utils/mixins.scss";
+@import "../../styles/utils/variables";
 
 .fullWidth {
   @include onMobile {
@@ -59,11 +59,11 @@
     }
 
     &-button-next {
-      right: 0px;
+      right: 0;
     }
 
     &-button-prev {
-      left: 0px;
+      left: 0;
     }
 
     &-slide {
