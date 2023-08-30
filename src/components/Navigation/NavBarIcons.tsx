@@ -1,6 +1,7 @@
 /* eslint-disable max-len */
 import React, { useState } from 'react';
 import { NavBarRoute } from 'types/NavBarRoute';
+import { MainContext } from 'context/context';
 import { Link } from './Link';
 import { ReactComponent as FavoritesIcon } from '../../assets/icons/heart_dark.svg';
 import { ReactComponent as CartIcon } from '../../assets/icons/cart.svg';
@@ -14,8 +15,11 @@ export const NavBarIcons: React.FC<Props> = ({
   className,
   onClick = () => {},
 }) => {
-  const [favoritesCounter] = useState(0);
   const [cartCounter] = useState(3);
+
+  const { favProducts } = React.useContext(MainContext);
+
+  const favoritesCounter = favProducts.length;
 
   return (
     <div

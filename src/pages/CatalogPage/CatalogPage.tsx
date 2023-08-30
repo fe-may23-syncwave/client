@@ -156,7 +156,7 @@ export const CatalogPage: React.FC<Props> = ({ title }) => {
   const [hasError] = useState(false);
 
   // useEffect(() => {
-  //   getProducts(`/${typeOfProducts}`)
+  //   getPhones(`/${typeOfProducts}`)
   //     .then(setProducts)
   //     .catch(() => setHasError(true));
   // }, []);
