@@ -1,0 +1,59 @@
+@import 'styles/utils/shared';
+
+.pagination {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin: 40px auto 80px;
+}
+
+.page {
+  &__link {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 21px;
+    margin: auto;
+    color: $color-gray-primary;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    background-color: $color-white;
+    border: 1px solid $color-elements;
+
+    margin-right: 4px;
+    margin-left: 4px;
+
+    transition:
+      background-image $duration,
+      box-shadow $duration,
+      border $duration;
+
+    &:hover {
+      cursor: pointer;
+      box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.1);
+      border: 1px solid $color-primary;
+    }
+
+    &__arrow {
+      margin-right: 8px;
+      margin-left: 8px;
+      border: 1px solid $color-icons;
+    }
+
+    &__active {
+      background-color: $color-gray-primary;
+
+      .page__link {
+        color: $color-white;
+      }
+    }
+  }
+}
+
+
+

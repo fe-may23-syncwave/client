@@ -3,8 +3,9 @@ import React, { useState } from 'react';
 // import { Phone } from 'types/PhoneType';
 import { ProductsList } from 'pages/ProductsList';
 import './CatalogPage.scss';
+import { Pagination } from 'components/Pagination';
 
-interface Props{
+interface Props {
   title: string;
 }
 
@@ -146,6 +147,16 @@ const products = [
   },
 ];
 
+function getNumbers(from: number, to: number): number[] {
+  const numbers = [];
+
+  for (let n = from; n <= to; n += 1) {
+    numbers.push(n);
+  }
+
+  return numbers;
+}
+
 export const CatalogPage: React.FC<Props> = ({ title }) => {
   // const currentURL = window.location.href;
   // const typeOfProducts = currentURL.split('/').reverse()[0];
@@ -159,15 +170,62 @@ export const CatalogPage: React.FC<Props> = ({ title }) => {
   //     .catch(() => setHasError(true));
   // }, []);
 
+  const [itemsOnPage, setitemsOnPage] = useState(2);
+  const [activePage, setActivePage] = useState(1);
+  const [startValue, setStartValue] = useState(1);
+  const [endValue, setEndvalue] = useState(itemsOnPage);
+  const totalAmount = products.length;
+  const items = getNumbers(1, totalAmount);
+
+  const changeCurrentPage = (selectedPage: number) => {
+    setActivePage(selectedPage);
+    setStartValue(selectedPage * itemsOnPage - itemsOnPage + 1);
+    setEndvalue(selectedPage * itemsOnPage);
+  };
+
+  const calculateTotalPages = (allItems: number) => {
+    const amount = Math.ceil(totalAmount / allItems);
+
+    return getNumbers(1, amount);
+  };
+
+  const amountOfPages = calculateTotalPages(itemsOnPage);
+
+  function createContent() {
+    return items.slice(startValue - 1, endValue);
+  }
+
+  function changePages(event: React.ChangeEvent<HTMLSelectElement>) {
+    setitemsOnPage(+event.target.value);
+    setActivePage(1);
+    setEndvalue(+event.target.value);
+    setStartValue(1);
+  }
+
+  const currentContent = createContent();
+
+  const currentFromValue = currentContent[0];
+  const currentToValue = currentContent[currentContent.length - 1];
+
+  // eslint-disable-next-line no-console
+  console.log(changePages, currentFromValue, currentToValue);
+
   return (
     <>
       <h1 className="catalog__title">{title}</h1>
-      <p className="catalog__subtitle">
-        {`${products.length} models`}
-      </p>
-      {hasError
-        ? <h2>There is some problems</h2>
-        : <ProductsList products={products} />}
+      <p className="catalog__subtitle">{`${products.length} models`}</p>
+      {hasError ? (
+        <h2>There is some problems</h2>
+      ) : (
+        <ProductsList products={products} />
+      )}
+      {products.length > 0 && (
+        <Pagination
+          currentPage={activePage}
+          totalPages={amountOfPages}
+          onPageChange={(selectedPage) => changeCurrentPage(selectedPage)}
+        />
+      )}
     </>
   );
 };

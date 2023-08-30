@@ -4,34 +4,25 @@ import { FavouritesButton } from '../FavouritesButton';
 import { AddToCartButton } from '../AddToCartButton';
 import { Phone } from '../../types/PhoneType';
 
-interface Props{
-  product: Phone,
+interface Props {
+  product: Phone;
 }
 
 export const ProductCard: React.FC<Props> = ({ product }) => {
   return (
     <li className="product">
-      <Link
-        to={product.phoneId}
-        className="product__link"
-      >
+      <Link to={product.phoneId} className="product__link">
         <img
           src={`${process.env.PUBLIC_URL}/${product.image}`}
           alt={product.name}
           className="product__image"
         />
-        <h2 className="product__title">
-          {`${product.name} (XXXXXXXX)`}
-        </h2>
+        <h2 className="product__title">{`${product.name} (XXXXXXXX)`}</h2>
       </Link>
 
       <div className="product__prices">
-        <p className="product__price">
-          {`$${product.price}`}
-        </p>
-        <p className="product__price-full">
-          {`$${product.fullPrice}`}
-        </p>
+        <p className="product__price">{`$${product.price}`}</p>
+        <p className="product__price-full">{`$${product.fullPrice}`}</p>
       </div>
 
       <div className="product__info">
