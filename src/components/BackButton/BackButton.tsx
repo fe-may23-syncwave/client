@@ -6,11 +6,7 @@ export const BackButton: React.FC = () => {
   const navigate = useNavigate();
 
   return (
-    <button
-      type="button"
-      className="back-button"
-      onClick={() => navigate(-1)}
-    >
+    <button type="button" className="back-button" onClick={() => navigate(-1)}>
       <ArrowBackIcon />
     </button>
   );

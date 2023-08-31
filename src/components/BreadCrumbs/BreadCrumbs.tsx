@@ -14,11 +14,7 @@ export const BreadCrumbs: React.FC = () => {
       <ul className="breadcrumbs__list">
         <li className="breadcrumbs__item">
           <Link to="/" className="breadcrumbs__home-link">
-            <img
-              src={home}
-              alt="home"
-              className="breadcrumbs__image"
-            />
+            <img src={home} alt="home" className="breadcrumbs__image" />
           </Link>
         </li>
 
@@ -27,11 +23,7 @@ export const BreadCrumbs: React.FC = () => {
 
           return (
             <li key={link} className="breadcrumbs__item">
-              <img
-                src={arrow}
-                alt="arrow"
-                className="breadcrumbs__image"
-              />
+              <img src={arrow} alt="arrow" className="breadcrumbs__image" />
 
               <Link
                 to={`/${link}`}
