@@ -9,6 +9,23 @@ import {
 import { ProductColors } from '../../components/ProductColors';
 import { ProductCapacity } from '../../components/ProductCapacity';
 
+const productForTesting = {
+  id: '6',
+  category: 'phones',
+  phoneId: 'apple-iphone-11-256gb-green',
+  itemId: 'apple-iphone-11-256gb-green',
+  name: 'Apple iPhone 11 256GB Green',
+  fullPrice: 1172,
+  price: 1115,
+  screen: "6.1' IPS",
+  capacity: '256GB',
+  color: 'green',
+  ram: '4GB',
+  year: 2019,
+  image: 'img/phones/apple-iphone-11/green/00.jpg',
+};
+// add to avoid errors, should be delete when db is ready
+
 const product = {
   id: 'apple-iphone-11-64gb-purple',
   namespaceId: 'apple-iphone-11',
@@ -139,6 +156,7 @@ export const ProductPage: React.FC = () => {
 
             <div className="product-page__buttons">
               <AddToCartButton
+                product={productForTesting}
                 styles={[
                   'product-page__button',
                   'product-page__button--active',
@@ -146,6 +164,7 @@ export const ProductPage: React.FC = () => {
               />
 
               <FavouritesButton
+                product={productForTesting}
                 styles={[
                   'product-page__favourites',
                   'product-page__favourites--active',
