@@ -1,9 +1,9 @@
 import classNames from 'classnames';
 import { Phone } from 'types/PhoneType';
 
-interface Props{
-  product: Phone,
-  styles: string[],
+interface Props {
+  product: Phone;
+  styles: string[];
 }
 
 export const AddToCartButton: React.FC<Props> = ({ product, styles }) => {
