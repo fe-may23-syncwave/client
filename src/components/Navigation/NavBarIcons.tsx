@@ -17,9 +17,9 @@ export const NavBarIcons: React.FC<Props> = ({
 }) => {
   const [cartCounter] = useState(3);
 
-  const { favProducts } = React.useContext(MainContext);
+  const { products } = React.useContext(MainContext);
 
-  const favoritesCounter = favProducts.length;
+  const favoritesCounter = products.length;
 
   return (
     <div

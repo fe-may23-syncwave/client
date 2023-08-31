@@ -4,7 +4,8 @@ import { Link } from 'react-router-dom';
 import { Phone } from '../../types/PhoneType';
 import { AddToCartButton, FavouritesButton } from './buttons';
 
-const CLOUDINARY = 'https://res.cloudinary.com/myfinance/image/upload/v1693416024/syncwave/';
+const CLOUDINARY
+  = 'https://res.cloudinary.com/myfinance/image/upload/v1693416024/syncwave/';
 
 interface Props {
   product: Phone;
@@ -44,7 +45,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
 
       <div className="product__buttons">
         <AddToCartButton />
-        <FavouritesButton />
+        <FavouritesButton product={product} />
       </div>
     </li>
   );
