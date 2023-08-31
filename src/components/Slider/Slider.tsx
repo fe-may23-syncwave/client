@@ -7,9 +7,9 @@ import {
   EffectFade,
 } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import firstBanner from 'assets/images/banners/banner-phones.png';
-import secondBanner from 'assets/images/banners/banner-tablets.png';
-import thirdBanner from 'assets/images/banners/banner-accessories.png';
+import firstBanner from '../../assets/images/banners/banner-phones.png';
+import secondBanner from '../../assets/images/banners/banner-tablets.png';
+import thirdBanner from '../../assets/images/banners/banner-accessories.png';
 import './Slider.scss';
 
 export const Slider = () => {
