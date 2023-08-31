@@ -40,8 +40,10 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
       </div>
 
       <div className="product__buttons">
-        <AddToCartButton />
-        <FavouritesButton />
+        <AddToCartButton styles={['product__add', 'product__add--active']} />
+        <FavouritesButton
+          styles={['product__favourites', 'product__favourites--active']}
+        />
       </div>
     </li>
   );
