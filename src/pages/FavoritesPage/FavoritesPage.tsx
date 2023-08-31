@@ -6,9 +6,8 @@ import React from 'react';
 import './FavoritesPage.scss';
 
 export const FavoritesPage: React.FC = () => {
-  const {
-    favProducts, hasErrorOnFav, products,
-  } = React.useContext(MainContext);
+  const { favProducts, hasErrorOnFav, products }
+    = React.useContext(MainContext);
 
   console.log(favProducts, hasErrorOnFav);
 

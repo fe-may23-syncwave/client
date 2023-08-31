@@ -4,5 +4,5 @@ export type MainContextType = {
   favProducts: Phone[];
   hasErrorOnFav: boolean;
   products: Phone[];
-  handleLike: (product: Phone) => void,
+  handleLike: (product: Phone) => void;
 };
