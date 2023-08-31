@@ -6,6 +6,7 @@ import './CatalogPage.scss';
 import { Pagination } from 'components/Pagination';
 import { getNumbers } from 'utils/getNumbers';
 import { BreadCrumbs } from 'components/BreadCrumbs';
+import { Dropdowns } from 'components/Dropdowns';
 
 interface Props {
   title: string;
@@ -194,19 +195,19 @@ export const CatalogPage: React.FC<Props> = ({ title }) => {
         )}
         {hasError && <h2 className="catalog__title">There is some problems</h2>}
 
-        {products.length > 0 && !hasError && (
-          <>
-            <ProductsList products={productsOnPage} />
-            {amountOfPages.length > 1 && (
-              <Pagination
-                currentPage={activePage}
-                totalPages={amountOfPages}
-                onPageChange={(selectedPage) => changeCurrentPage(selectedPage)}
-              />
-            )}
-          </>
-        )}
-      </div>
-    </>
+      {products.length > 0 && !hasError && (
+        <>
+          <Dropdowns />
+          <ProductsList products={productsOnPage} />
+          {amountOfPages.length > 1 && (
+            <Pagination
+              currentPage={activePage}
+              totalPages={amountOfPages}
+              onPageChange={(selectedPage) => changeCurrentPage(selectedPage)}
+            />
+          )}
+        </>
+      )}
+    </div>
   );
 };
