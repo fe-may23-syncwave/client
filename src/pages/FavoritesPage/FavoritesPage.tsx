@@ -13,7 +13,7 @@ export const FavoritesPage: React.FC = () => {
   console.log(favProducts, hasErrorOnFav);
 
   return (
-    <>
+    <div className="favourites__page">
       <h1 className="favourites__title">Favourites</h1>
       {/* {!hasErrorOnFav && (
         <p className="favourites__subtitle">{`${favProducts.length} models`}</p>
@@ -30,6 +30,6 @@ export const FavoritesPage: React.FC = () => {
 
       <ProductsList products={products} />
       {/* remove this line when DB is ready */}
-    </>
+    </div>
   );
 };
