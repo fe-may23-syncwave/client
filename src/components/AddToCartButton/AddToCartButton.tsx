@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 
 type Props = {
-  styles: string[],
+  styles: string[];
 };
 
 export const AddToCartButton: React.FC<Props> = ({ styles }) => {

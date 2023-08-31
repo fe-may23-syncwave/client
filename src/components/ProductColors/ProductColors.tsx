@@ -3,8 +3,8 @@ import classNames from 'classnames';
 import './ProductColors.scss';
 
 type Props = {
-  colors: string[],
-  currentColor: string,
+  colors: string[];
+  currentColor: string;
 };
 
 export const ProductColors: React.FC<Props> = ({ colors, currentColor }) => {

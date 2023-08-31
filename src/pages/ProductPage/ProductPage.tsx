@@ -125,7 +125,9 @@ export const ProductPage: React.FC = () => {
 
             <div className="product-page__price">
               <h2 className="product-page__price--sale">
-                {!product.priceDiscount ? `$${product.priceRegular}` : `$${product.priceDiscount}`}
+                {!product.priceDiscount
+                  ? `$${product.priceRegular}`
+                  : `$${product.priceDiscount}`}
               </h2>
 
               <p className="product-page__price--reg">

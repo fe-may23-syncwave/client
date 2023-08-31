@@ -8,10 +8,7 @@ const id = 'apple-iphone-64gb-purple';
 export const ProductCard = () => {
   return (
     <li className="product">
-      <Link
-        to={`/phones/${id}`}
-        className="product__link"
-      >
+      <Link to={`/phones/${id}`} className="product__link">
         <img
           src={`${process.env.PUBLIC_URL}/img/phones/apple-iphone-11/purple/00.jpg`}
           alt="Apple iPhone 11 64GB Purple (iMT9G2FS/A)"
@@ -43,9 +40,7 @@ export const ProductCard = () => {
       </div>
 
       <div className="product__buttons">
-        <AddToCartButton
-          styles={['product__add', 'product__add--active']}
-        />
+        <AddToCartButton styles={['product__add', 'product__add--active']} />
         <FavouritesButton
           styles={['product__favourites', 'product__favourites--active']}
         />
