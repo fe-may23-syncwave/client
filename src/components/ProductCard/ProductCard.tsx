@@ -44,8 +44,14 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
       </div>
 
       <div className="product__buttons">
-        <AddToCartButton />
-        <FavouritesButton product={product} />
+        <AddToCartButton
+          product={product}
+          styles={['product__add', 'product__add--active']}
+        />
+        <FavouritesButton
+          product={product}
+          styles={['product__favourites', 'product__favourites--active']}
+        />
       </div>
     </li>
   );

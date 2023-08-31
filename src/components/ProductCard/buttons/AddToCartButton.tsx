@@ -1,11 +1,16 @@
 import classNames from 'classnames';
+import { Phone } from 'types/PhoneType';
 
-type Props = {
-  styles: string[];
-};
+interface Props{
+  product: Phone,
+  styles: string[],
+}
 
-export const AddToCartButton: React.FC<Props> = ({ styles }) => {
+export const AddToCartButton: React.FC<Props> = ({ product, styles }) => {
   const isAddedToCart = false;
+
+  // eslint-disable-next-line no-console
+  console.log(product);
 
   return (
     <div className="cart-button">

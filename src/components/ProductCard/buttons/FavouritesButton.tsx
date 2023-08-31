@@ -5,9 +5,10 @@ import { Phone } from 'types/PhoneType';
 
 interface Props{
   product: Phone,
+  styles: string[],
 }
 
-export const FavouritesButton: React.FC<Props> = ({ product }) => {
+export const FavouritesButton: React.FC<Props> = ({ product, styles }) => {
   const {
     products, handleLike,
   } = React.useContext(MainContext);
@@ -18,8 +19,8 @@ export const FavouritesButton: React.FC<Props> = ({ product }) => {
     <div className="favourites-button">
       <button
         type="button"
-        className={classNames('product__favourites', {
-          'product__favourites--active': isFav,
+        className={classNames(styles[0], {
+          [styles[1]]: isFav,
         })}
         onClick={() => handleLike(product)}
       >
