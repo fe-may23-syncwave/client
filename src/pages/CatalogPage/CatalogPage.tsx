@@ -156,12 +156,12 @@ export const CatalogPage: React.FC<Props> = ({ title }) => {
   const [hasError] = useState(false);
 
   // useEffect(() => {
-  //   getProducts(`/${typeOfProducts}`)
+  //   getPhones(`/${typeOfProducts}`)
   //     .then(setProducts)
   //     .catch(() => setHasError(true));
   // }, []);
 
-  const [itemsOnPage] = useState(2);
+  const [itemsOnPage] = useState(8);
   const [activePage, setActivePage] = useState(1);
   const [startValue, setStartValue] = useState(1);
   const [endValue, setEndvalue] = useState(itemsOnPage);
@@ -184,21 +184,25 @@ export const CatalogPage: React.FC<Props> = ({ title }) => {
   const productsOnPage = products.slice(startValue - 1, endValue);
 
   return (
-    <>
+    <div className="catalog__page">
       <h1 className="catalog__title">{title}</h1>
-      <p className="catalog__subtitle">{`${products.length} models`}</p>
-      {hasError ? (
-        <h2>There is some problems</h2>
-      ) : (
-        <ProductsList products={productsOnPage} />
+      {!hasError && (
+        <p className="catalog__subtitle">{`${products.length} models`}</p>
       )}
-      {products.length > 0 && (
-        <Pagination
-          currentPage={activePage}
-          totalPages={amountOfPages}
-          onPageChange={(selectedPage) => changeCurrentPage(selectedPage)}
-        />
+      {hasError && <h2 className="catalog__title">There is some problems</h2>}
+
+      {products.length > 0 && !hasError && (
+        <>
+          <ProductsList products={productsOnPage} />
+          {amountOfPages.length > 1 && (
+            <Pagination
+              currentPage={activePage}
+              totalPages={amountOfPages}
+              onPageChange={(selectedPage) => changeCurrentPage(selectedPage)}
+            />
+          )}
+        </>
       )}
-    </>
+    </div>
   );
 };
