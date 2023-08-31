@@ -1,0 +1,55 @@
+@import 'styles/utils/shared';
+
+.breadcrumbs {
+  margin-bottom: 24px;
+
+  @include onTablet {
+    margin-bottom: 40px;
+  }
+
+  @include onDesktop {
+    margin-bottom: 40px;
+  }
+
+  &__list {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+  }
+
+  &__item {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:not(:last-of-type) {
+      margin-right: 13px;
+    }
+  }
+
+  &__image {
+    object-fit: cover;
+  }
+
+  &__link {
+    font-size: 12px;
+    align-items: center;
+    height: 100%;
+    margin-left: 13px;
+    text-transform: capitalize;
+    text-decoration: none;
+    color: $color-primary;
+    cursor: pointer;
+
+    &--disabled {
+      pointer-events: none;
+      color: $color-secondary;
+    }
+  }
+
+  &__home-link {
+    display: block;
+    line-height: 0;
+  }
+}

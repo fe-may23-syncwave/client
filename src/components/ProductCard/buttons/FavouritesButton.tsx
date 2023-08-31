@@ -3,9 +3,9 @@ import { MainContext } from 'context/MainContext';
 import React from 'react';
 import { Phone } from 'types/PhoneType';
 
-interface Props{
-  product: Phone,
-  styles: string[],
+interface Props {
+  product: Phone;
+  styles: string[];
 }
 
 export const FavouritesButton: React.FC<Props> = ({ product, styles }) => {
@@ -13,7 +13,7 @@ export const FavouritesButton: React.FC<Props> = ({ product, styles }) => {
     products, handleLike, darkTheme,
   } = React.useContext(MainContext);
 
-  const isFav = products.find(curr => curr.phoneId === product.phoneId);
+  const isFav = products.find((curr) => curr.phoneId === product.phoneId);
 
   return (
     <div className="favourites-button">

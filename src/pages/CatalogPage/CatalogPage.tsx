@@ -5,6 +5,8 @@ import { ProductsList } from 'pages/ProductsList';
 import './CatalogPage.scss';
 import { Pagination } from 'components/Pagination';
 import { getNumbers } from 'utils/getNumbers';
+import { BreadCrumbs } from 'components/BreadCrumbs';
+import { Dropdowns } from 'components/Dropdowns';
 
 interface Props {
   title: string;
@@ -184,15 +186,18 @@ export const CatalogPage: React.FC<Props> = ({ title }) => {
   const productsOnPage = products.slice(startValue - 1, endValue);
 
   return (
-    <div className="catalog__page">
-      <h1 className="catalog__title">{title}</h1>
-      {!hasError && (
-        <p className="catalog__subtitle">{`${products.length} models`}</p>
-      )}
-      {hasError && <h2 className="catalog__title">There is some problems</h2>}
+    <>
+      <BreadCrumbs />
+      <div className="catalog__page">
+        <h1 className="catalog__title">{title}</h1>
+        {!hasError && (
+          <p className="catalog__subtitle">{`${products.length} models`}</p>
+        )}
+        {hasError && <h2 className="catalog__title">There is some problems</h2>}
 
       {products.length > 0 && !hasError && (
         <>
+          <Dropdowns />
           <ProductsList products={productsOnPage} />
           {amountOfPages.length > 1 && (
             <Pagination
