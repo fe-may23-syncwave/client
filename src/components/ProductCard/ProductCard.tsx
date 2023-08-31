@@ -3,20 +3,22 @@ import { Link } from 'react-router-dom';
 import { FavouritesButton } from '../FavouritesButton';
 import { AddToCartButton } from '../AddToCartButton';
 
+const id = 'apple-iphone-64gb-purple';
+
 export const ProductCard = () => {
   return (
     <li className="product">
       <Link
-        to="`/phones/apple-iphone-11-128gb-purple"
+        to={`/phones/${id}`}
         className="product__link"
       >
         <img
           src={`${process.env.PUBLIC_URL}/img/phones/apple-iphone-11/purple/00.jpg`}
-          alt="Apple iPhone 11 128GB Purple (iMT9G2FS/A)"
+          alt="Apple iPhone 11 64GB Purple (iMT9G2FS/A)"
           className="product__image"
         />
         <h2 className="product__title">
-          Apple iPhone 11 128GB Purple (iMT9G2FS/A)
+          Apple iPhone 11 64GB Purple (iMT9G2FS/A)
         </h2>
       </Link>
 
@@ -32,7 +34,7 @@ export const ProductCard = () => {
         </div>
         <div className="product__info-block">
           <p className="product__info-title">Capacity</p>
-          <p className="product__info-data">128 GB</p>
+          <p className="product__info-data">64 GB</p>
         </div>
         <div className="product__info-block">
           <p className="product__info-title">RAM</p>
@@ -41,8 +43,12 @@ export const ProductCard = () => {
       </div>
 
       <div className="product__buttons">
-        <AddToCartButton />
-        <FavouritesButton />
+        <AddToCartButton
+          styles={['product__add', 'product__add--active']}
+        />
+        <FavouritesButton
+          styles={['product__favourites', 'product__favourites--active']}
+        />
       </div>
     </li>
   );

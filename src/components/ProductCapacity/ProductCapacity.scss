@@ -1,0 +1,35 @@
+@import 'styles/utils/shared';
+
+.capacity {
+  position: relative;
+  padding-bottom: 24px;
+
+  &__content {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+  }
+
+  &__item {
+    padding-inline: 8px;
+    padding-block: 3px;
+    border: 1.2px solid $color-elements;
+
+    transition: border-color $duration;
+
+    &--current {
+      background-color: $color-primary;
+      color: $color-white;
+    }
+
+    &:hover {
+      cursor: pointer;
+      border-color: $color-primary;
+    }
+
+    &:active {
+      background-color: $color-primary;
+      color: $color-white;
+    }
+  }
+}

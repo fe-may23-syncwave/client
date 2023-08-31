@@ -1,0 +1,90 @@
+@import 'styles/utils/shared';
+
+.colours {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 24px;
+  position: relative;
+
+  &__content {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+  }
+
+  &__colour {
+    height: 32px;
+    width: 32px;
+    border-radius: 50%;
+
+    &--black {
+      background-color: #161514;
+    }
+
+    &--coral {
+      background-color: #f17564;
+    }
+
+    &--gold {
+      background-color: #cebb5b;
+    }
+
+    &--green {
+      background-color: #8cdfc9;
+    }
+
+    &--midnightgreen {
+      background-color: #2a4f3b;
+    }
+
+    &--purple {
+      background-color: #d9aed9;
+    }
+
+    &--red {
+      background-color: #e01332;
+    }
+
+    &--rosegold {
+      background-color: #f3c9c3;
+    }
+
+    &--silver {
+      background-color: #a4aab1fd;
+    }
+
+    &--spacegray {
+      background-color: #47474a;
+    }
+
+    &--white {
+      background-color: #e9f7ef;
+    }
+
+    &--yellow {
+      background-color: #e4e486;
+    }
+  }
+
+  &__wrapper {
+    height: 36px;
+    width: 36px;
+    border: 1.2px solid $color-elements;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+
+    transition: border-color $duration;
+
+    &--selected {
+      border-color: $color-primary;
+    }
+
+    &:hover {
+      cursor: pointer;
+      border-color: $color-primary;
+    }
+  }
+}
+
