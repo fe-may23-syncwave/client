@@ -1,0 +1,22 @@
+@import 'styles/utils/shared';
+
+.back-button {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  cursor: pointer;
+  border: none;
+  width: 55px;
+
+  &::after {
+    content: "Back";
+    color: gray;
+    margin-left: 9px;
+    transition: all $duration;
+  }
+
+  &:hover::after {
+    color: black;
+  }
+}
+
