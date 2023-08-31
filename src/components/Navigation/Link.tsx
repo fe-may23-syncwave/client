@@ -30,7 +30,7 @@ export const Link: React.FC<Props> = ({
 }) => {
   return (
     <NavLink to={to} className={title ? getLinkClass : IconLink}>
-      {title?.toLocaleUpperCase()}
+      {title}
 
       {icon && (
         <div className={Icon}>

@@ -1,4 +1,4 @@
-const BASE_URL = 'http://localhost:3000/client/api/phones.json';
+const BASE_URL = 'http://localhost:4000';
 // the link should be changed when the server is ready
 
 function wait(delay: number) {
@@ -7,9 +7,9 @@ function wait(delay: number) {
   });
 }
 
-function request<T>(): Promise<T> {
+function request<T>(url: string): Promise<T> {
   return wait(300)
-    .then(() => fetch(BASE_URL))
+    .then(() => fetch(BASE_URL + url))
     .then((response) => {
       if (!response.ok) {
         throw new Error();
@@ -20,5 +20,5 @@ function request<T>(): Promise<T> {
 }
 
 export const client = {
-  get: <T>() => request<T>(),
+  get: <T>(url: string) => request<T>(url),
 };

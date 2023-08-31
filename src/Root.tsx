@@ -5,6 +5,7 @@ import {
   Route,
   Navigate,
 } from 'react-router-dom';
+import { NavBarRoute } from 'types/NavBarRoute';
 
 const App = lazy(() => {
   return import('./App').then((module) => ({
@@ -60,17 +61,28 @@ export const Root = () => {
     <Suspense fallback={<div style={styles}>Loading...</div>}>
       <Router>
         <Routes>
-          <Route path="/" element={<App />}>
+          <Route path={NavBarRoute.Home} element={<App />}>
             <Route index element={<HomePage />} />
             <Route path="home" element={<Navigate to="/" replace />} />
 
-            <Route path=":catalog">
-              <Route index element={<CatalogPage />} />
+            <Route path={NavBarRoute.Phones}>
+              <Route index element={<CatalogPage title="Mobile phones" />} />
               <Route path=":productId" element={<ProductPage />} />
             </Route>
 
-            <Route path="favorites" element={<FavoritesPage />} />
-            <Route path="cart" element={<CartPage />} />
+            <Route path={NavBarRoute.Tablets}>
+              <Route index element={<CatalogPage title="Tablets" />} />
+              <Route path=":productId" element={<ProductPage />} />
+            </Route>
+
+            <Route path={NavBarRoute.Accessories}>
+              <Route index element={<CatalogPage title="Accessories" />} />
+
+              <Route path=":productId" element={<ProductPage />} />
+            </Route>
+
+            <Route path={NavBarRoute.Favorites} element={<FavoritesPage />} />
+            <Route path={NavBarRoute.Cart} element={<CartPage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Route>
         </Routes>

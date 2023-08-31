@@ -2,8 +2,10 @@
 import React, { useState } from 'react';
 import './ProductPage.scss';
 import classNames from 'classnames';
-import { FavouritesButton } from '../../components/FavouritesButton';
-import { AddToCartButton } from '../../components/AddToCartButton';
+import {
+  AddToCartButton,
+  FavouritesButton,
+} from 'components/ProductCard/buttons';
 import { ProductColors } from '../../components/ProductColors';
 import { ProductCapacity } from '../../components/ProductCapacity';
 
