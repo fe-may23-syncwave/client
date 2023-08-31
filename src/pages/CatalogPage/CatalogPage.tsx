@@ -5,6 +5,7 @@ import { ProductsList } from 'pages/ProductsList';
 import './CatalogPage.scss';
 import { Pagination } from 'components/Pagination';
 import { getNumbers } from 'utils/getNumbers';
+import { Dropdowns } from 'components/Dropdowns';
 
 interface Props {
   title: string;
@@ -193,6 +194,7 @@ export const CatalogPage: React.FC<Props> = ({ title }) => {
 
       {products.length > 0 && !hasError && (
         <>
+          <Dropdowns />
           <ProductsList products={productsOnPage} />
           {amountOfPages.length > 1 && (
             <Pagination

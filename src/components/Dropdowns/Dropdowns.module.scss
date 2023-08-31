@@ -1,0 +1,107 @@
+@import 'styles/utils/shared';
+
+.Dropdowns {
+  display: flex;
+  flex-direction: row;
+
+  &__dropdown {
+    display: flex;
+    flex-direction: column;
+
+    &:not(:last-child) {
+      margin-right: 16px;
+    }
+  }
+
+  &__description {
+    size: 12px;
+    line-height: 15px;
+    color: $color-secondary;
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: 4px;
+    font-weight: 700;
+  }
+
+  &__selector {
+    &__sort {
+      color: $color-primary;
+      font-size: 14px !important;
+      font-weight: 600;
+
+      height: 40px !important;
+      border: 1px solid $color-icons;
+      border-radius: 0% !important;
+
+      @include onMobile {
+        width: 136px !important;
+      }
+
+      @include onTablet {
+        width: 187px !important;
+      }
+
+      @include onDesktop {
+        width: 176px !important;
+      }
+    }
+
+    &__sort:hover {
+      border: 1px solid $color-secondary !important;
+      border-radius: 0% !important;
+    }
+
+    &__sort:focus {
+      border: 1px solid $color-primary !important;
+      border-radius: 0% !important;
+      box-shadow: none !important;
+    }
+
+    &__items {
+      font-family: 'Montserrat', sans-serif;
+      color: $color-primary;
+      font-size: 14px !important;
+      font-weight: 600;
+
+      padding-left: 12px;
+      height: 40px !important;
+
+      border: 1px solid $color-icons;
+      border-radius: 0% !important;
+
+      @include onMobile {
+        width: 136px !important;
+      }
+
+      @include onTablet {
+        width: 136px !important;
+      }
+
+      @include onDesktop {
+        width: 128px !important;
+      }
+    }
+
+    &__items:hover {
+      border: 1px solid $color-secondary;
+      border-radius: 0% !important;
+    }
+
+    &__items:focus {
+      border: 1px solid $color-primary !important;
+      border-radius: 0% !important;
+      box-shadow: none !important;
+    }
+
+    &__option {
+      font-family: 'Montserrat', sans-serif;
+      color: $color-primary;
+      font-size: 14px !important;
+      font-weight: 500 !important;
+      margin-block: 6px;
+    }
+
+    &__option:hover {
+      background: $color-hover;
+    }
+  }
+}
