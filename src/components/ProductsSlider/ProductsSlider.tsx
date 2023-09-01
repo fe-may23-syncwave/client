@@ -1,10 +1,6 @@
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import {
-  A11y,
-  Navigation,
-  Pagination,
-} from 'swiper/modules';
+import { A11y, Navigation, Pagination } from 'swiper/modules';
 import 'swiper/swiper-bundle.css';
 import { ProductCard } from '../ProductCard';
 import { Phone } from '../../types/PhoneType';

@@ -15,7 +15,7 @@
     transition: $duration;
 
     &:after {
-      content: "";
+      content: '';
       width: 25px;
       height: 25px;
       position: absolute;
@@ -23,7 +23,7 @@
       left: 3px;
       background: linear-gradient(180deg, #ffcc89, #d8860b);
       border-radius: 180px;
-      box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
       transition: $duration;
     }
   }
@@ -35,6 +35,10 @@
   }
 }
 
+.dark_mode_label:active:after {
+  width: 30px;
+}
+
 .dark_mode_input:checked + .dark_mode_label {
   background: $color-primary;
 }
@@ -44,9 +48,6 @@
   transform: translateX(-100%);
   background: linear-gradient(180deg, #777, #3a3a3a);
 }
-.dark_mode_label:active:after {
-  width: 30px;
-}
 
 .dark_mode_label svg {
   position: absolute;
@@ -54,19 +55,23 @@
   top: 5px;
   z-index: 100;
 }
+
 .dark_mode_label svg.sun {
   left: 5px;
   fill: $color-white;
   transition: 0.3s;
 }
+
 .dark_mode_label svg.moon {
   left: 40px;
   fill: #7e7e7e;
   transition: 0.3s;
 }
+
 .dark_mode_input:checked + .dark_mode_label svg.sun {
   fill: #7e7e7e;
 }
+
 .dark_mode_input:checked + .dark_mode_label svg.moon {
   fill: $color-white;
 }

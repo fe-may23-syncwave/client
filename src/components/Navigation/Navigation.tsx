@@ -1,11 +1,10 @@
+/* eslint-disable max-len */
 import React from 'react';
 import { useLocation } from 'react-router-dom';
 import { MainContext } from 'context/MainContext';
 import { DarkMode } from 'components/DarkMode';
 import { ReactComponent as MenuIcon } from '../../assets/icons/menu.svg';
-import {
-  ReactComponent as MenuIconLight,
-} from '../../assets/icons/menu-light.svg';
+import { ReactComponent as MenuIconLight } from '../../assets/icons/menu-light.svg';
 import { Link } from './Link';
 import { NavBarLinks } from './NavBarLinks';
 import { NavBarIcons } from './NavBarIcons';
