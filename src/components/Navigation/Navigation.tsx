@@ -2,10 +2,8 @@ import React from 'react';
 import { useLocation } from 'react-router-dom';
 import { MainContext } from 'context/MainContext';
 import { DarkMode } from 'components/DarkMode';
-import { ReactComponent as MenuIcon } from '../../assets/icons/menu.svg';
-import {
-  ReactComponent as MenuIconLight,
-} from '../../assets/icons/menu-light.svg';
+import { ReactComponent as Icon } from '../../assets/icons/menu.svg';
+import { ReactComponent as IconLight } from '../../assets/icons/menu-light.svg';
 import { Link } from './Link';
 import { NavBarLinks } from './NavBarLinks';
 import { NavBarIcons } from './NavBarIcons';
@@ -35,7 +33,7 @@ export const Navigation: React.FC<Props> = ({ openModal }) => {
       >
         <Link
           to={location.pathname}
-          icon={darkTheme ? <MenuIconLight /> : <MenuIcon />}
+          icon={darkTheme ? <IconLight /> : <Icon />}
         />
       </div>
     </nav>

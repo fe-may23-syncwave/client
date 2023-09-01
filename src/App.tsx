@@ -15,7 +15,6 @@ export function App() {
       id="app"
       data-theme={darkTheme ? 'dark' : 'light'}
     >
-
       <Header className={styles.App__Header} />
       <Container>
         <Outlet />

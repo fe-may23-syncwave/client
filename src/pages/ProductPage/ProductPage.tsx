@@ -170,7 +170,11 @@ export const ProductPage: React.FC = () => {
                 //   'product-page__favourites',
                 //   'product-page__favourites--active',
                 // ]}
-                styles={['product__favourites', 'product__favourites--active', 'product-page__favourites']}
+                styles={[
+                  'product__favourites',
+                  'product__favourites--active',
+                  'product-page__favourites',
+                ]}
               />
             </div>
 

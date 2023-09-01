@@ -19,7 +19,8 @@ interface Props {
 
 export const Context: React.FC<Props> = ({ children }) => {
   const [products, setProducts] = useLocalStorage<Phone[]>(
-    'favorite-products', [],
+    'favorite-products',
+    [],
   );
 
   const [favProducts, setFavProducts] = useState<Phone[]>([]);
@@ -33,10 +34,12 @@ export const Context: React.FC<Props> = ({ children }) => {
   }, []);
 
   const handleLike = (product: Phone) => {
-    const isFav = products.find(curr => curr.phoneId === product.phoneId);
+    const isFav = products.find((curr) => curr.phoneId === product.phoneId);
 
     if (isFav) {
-      const newSet = products.filter(curr => curr.phoneId !== product.phoneId);
+      const newSet = products.filter(
+        (curr) => curr.phoneId !== product.phoneId,
+      );
 
       setProducts(newSet);
 
