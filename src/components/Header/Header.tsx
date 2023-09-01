@@ -42,7 +42,7 @@ export const Header: React.FC<Props> = ({ className }) => {
         center
         closeIcon={
           <div className={styles.CloseIcon}>
-            {darkTheme ? <CloseIconLight /> : <CloseIcon /> }
+            {darkTheme ? <CloseIconLight /> : <CloseIcon />}
           </div>
         }
         classNames={{
