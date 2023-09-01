@@ -4,7 +4,9 @@ import { NavBarRoute } from 'types/NavBarRoute';
 import { MainContext } from 'context/MainContext';
 import { Link } from './Link';
 import { ReactComponent as FavoritesIcon } from '../../assets/icons/heart_dark.svg';
+import { ReactComponent as FavoritesIconLight } from '../../assets/icons/heart-light.svg';
 import { ReactComponent as CartIcon } from '../../assets/icons/cart.svg';
+import { ReactComponent as CartIconLight } from '../../assets/icons/cart-light.svg';
 
 type Props = {
   className?: string;
@@ -17,7 +19,7 @@ export const NavBarIcons: React.FC<Props> = ({
 }) => {
   const [cartCounter] = useState(3);
 
-  const { products } = React.useContext(MainContext);
+  const { products, darkTheme } = React.useContext(MainContext);
 
   const favoritesCounter = products.length;
 
@@ -31,10 +33,14 @@ export const NavBarIcons: React.FC<Props> = ({
     >
       <Link
         to={NavBarRoute.Favorites}
-        icon={<FavoritesIcon />}
+        icon={darkTheme ? <FavoritesIconLight /> : <FavoritesIcon />}
         counter={favoritesCounter}
       />
-      <Link to={NavBarRoute.Cart} icon={<CartIcon />} counter={cartCounter} />
+      <Link
+        to={NavBarRoute.Cart}
+        icon={darkTheme ? <CartIconLight /> : <CartIcon />}
+        counter={cartCounter}
+      />
     </div>
   );
 };

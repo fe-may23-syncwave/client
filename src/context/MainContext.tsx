@@ -9,6 +9,8 @@ export const MainContext = createContext<MainContextType>({
   hasErrorOnFav: false,
   products: [],
   handleLike: () => {},
+  toggleTheme: () => {},
+  darkTheme: false,
 });
 
 interface Props {
@@ -23,6 +25,7 @@ export const Context: React.FC<Props> = ({ children }) => {
 
   const [favProducts, setFavProducts] = useState<Phone[]>([]);
   const [hasErrorOnFav, setHasErrorOnFav] = useState(false);
+  const [darkTheme, setDarkTheme] = useState(false);
 
   useEffect(() => {
     getFavorites('/favorites')
@@ -48,11 +51,17 @@ export const Context: React.FC<Props> = ({ children }) => {
     setProducts(newSet);
   };
 
+  const toggleTheme = () => {
+    setDarkTheme(!darkTheme);
+  };
+
   const params = {
     favProducts,
     hasErrorOnFav,
     products,
     handleLike,
+    toggleTheme,
+    darkTheme,
   };
 
   return <MainContext.Provider value={params}>{children}</MainContext.Provider>;

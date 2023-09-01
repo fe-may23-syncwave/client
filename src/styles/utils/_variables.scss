@@ -1,13 +1,36 @@
+.App[data-theme='light']{
+  --background-color: rgba(255, 255, 255, 1);
+  --background-card: #fff;
+  --color-primary: #313237;
+  --color-elements: #e2e6e9;
+  --color-buttons: #313237;
+  --color-icons: #b4bdc3;
+}
+.App[data-theme='dark']{
+  --background-color: rgba(15, 17, 33, 1);
+  --background-card: #161827;
+  --color-primary: #f1f2f9;
+  --color-elements: #323549;
+  --color-buttons: #905BFF;
+  --color-icons: #3b3e4a;
+}
+
+$background-color: var(--background-color);
+$color-primary: var(--color-primary);
+$color-elements: var(--color-elements);
+$background-card: var(--background-card);
+$color-buttons: var(--color-buttons);
+$color-icons: var(--color-icons);
+
+
 $color-red: #eb5757;
 $color-green: #27ae60;
 $color-white: #fff;
-$color-gray-primary: #313237;
-
-$color-primary: #313237;
+$color-dark: #0F1121;
+// $color-primary: #313237;
 $color-secondary: #89939a;
-$color-icons: #b4bdc3;
-$color-elements: #e2e6e9;
-$color-icons: #b4bdc3;
+// $color-elements: #e2e6e9;
+// $color-icons: #b4bdc3;
 $color-hover: #fafbfc;
 
 $mobile-max-width: 639px;

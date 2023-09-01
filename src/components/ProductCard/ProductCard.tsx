@@ -1,4 +1,5 @@
 /* eslint-disable max-len */
+import React from 'react';
 import './ProductCard.scss';
 import { Link } from 'react-router-dom';
 import { Phone } from '../../types/PhoneType';
@@ -15,11 +16,13 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
   return (
     <li className="product">
       <Link to={product.phoneId} className="product__link">
-        <img
-          src={`${CLOUDINARY}/${product.image}`}
-          alt={product.name}
-          className="product__image"
-        />
+        <div className="product__image-block">
+          <img
+            src={`${CLOUDINARY}/${product.image}`}
+            alt={product.name}
+            className="product__image"
+          />
+        </div>
         <h2 className="product__title">{`${product.name} (XXXXX)`}</h2>
       </Link>
 

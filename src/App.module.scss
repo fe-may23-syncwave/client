@@ -1,9 +1,11 @@
 @import 'styles/utils/shared';
 
+
 .App {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  background-color: $background-color;
 
   &__Header {
     margin-bottom: 24px;
