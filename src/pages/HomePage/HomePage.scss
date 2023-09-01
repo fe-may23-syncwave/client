@@ -1,0 +1,45 @@
+@import '../../styles/utils/_shared.scss';
+
+.home-page {
+  &__title {
+    text-align: start;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 48px;
+    line-height: 56px;
+    letter-spacing: -0.48px;
+    margin-top: 56px;
+
+    @include onTablet {
+      margin-top: 32px;
+      font-size: 41px;
+    }
+
+    @include onMobile {
+      margin-top: 24px;
+    }
+  }
+
+  &__categories {
+    margin-top: 80px;
+    font-size: 41px;
+
+    @include onTablet {
+      margin-top: 64px;
+    }
+
+    @include onMobile {
+      margin-top: 24px;
+    }
+  }
+
+  padding-bottom: 80px;
+
+  @include onTablet {
+    padding-bottom: 64px;
+  }
+
+  @include onMobile {
+    padding-bottom: 64px;
+  }
+}
