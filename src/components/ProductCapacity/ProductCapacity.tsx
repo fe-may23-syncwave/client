@@ -21,7 +21,7 @@ export const ProductCapacity: React.FC<Props> = ({
             currentCapacity.toLowerCase(),
             capacity.toLowerCase(),
           )}
-          className={classNames('capacity__item page__link', {
+          className={classNames('capacity__item', {
             'capacity__item--current': capacity === currentCapacity,
           })}
           key={capacity}

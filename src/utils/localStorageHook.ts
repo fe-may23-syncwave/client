@@ -2,7 +2,8 @@ import { useEffect, useState } from 'react';
 import { Phone } from 'types/PhoneType';
 
 export function useLocalStorage<T>(
-  key: string, startValue: T,
+  key: string,
+  startValue: T,
 ): [T, (value: Phone[]) => void] {
   const [value, setValue] = useState(() => {
     const data = localStorage.getItem(key);
