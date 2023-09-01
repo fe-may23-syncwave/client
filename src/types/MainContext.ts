@@ -7,4 +7,8 @@ export type MainContextType = {
   handleLike: (product: Phone) => void;
   toggleTheme: () => void;
   darkTheme: boolean;
+  globalPerPage: string;
+  globalSort: string;
+  setGlobalPerPage: (v: string) => void,
+  setGlobalSort: (v: string) => void,
 };
