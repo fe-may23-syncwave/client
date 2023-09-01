@@ -7,6 +7,7 @@ import {
   AddToCartButton,
   FavouritesButton,
 } from 'components/ProductCard/buttons';
+import { ProductsSlider } from 'components/ProductsSlider';
 import { ProductColors } from '../../components/ProductColors';
 import { ProductCapacity } from '../../components/ProductCapacity';
 import { BackButton } from '../../components/BackButton';
@@ -76,6 +77,14 @@ const product = {
   zoom: 'Digital, 5x',
   cell: ['GPRS', 'EDGE', 'WCDMA', 'UMTS', 'HSPA', 'LTE'],
 };
+
+const productsArray = Array(9)
+  .fill(productForTesting)
+  .map((prod, index) => ({
+    ...prod,
+    id: (parseInt(prod.id, 10) + index).toString(),
+    name: `${prod.name} (${index + 1})`,
+  }));
 
 const techSpecs = Object.entries(product).slice(-7);
 
@@ -226,12 +235,15 @@ export const ProductPage: React.FC = () => {
               </div>
             </div>
           </div>
-          <div className="slider">
-            <h2 className="slider__title">You may also like</h2>
-            <div className="slider__wrapper">_</div>
-          </div>
         </div>
       </div>
+
+      <div className="product-page__slider">
+        {productsArray.length > 0 && (
+          <ProductsSlider phones={productsArray} title="Hot prices" />
+        )}
+      </div>
+
     </>
   );
 };

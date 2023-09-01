@@ -7,6 +7,7 @@ import { ReactComponent as FavoritesIcon } from '../../assets/icons/heart_dark.s
 import { ReactComponent as FavoritesIconLight } from '../../assets/icons/heart-light.svg';
 import { ReactComponent as CartIcon } from '../../assets/icons/cart.svg';
 import { ReactComponent as CartIconLight } from '../../assets/icons/cart-light.svg';
+import { Search } from '../Search';
 
 type Props = {
   className?: string;
@@ -31,6 +32,7 @@ export const NavBarIcons: React.FC<Props> = ({
       tabIndex={0}
       role="button"
     >
+      <Search />
       <Link
         to={NavBarRoute.Favorites}
         icon={darkTheme ? <FavoritesIconLight /> : <FavoritesIcon />}
