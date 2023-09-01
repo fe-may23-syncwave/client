@@ -120,6 +120,10 @@
     height: 48px !important;
     width: 48px !important;
   }
+
+  &__slider {
+    margin-bottom: 81px;
+  }
 }
 
 .photos {
@@ -239,7 +243,6 @@
   &__content {
     display: flex;
     flex-direction: column;
-    margin-bottom: 80px;
 
     @include onTablet {
       flex-direction: column;
@@ -323,23 +326,3 @@
   }
 }
 
-.slider {
-  width: 100%;
-  max-width: 100%;
-  margin-bottom: 81px;
-
-  &__title {
-    font-size: 32px;
-    font-weight: 800;
-    line-height: 41px;
-    letter-spacing: -0.32px;
-    text-align: left;
-    margin-bottom: 24px;
-  }
-
-  &__wrapper {
-    border: 1px solid$color-secondary;
-    height: 450px;
-    background-color: #d897f5;
-  }
-}
