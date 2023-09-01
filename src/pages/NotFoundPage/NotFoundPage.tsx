@@ -1,5 +1,14 @@
 import React from 'react';
+import './NotFoundPage.scss';
 
 export const NotFoundPage: React.FC = () => {
-  return <h1>Page not found</h1>;
+  return (
+    <div className="section">
+      <h1 className="error">404</h1>
+      <div className="page">Ooops! Page Not Found</div>
+      <a className="back-home" href="/home">
+        Go home
+      </a>
+    </div>
+  );
 };

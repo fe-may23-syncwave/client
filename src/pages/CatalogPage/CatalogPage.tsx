@@ -4,9 +4,10 @@ import React, { useState } from 'react';
 import { ProductsList } from 'pages/ProductsList';
 import './CatalogPage.scss';
 import { Pagination } from 'components/Pagination';
-import { getNumbers } from 'utils/getNumbers';
 import { BreadCrumbs } from 'components/BreadCrumbs';
 import { Dropdowns } from 'components/Dropdowns';
+import { calculateTotalPages } from 'utils/calculateTotal';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 interface Props {
   title: string;
@@ -151,23 +152,29 @@ const products = [
 ];
 
 export const CatalogPage: React.FC<Props> = ({ title }) => {
-  // const currentURL = window.location.href;
-  // const typeOfProducts = currentURL.split('/').reverse()[0];
+  const location = useLocation();
+  const navigate = useNavigate();
+  const queryParams = new URLSearchParams(location.search);
+  const perPageParam = queryParams.get('perPage') || '4';
+  const perSortByParam = queryParams.get('sort');
 
-  // const [products, setProducts] = useState<Phone[]>([]);
+  let preparedPerPage;
+
+  if (perPageParam === 'all') {
+    preparedPerPage = 1000;
+  } else {
+    preparedPerPage = +perPageParam;
+  }
+
+  const [perPage, setPerPage] = useState(perPageParam || '4');
+  const [sortBy, setSortBy] = useState(perSortByParam || 'age');
+
   const [hasError] = useState(false);
+  const [itemsOnPage, setItemsOnPage] = useState<number>(preparedPerPage);
 
-  // useEffect(() => {
-  //   getPhones(`/${typeOfProducts}`)
-  //     .then(setProducts)
-  //     .catch(() => setHasError(true));
-  // }, []);
-
-  const [itemsOnPage] = useState(8);
   const [activePage, setActivePage] = useState(1);
   const [startValue, setStartValue] = useState(1);
   const [endValue, setEndvalue] = useState(itemsOnPage);
-  const totalAmount = products.length;
 
   const changeCurrentPage = (selectedPage: number) => {
     setActivePage(selectedPage);
@@ -175,13 +182,40 @@ export const CatalogPage: React.FC<Props> = ({ title }) => {
     setEndvalue(selectedPage * itemsOnPage);
   };
 
-  const calculateTotalPages = (allItems: number) => {
-    const amount = Math.ceil(totalAmount / allItems);
+  const handleChangePerPage = (value: string) => {
+    setActivePage(1);
+    setStartValue(1);
 
-    return getNumbers(1, amount);
+    if (value === 'all') {
+      setEndvalue(1000);
+      queryParams.delete('page');
+
+      return;
+    }
+
+    setEndvalue(1 * +value);
+    queryParams.set('page', '1');
   };
 
-  const amountOfPages = calculateTotalPages(itemsOnPage);
+  const handleDropdownChange = (
+    event: React.ChangeEvent<HTMLSelectElement>,
+    param: string,
+  ) => {
+    const selectedValue = event.target.value;
+
+    if (param === 'sort') {
+      setSortBy(selectedValue);
+    } else {
+      setPerPage(selectedValue);
+      setItemsOnPage(+selectedValue);
+      handleChangePerPage(selectedValue);
+    }
+
+    queryParams.set(param, selectedValue);
+    navigate(`${location.pathname}?${queryParams.toString()}`);
+  };
+
+  const amountOfPages = calculateTotalPages(itemsOnPage, products.length);
 
   const productsOnPage = products.slice(startValue - 1, endValue);
 
@@ -197,7 +231,11 @@ export const CatalogPage: React.FC<Props> = ({ title }) => {
 
         {products.length > 0 && !hasError && (
           <>
-            <Dropdowns />
+            <Dropdowns
+              handleDropdownChange={handleDropdownChange}
+              perPage={perPage}
+              sortBy={sortBy}
+            />
             <ProductsList products={productsOnPage} />
             {amountOfPages.length > 1 && (
               <Pagination
@@ -212,3 +250,14 @@ export const CatalogPage: React.FC<Props> = ({ title }) => {
     </>
   );
 };
+
+// Leave it for fetching
+// const currentURL = window.location.href;
+// const typeOfProducts = currentURL.split('/').reverse()[0];
+
+// const [products, setProducts] = useState<Phone[]>([]);
+// useEffect(() => {
+//   getPhones(`/${typeOfProducts}`)
+//     .then(setProducts)
+//     .catch(() => setHasError(true));
+// }, []);

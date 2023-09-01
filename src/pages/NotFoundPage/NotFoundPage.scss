@@ -1,0 +1,60 @@
+@import '../../styles/utils/_shared.scss';
+
+.section {
+  margin: auto;
+  padding-top: 40px;
+  text-align: center;
+
+  .error {
+    font-size: 150px;
+    color: $color-buttons;
+    text-shadow:
+      0 1px 0 $color-secondary,
+      1px 0 0 $color-secondary,
+      1px 2px 1px $color-secondary,
+      2px 1px 1px $color-secondary,
+      2px 3px 2px $color-secondary,
+      3px 2px 2px $color-secondary,
+      3px 4px 2px $color-secondary,
+      4px 3px 3px $color-secondary,
+      4px 5px 3px $color-secondary,
+      5px 4px 2px $color-secondary,
+      5px 6px 2px $color-secondary,
+      6px 5px 2px $color-secondary,
+      6px 7px 1px $color-secondary,
+      7px 6px 1px $color-secondary,
+      7px 8px 0 $color-secondary,
+      8px 7px 0 $color-secondary;
+
+    margin-bottom: 120px;
+
+    @media (max-width: 600px) {
+      font-size: 100px;
+      margin-bottom: 60px;
+    }
+  }
+}
+
+.page {
+  margin: 2rem 0;
+  font-size: 20px;
+  font-weight: 600;
+  color: $color-primary;
+}
+
+.back-home {
+  display: inline-block;
+  border: 2px solid $color-buttons;
+  color: $color-buttons;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding: 0.75rem 1rem 0.6rem;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+  transition: all $duration;
+
+  &:hover {
+    background: #222;
+    box-shadow: 0 3px 8px $color-buttons;
+    color: #ddd;
+  }
+}

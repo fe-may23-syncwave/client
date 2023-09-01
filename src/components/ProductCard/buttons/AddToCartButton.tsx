@@ -6,11 +6,9 @@ interface Props {
   styles: string[];
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const AddToCartButton: React.FC<Props> = ({ product, styles }) => {
   const isAddedToCart = false;
-
-  // eslint-disable-next-line no-console
-  console.log(product);
 
   return (
     <div className="cart-button">

@@ -11,6 +11,10 @@ export const MainContext = createContext<MainContextType>({
   handleLike: () => {},
   toggleTheme: () => {},
   darkTheme: false,
+  globalPerPage: '4',
+  globalSort: 'all',
+  setGlobalPerPage: () => {},
+  setGlobalSort: () => {},
 });
 
 interface Props {
@@ -22,10 +26,16 @@ export const Context: React.FC<Props> = ({ children }) => {
     'favorite-products',
     [],
   );
+  const [darkTheme, setDarkTheme] = useLocalStorage<boolean>(
+    'darkTheme',
+    false,
+  );
 
   const [favProducts, setFavProducts] = useState<Phone[]>([]);
   const [hasErrorOnFav, setHasErrorOnFav] = useState(false);
-  const [darkTheme, setDarkTheme] = useState(false);
+
+  const [globalPerPage, setGlobalPerPage] = useState('4');
+  const [globalSort, setGlobalSort] = useState('age');
 
   useEffect(() => {
     getFavorites('/favorites')
@@ -62,6 +72,10 @@ export const Context: React.FC<Props> = ({ children }) => {
     handleLike,
     toggleTheme,
     darkTheme,
+    globalPerPage,
+    globalSort,
+    setGlobalPerPage,
+    setGlobalSort,
   };
 
   return <MainContext.Provider value={params}>{children}</MainContext.Provider>;

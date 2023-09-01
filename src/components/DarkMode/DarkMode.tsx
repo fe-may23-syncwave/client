@@ -5,13 +5,14 @@ import { ReactComponent as Moon } from '../../assets/icons/moon.svg';
 import './DarkMode.scss';
 
 export const DarkMode: React.FC = () => {
-  const { toggleTheme } = React.useContext(MainContext);
+  const { toggleTheme, darkTheme } = React.useContext(MainContext);
 
   return (
     <div className="dark_mode">
       <input
         className="dark_mode_input"
         type="checkbox"
+        checked={darkTheme}
         id="darkmode-toggle"
         onChange={() => toggleTheme()}
       />
