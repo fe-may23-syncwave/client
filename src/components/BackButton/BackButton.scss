@@ -3,7 +3,7 @@
 .back-button {
   display: flex;
   align-items: center;
-  background-color: white;
+  background-color: $background-color;
   cursor: pointer;
   border: none;
   width: 55px;
@@ -16,6 +16,6 @@
   }
 
   &:hover::after {
-    color: black;
+    color: $color-primary;
   }
 }
