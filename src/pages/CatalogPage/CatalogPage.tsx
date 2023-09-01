@@ -195,19 +195,20 @@ export const CatalogPage: React.FC<Props> = ({ title }) => {
         )}
         {hasError && <h2 className="catalog__title">There is some problems</h2>}
 
-      {products.length > 0 && !hasError && (
-        <>
-          <Dropdowns />
-          <ProductsList products={productsOnPage} />
-          {amountOfPages.length > 1 && (
-            <Pagination
-              currentPage={activePage}
-              totalPages={amountOfPages}
-              onPageChange={(selectedPage) => changeCurrentPage(selectedPage)}
-            />
-          )}
-        </>
-      )}
-    </div>
+        {products.length > 0 && !hasError && (
+          <>
+            <Dropdowns />
+            <ProductsList products={productsOnPage} />
+            {amountOfPages.length > 1 && (
+              <Pagination
+                currentPage={activePage}
+                totalPages={amountOfPages}
+                onPageChange={(selectedPage) => changeCurrentPage(selectedPage)}
+              />
+            )}
+          </>
+        )}
+      </div>
+    </>
   );
 };

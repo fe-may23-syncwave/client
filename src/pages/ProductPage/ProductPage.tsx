@@ -158,24 +158,24 @@ export const ProductPage: React.FC = () => {
                 </p>
               </div>
 
-            <div className="product-page__buttons">
-              <AddToCartButton
-                product={productForTesting}
-                styles={[
-                  'product-page__button',
-                  'product-page__button--active',
-                ]}
-              />
+              <div className="product-page__buttons">
+                <AddToCartButton
+                  product={productForTesting}
+                  styles={[
+                    'product-page__button',
+                    'product-page__button--active',
+                  ]}
+                />
 
-              <FavouritesButton
-                product={productForTesting}
-                styles={[
-                  'product__favourites',
-                  'product__favourites--active',
-                  'product-page__favourites',
-                ]}
-              />
-            </div>
+                <FavouritesButton
+                  product={productForTesting}
+                  styles={[
+                    'product__favourites',
+                    'product__favourites--active',
+                    'product-page__favourites',
+                  ]}
+                />
+              </div>
 
               <div className="product-page__description description">
                 {techSpecs.slice(3).map((data) => (
