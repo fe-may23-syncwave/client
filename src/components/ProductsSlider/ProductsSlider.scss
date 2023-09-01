@@ -15,7 +15,7 @@
     font-weight: 800;
     line-height: 41px;
     letter-spacing: -0.32px;
-    color: $color-gray-primary;
+    color: $color-primary;
 
     @include onMobile {
       font-size: 22px;
@@ -63,7 +63,7 @@
       right: 46px !important;
 
       &:hover {
-        border: 1px solid $color-gray-primary;
+        border: 1px solid $color-primary;
       }
     }
 
@@ -75,7 +75,7 @@
       }
 
       &:hover {
-        border: 1px solid $color-gray-primary;
+        border: 1px solid $color-primary;
       }
     }
 
