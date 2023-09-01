@@ -20,44 +20,30 @@ const productForTesting = {
   image: 'img/phones/apple-iphone-11/green/00.jpg',
 };
 
-const productsArray = [
-  productForTesting,
-  productForTesting,
-  productForTesting,
-  productForTesting,
-  productForTesting,
-  productForTesting,
-  productForTesting,
-  productForTesting,
-  productForTesting,
-];
+const productsArray = Array(9)
+  .fill(productForTesting)
+  .map((product, index) => ({
+    ...product,
+    id: (parseInt(product.id, 10) + index).toString(),
+    name: `${product.name} (${index + 1})`,
+  }));
 
 export const HomePage: React.FC = () => {
   return (
     <div className="home-page">
       <h1 className="home-page__title">Welcome to Nice Gadgets store!</h1>
       <Slider />
-      {
-        productsArray.length > 0 && (
-          <ProductsSlider
-            phones={productsArray}
-            title="Brand new models"
-          />
-        )
-      }
+      {productsArray.length > 0 && (
+        <ProductsSlider phones={productsArray} title="Brand new models" />
+      )}
 
       <h2 className="home-page__categories">
         Shop by category(your advertising could be here)
       </h2>
 
-      {
-        productsArray.length > 0 && (
-          <ProductsSlider
-            phones={productsArray}
-            title="Hot prices"
-          />
-        )
-      }
+      {productsArray.length > 0 && (
+        <ProductsSlider phones={productsArray} title="Hot prices" />
+      )}
     </div>
   );
 };
