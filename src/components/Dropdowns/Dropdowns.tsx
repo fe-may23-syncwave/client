@@ -1,17 +1,20 @@
 import React from 'react';
 import styles from './Dropdowns.module.scss';
 
-interface Props{
+interface Props {
   handleDropdownChange: (
-    e: React.ChangeEvent<HTMLSelectElement>, v: string
+    e: React.ChangeEvent<HTMLSelectElement>,
+    v: string,
   ) => void;
   perPage: string;
   sortBy: string;
 }
 
-export const Dropdowns: React.FC<Props> = (
-  { handleDropdownChange, perPage, sortBy },
-) => {
+export const Dropdowns: React.FC<Props> = ({
+  handleDropdownChange,
+  perPage,
+  sortBy,
+}) => {
   return (
     <div className={styles.Dropdowns}>
       <div className={styles.Dropdowns__dropdown}>

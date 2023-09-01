@@ -26,10 +26,13 @@ export const Context: React.FC<Props> = ({ children }) => {
     'favorite-products',
     [],
   );
+  const [darkTheme, setDarkTheme] = useLocalStorage<boolean>(
+    'darkTheme',
+    false,
+  );
 
   const [favProducts, setFavProducts] = useState<Phone[]>([]);
   const [hasErrorOnFav, setHasErrorOnFav] = useState(false);
-  const [darkTheme, setDarkTheme] = useState(false);
 
   const [globalPerPage, setGlobalPerPage] = useState('4');
   const [globalSort, setGlobalSort] = useState('age');

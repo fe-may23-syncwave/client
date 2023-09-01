@@ -4,7 +4,7 @@ import { Phone } from 'types/PhoneType';
 export function useLocalStorage<T>(
   key: string,
   startValue: T,
-): [T, (value: Phone[]) => void] {
+): [T, (value: Phone[] | boolean) => void] {
   const [value, setValue] = useState(() => {
     const data = localStorage.getItem(key);
 

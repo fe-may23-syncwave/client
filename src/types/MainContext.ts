@@ -9,6 +9,6 @@ export type MainContextType = {
   darkTheme: boolean;
   globalPerPage: string;
   globalSort: string;
-  setGlobalPerPage: (v: string) => void,
-  setGlobalSort: (v: string) => void,
+  setGlobalPerPage: (v: string) => void;
+  setGlobalSort: (v: string) => void;
 };

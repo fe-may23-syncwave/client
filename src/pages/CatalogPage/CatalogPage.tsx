@@ -155,14 +155,22 @@ export const CatalogPage: React.FC<Props> = ({ title }) => {
   const location = useLocation();
   const navigate = useNavigate();
   const queryParams = new URLSearchParams(location.search);
-  const perPerPageParam = queryParams.get('perPage') || '4';
+  const perPageParam = queryParams.get('perPage') || '4';
   const perSortByParam = queryParams.get('sort');
 
-  const [perPage, setPerPage] = useState(perPerPageParam || '4');
+  let preparedPerPage;
+
+  if (perPageParam === 'all') {
+    preparedPerPage = 1000;
+  } else {
+    preparedPerPage = +perPageParam;
+  }
+
+  const [perPage, setPerPage] = useState(perPageParam || '4');
   const [sortBy, setSortBy] = useState(perSortByParam || 'age');
 
   const [hasError] = useState(false);
-  const [itemsOnPage, setItemsOnPage] = useState<number>(+perPerPageParam);
+  const [itemsOnPage, setItemsOnPage] = useState<number>(preparedPerPage);
 
   const [activePage, setActivePage] = useState(1);
   const [startValue, setStartValue] = useState(1);
@@ -175,19 +183,23 @@ export const CatalogPage: React.FC<Props> = ({ title }) => {
   };
 
   const handleChangePerPage = (value: string) => {
+    setActivePage(1);
+    setStartValue(1);
+
     if (value === 'all') {
-      setStartValue(1);
       setEndvalue(1000);
+      queryParams.delete('page');
 
       return;
     }
 
-    setStartValue(activePage * +value - +value + 1);
-    setEndvalue(activePage * +value);
+    setEndvalue(1 * +value);
+    queryParams.set('page', '1');
   };
 
   const handleDropdownChange = (
-    event: React.ChangeEvent<HTMLSelectElement>, param: string,
+    event: React.ChangeEvent<HTMLSelectElement>,
+    param: string,
   ) => {
     const selectedValue = event.target.value;
 
