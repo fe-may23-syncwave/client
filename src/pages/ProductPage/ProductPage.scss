@@ -7,13 +7,8 @@
   color: $color-primary;
 
   &__content {
-    margin-inline: 16px;
     display: flex;
     flex-direction: column;
-
-    @include onDesktop {
-      margin-inline: 60px;
-    }
   }
 
   &__title {
@@ -325,5 +320,26 @@
         margin-bottom: 8px;
       }
     }
+  }
+}
+
+.slider {
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 81px;
+
+  &__title {
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 41px;
+    letter-spacing: -0.32px;
+    text-align: left;
+    margin-bottom: 24px;
+  }
+
+  &__wrapper {
+    border: 1px solid$color-secondary;
+    height: 450px;
+    background-color: #d897f5;
   }
 }

@@ -1,0 +1,86 @@
+@import '../../styles/utils/shared';
+
+.products-slider {
+  overflow: hidden;
+  margin-top: 80px;
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    user-select: none;
+  }
+
+  &__title {
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 41px;
+    letter-spacing: -0.32px;
+    color: $color-primary;
+
+    @include onMobile {
+      font-size: 22px;
+      line-height: 140%;
+    }
+  }
+}
+
+.slider-items {
+  margin-top: 24px;
+
+  .swiper {
+    &,
+    &-container {
+      overflow: visible;
+    }
+
+    &-slide {
+      flex-shrink: 0;
+    }
+
+    &-button-next,
+    &-button-prev {
+      top: -8% !important;
+      width: 32px;
+      height: 32px;
+      border: 1px solid $color-icons;
+      font-size: 5px;
+      transition: border $duration ease;
+      user-select: none;
+      z-index: 100;
+
+      &::after {
+        font-size: 10px;
+        color: $color-icons;
+      }
+
+      @include onMobile {
+        top: -6% !important;
+      }
+    }
+
+    &-button-prev {
+      left: auto !important;
+      right: 46px !important;
+
+      &:hover {
+        border: 1px solid $color-primary;
+      }
+    }
+
+    &-button-next {
+      right: 0 !important;
+
+      @include onDesktop {
+        right: 4px !important;
+      }
+
+      &:hover {
+        border: 1px solid $color-primary;
+      }
+    }
+
+    &-button-disabled {
+      color: $color-icons;
+    }
+  }
+}
