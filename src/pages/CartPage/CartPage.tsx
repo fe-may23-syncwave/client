@@ -64,7 +64,7 @@ export const CartPage: React.FC = () => {
 
         <div className="cart__content">
           <section className="cart__products">
-            {products.map(product => (
+            {products.map((product) => (
               <li className="box cart__product" key={product.id}>
                 <div className="cart__product__main">
                   <button
@@ -105,7 +105,11 @@ export const CartPage: React.FC = () => {
                     </button>
                   </div>
 
-                  <p className="cart__product__price">{`$${product.price * 1}`}</p>
+                  <p className="cart__product__price">
+                    {`$${
+                      product.price * 1
+                    }`}
+                  </p>
                 </div>
               </li>
             ))}
