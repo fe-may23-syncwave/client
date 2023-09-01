@@ -3,9 +3,10 @@ import { Container } from 'components/common/Container';
 import classNames from 'classnames';
 import { Logo } from 'components/common/Logo';
 import { Typography } from 'components/common/Typography';
-import { ReactComponent as ArrowUpIcon } from 'assets/icons/arrow_up.svg';
+// import { ReactComponent as ArrowUpIcon } from 'assets/icons/arrow_up.svg';
 
 import styles from './Footer.module.scss';
+import { GoToTopButton } from './GoToTopButton';
 
 export enum FooterLink {
   Github = 'https://github.com/fe-may23-syncwave/client',
@@ -36,12 +37,7 @@ export const Footer: React.FC<Props> = ({ className }) => {
               </a>
             ))}
           </div>
-          <button type="button" className={styles.Footer__button}>
-            <Typography type="text-small">Back to top</Typography>
-            <span className={styles.Footer__button__icon}>
-              <ArrowUpIcon />
-            </span>
-          </button>
+          <GoToTopButton />
         </div>
       </Container>
     </div>

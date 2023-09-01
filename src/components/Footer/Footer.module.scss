@@ -1,12 +1,6 @@
 @import 'styles/utils/shared';
 
 .Footer {
-  // margin-top: auto;
-
-  // font-size: 14px;
-  // line-height: 1.5;
-  // text-align: center;
-
   border: 1px solid $color-elements;
 
   @include onTablet {
