@@ -12,7 +12,7 @@ export const BackButton: React.FC = () => {
 
   return (
     <button type="button" className="back-button" onClick={() => navigate(-1)}>
-      { darkTheme ? <ArrowBackLight /> : <ArrowBackIcon />}
+      {darkTheme ? <ArrowBackLight /> : <ArrowBackIcon />}
     </button>
   );
 };

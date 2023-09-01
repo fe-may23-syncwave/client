@@ -6,7 +6,9 @@ export const NotFoundPage: React.FC = () => {
     <div className="section">
       <h1 className="error">404</h1>
       <div className="page">Ooops! Page Not Found</div>
-      <a className="back-home" href="/home">Go home</a>
+      <a className="back-home" href="/home">
+        Go home
+      </a>
     </div>
   );
 };
