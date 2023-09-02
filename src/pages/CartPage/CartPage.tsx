@@ -1,11 +1,28 @@
+/* eslint-disable no-console */
+/* eslint-disable operator-linebreak */
 import { BackButton } from 'components/BackButton';
-import React from 'react';
+import React, { useContext } from 'react';
 import './CartPage.scss';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { AuthContext } from 'context';
+import { NavBarRoute } from 'types/NavBarRoute';
 
 export const CartPage: React.FC = () => {
-  const CLOUDINARY
-    = 'https://res.cloudinary.com/myfinance/image/upload/v1693416024/syncwave/';
+  const { user, isAuth } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  console.log('user', user, 'isAuth', isAuth);
+
+  const onCheckout = () => {
+    if (!user) {
+      navigate(NavBarRoute.Login, { replace: true });
+    } else {
+      navigate(NavBarRoute.Users, { replace: true });
+    }
+  };
+
+  const CLOUDINARY =
+    'https://res.cloudinary.com/myfinance/image/upload/v1693416024/syncwave/';
 
   const products = [
     {
@@ -117,7 +134,12 @@ export const CartPage: React.FC = () => {
             <h3 className="cart__checkout__full-price">{`$${200}`}</h3>
             <p className="cart__checkout__total-count">{`Total for ${3} items`}</p>
             <hr className="cart__checkout__line" />
-            <button type="button" className="cart__checkout__button">
+            <button
+              type="button"
+              className="cart__checkout__button"
+              // disabled={!user || products.length === 0}
+              onClick={onCheckout}
+            >
               Checkout
             </button>
           </section>

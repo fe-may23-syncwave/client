@@ -101,6 +101,15 @@
         background-color: $color-elements;
         color: $color-primary;
       }
+
+      &:disabled,
+      &:disabled:hover,
+      &:disabled:active,
+      &:disabled:hover:active {
+        border-color: $color-elements;
+        background-color: $color-white;
+        color: $color-secondary;
+      }
     }
   }
 

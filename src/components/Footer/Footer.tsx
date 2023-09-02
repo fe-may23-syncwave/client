@@ -3,7 +3,6 @@ import { Container } from 'components/common/Container';
 import classNames from 'classnames';
 import { Logo } from 'components/common/Logo';
 import { Typography } from 'components/common/Typography';
-// import { ReactComponent as ArrowUpIcon } from 'assets/icons/arrow_up.svg';
 
 import styles from './Footer.module.scss';
 import { GoToTopButton } from './GoToTopButton';

@@ -14,6 +14,11 @@ export const LoginPage: React.FC = () => {
   const [error, setError] = usePageError('');
   const { login } = useContext(AuthContext);
 
+  const navigateOnLogin = () => {
+    navigate(location.state?.from?.pathname || '/cart');
+    // navigate(location.state?.from?.pathname || '/users');
+  };
+
   return (
     <>
       <Formik
@@ -26,7 +31,7 @@ export const LoginPage: React.FC = () => {
           return (
             login({ email, password })
               .then(() => {
-                navigate(location.state?.from?.pathname || '/users');
+                navigateOnLogin();
               })
               // eslint-disable-next-line @typescript-eslint/no-shadow
               .catch((error) => {

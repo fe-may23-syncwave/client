@@ -8,5 +8,5 @@ export enum NavBarRoute {
 
   Register = '/sign-up',
   Login = '/login',
-  Users = 'users',
+  Users = '/users',
 }

@@ -1,10 +1,10 @@
+import { Loader } from 'components/common/Loader';
 import { AuthContext } from 'context';
 import { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 export const AccountActivationPage = () => {
   const [error, setError] = useState('');
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [done, setDone] = useState(false);
 
   const { activate } = useContext(AuthContext);
@@ -31,19 +31,7 @@ export const AccountActivationPage = () => {
   }, []);
 
   if (!done) {
-    // return <Loader />;
-    return (
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          height: '100vh',
-        }}
-      >
-        Loading...
-      </div>
-    );
+    return <Loader />;
   }
 
   return (

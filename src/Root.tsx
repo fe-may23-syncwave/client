@@ -15,6 +15,7 @@ import {
 } from 'pages/auth';
 import { RequireAuth } from 'components/RequireAuth';
 import { AuthContext } from 'context';
+import { Loader } from 'components/common/Loader';
 
 const App = lazy(() => {
   return import('./App').then((module) => ({
@@ -58,13 +59,6 @@ const CartPage = lazy(() => {
   }));
 });
 
-const styles = {
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-  height: '100vh',
-};
-
 export const Root = () => {
   const { checkAuth } = useContext(AuthContext);
 
@@ -73,7 +67,7 @@ export const Root = () => {
   }, []);
 
   return (
-    <Suspense fallback={<div style={styles}>Loading...</div>}>
+    <Suspense fallback={<Loader />}>
       <Router>
         <Routes>
           <Route path={NavBarRoute.Home} element={<App />}>
