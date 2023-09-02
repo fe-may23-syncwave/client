@@ -22,7 +22,8 @@ function onRequest(request: AdaptAxiosRequestConfig) {
 }
 
 function onResponseSuccess(response: AxiosResponse) {
-  return response.data;
+  // return response.data;
+  return response;
 }
 
 async function onResponseError(error: any) {

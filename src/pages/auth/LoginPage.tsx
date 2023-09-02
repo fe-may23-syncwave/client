@@ -26,7 +26,7 @@ export const LoginPage: React.FC = () => {
           return (
             login({ email, password })
               .then(() => {
-                navigate(location.state?.from?.pathname || '/');
+                navigate(location.state?.from?.pathname || '/users');
               })
               // eslint-disable-next-line @typescript-eslint/no-shadow
               .catch((error) => {

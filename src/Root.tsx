@@ -1,4 +1,5 @@
-import { Suspense, lazy } from 'react';
+/* eslint-disable object-curly-newline */
+import { Suspense, lazy, useContext, useEffect } from 'react';
 import {
   HashRouter as Router,
   Routes,
@@ -12,6 +13,8 @@ import {
   LoginPage,
   UsersPage,
 } from 'pages/auth';
+import { RequireAuth } from 'components/RequireAuth';
+import { AuthContext } from 'context';
 
 const App = lazy(() => {
   return import('./App').then((module) => ({
@@ -63,6 +66,12 @@ const styles = {
 };
 
 export const Root = () => {
+  const { checkAuth } = useContext(AuthContext);
+
+  useEffect(() => {
+    checkAuth();
+  }, []);
+
   return (
     <Suspense fallback={<div style={styles}>Loading...</div>}>
       <Router>
@@ -78,9 +87,9 @@ export const Root = () => {
             />
             <Route path={NavBarRoute.Login} element={<LoginPage />} />
 
-            {/* <Route path="/" element={<RequireAuth />}> */}
-            <Route path={NavBarRoute.Users} element={<UsersPage />} />
-            {/* </Route> */}
+            <Route path="/" element={<RequireAuth />}>
+              <Route path={NavBarRoute.Users} element={<UsersPage />} />
+            </Route>
 
             <Route path={NavBarRoute.Phones}>
               <Route index element={<CatalogPage title="Mobile phones" />} />

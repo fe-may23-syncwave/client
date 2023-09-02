@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 /* eslint-disable @typescript-eslint/no-shadow */
 import { usePageError } from 'hooks/usePageError';
 import React, { useEffect, useState } from 'react';
@@ -12,11 +11,7 @@ export const UsersPage: React.FC = () => {
   useEffect(() => {
     userService
       .getAll()
-      .then(({ data }) => {
-        console.log('Users', data);
-
-        setUsers(data);
-      })
+      .then(({ data }) => setUsers(data))
       .catch((error) => {
         setError(error.message);
       });
