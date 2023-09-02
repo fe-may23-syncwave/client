@@ -243,7 +243,6 @@ export const ProductPage: React.FC = () => {
           <ProductsSlider phones={productsArray} title="Hot prices" />
         )}
       </div>
-
     </>
   );
 };
