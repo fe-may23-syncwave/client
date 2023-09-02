@@ -3,7 +3,7 @@ import { IUser } from 'types/User';
 import { accessTokenService } from 'services/accessTokenService';
 import { authService } from 'services/authService';
 
-interface IAuthContext {
+interface State {
   user: IUser | null;
   isAuth: boolean;
   isLoading: boolean;
@@ -21,7 +21,7 @@ interface IAuthContext {
   logout: () => void;
 }
 
-export const AuthContext = React.createContext<IAuthContext>({
+const initialState: State = {
   user: null,
   isAuth: false,
   isLoading: true,
@@ -31,7 +31,9 @@ export const AuthContext = React.createContext<IAuthContext>({
   activate: () => Promise.resolve(),
   login: () => Promise.resolve(),
   logout: () => {},
-});
+};
+
+export const AuthContext = React.createContext<State>(initialState);
 
 type Props = {
   children: React.ReactNode;

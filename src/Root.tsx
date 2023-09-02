@@ -6,6 +6,12 @@ import {
   Navigate,
 } from 'react-router-dom';
 import { NavBarRoute } from 'types/NavBarRoute';
+import {
+  RegistrationPage,
+  AccountActivationPage,
+  LoginPage,
+  UsersPage,
+} from 'pages/auth';
 
 const App = lazy(() => {
   return import('./App').then((module) => ({
@@ -64,6 +70,17 @@ export const Root = () => {
           <Route path={NavBarRoute.Home} element={<App />}>
             <Route index element={<HomePage />} />
             <Route path="home" element={<Navigate to="/" replace />} />
+
+            <Route path={NavBarRoute.Register} element={<RegistrationPage />} />
+            <Route
+              path="activate/:activationToken"
+              element={<AccountActivationPage />}
+            />
+            <Route path={NavBarRoute.Login} element={<LoginPage />} />
+
+            {/* <Route path="/" element={<RequireAuth />}> */}
+            <Route path={NavBarRoute.Users} element={<UsersPage />} />
+            {/* </Route> */}
 
             <Route path={NavBarRoute.Phones}>
               <Route index element={<CatalogPage title="Mobile phones" />} />
