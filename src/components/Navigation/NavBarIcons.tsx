@@ -10,7 +10,9 @@ import { ReactComponent as CartIcon } from '../../assets/icons/cart.svg';
 import { ReactComponent as CartIconLight } from '../../assets/icons/cart-light.svg';
 import { Search } from '../Search';
 import { ReactComponent as ProfileIconDark } from '../../assets/icons/profile.svg';
+import { ReactComponent as ProfileIconLight } from '../../assets/icons/profile-light.svg';
 import { ReactComponent as LogoutIconDark } from '../../assets/icons/logout.svg';
+import { ReactComponent as LogoutIconLight } from '../../assets/icons/logout-light.svg';
 
 type Props = {
   className?: string;
@@ -28,6 +30,9 @@ export const NavBarIcons: React.FC<Props> = ({
 
   const favoritesCounter = products.length;
 
+  const ProfileIcon = darkTheme ? <ProfileIconLight /> : <ProfileIconDark />;
+  const LogoutIcon = darkTheme ? <LogoutIconLight /> : <LogoutIconDark />;
+
   return (
     <div
       className={className}
@@ -39,7 +44,7 @@ export const NavBarIcons: React.FC<Props> = ({
       <Search />
       <Link
         to={NavBarRoute.Login}
-        icon={isAuth ? <LogoutIconDark /> : <ProfileIconDark />}
+        icon={isAuth ? LogoutIcon : ProfileIcon}
         onClick={
           isAuth ? () => logout() : () => console.log('Login again please')
         }
