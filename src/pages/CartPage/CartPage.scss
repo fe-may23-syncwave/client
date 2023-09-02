@@ -90,14 +90,6 @@
         background-color $duration,
         color $duration;
 
-      // @include onTablet {
-      //   width: 320px;
-      // }
-
-      // @include onDesktop {
-      //   width: 320px;
-      // }
-
       &--active {
         border-color: $color-elements;
         background-color: $color-white;
