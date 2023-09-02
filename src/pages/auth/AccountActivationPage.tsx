@@ -4,20 +4,24 @@ import { useParams } from 'react-router-dom';
 
 export const AccountActivationPage = () => {
   const [error, setError] = useState('');
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [done, setDone] = useState(false);
 
   const { activate } = useContext(AuthContext);
   const { activationToken } = useParams();
 
   useEffect(() => {
-    // if (!activationToken) {
-    //   setError('Wrong activation link');
-    //   setDone(true);
+    if (!activationToken) {
+      setError('Wrong activation link');
+      setDone(true);
 
-    //   return;
-    // }
+      return;
+    }
 
-    activate(activationToken as string)
+    // eslint-disable-next-line no-console
+    console.log('activationPage', activationToken);
+
+    activate(activationToken)
       .catch((e) => {
         setError(e.response?.data?.message || 'Wrong activation link');
       })
