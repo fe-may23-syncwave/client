@@ -23,13 +23,22 @@ interface Props {
   to: string;
   icon?: React.ReactNode;
   counter?: number;
+  onClick?: () => void;
 }
 
 export const Link: React.FC<Props> = ({
-  title, to, icon, counter = 0,
+  title,
+  to,
+  icon,
+  counter = 0,
+  onClick = () => {},
 }) => {
   return (
-    <NavLink to={to} className={title ? getLinkClass : IconLink}>
+    <NavLink
+      to={to}
+      className={title ? getLinkClass : IconLink}
+      onClick={onClick}
+    >
       {title}
 
       {icon && (
