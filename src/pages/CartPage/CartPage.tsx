@@ -106,9 +106,7 @@ export const CartPage: React.FC = () => {
                   </div>
 
                   <p className="cart__product__price">
-                    {`$${
-                      product.price * 1
-                    }`}
+                    {`$${product.price * 1}`}
                   </p>
                 </div>
               </li>

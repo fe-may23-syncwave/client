@@ -18,10 +18,21 @@
 
   &__content {
     display: flex;
-    flex-direction: row;
     justify-content: space-between;
 
     gap: 16px;
+
+    @include onMobile {
+      flex-direction: column;
+    }
+
+    @include onTablet {
+      flex-direction: row;
+    }
+
+    @include onDesktop {
+      flex-direction: row;
+    }
   }
 
   &__checkout {
@@ -31,8 +42,19 @@
     font-family: 'Montserrat', sans-serif;
 
     height: fit-content;
-    width: 368px;
     align-items: center;
+
+    @include onMobile {
+      width: auto;
+    }
+
+    @include onTablet {
+      width: 368px;
+    }
+
+    @include onDesktop {
+      width: 368px;
+    }
 
     &__full-price {
       color: $color-primary;
@@ -68,13 +90,13 @@
         background-color $duration,
         color $duration;
 
-      @include onTablet {
-        width: 320px;
-      }
+      // @include onTablet {
+      //   width: 320px;
+      // }
 
-      @include onDesktop {
-        width: 320px;
-      }
+      // @include onDesktop {
+      //   width: 320px;
+      // }
 
       &--active {
         border-color: $color-elements;
@@ -93,9 +115,20 @@
   &__product {
     padding: 24px;
     display: flex;
-    flex-direction: row;
     gap: 24px;
     justify-content: space-between;
+
+    @include onMobile {
+      flex-direction: column;
+    }
+
+    @include onTablet {
+      flex-direction: row;
+    }
+
+    @include onDesktop {
+      flex-direction: row;
+    }
 
     // #region main
     &__main {
@@ -138,6 +171,10 @@
       align-items: center;
 
       gap: 13px;
+
+      @include onMobile {
+        justify-content: space-between;
+      }
     }
 
     &__quantity {
