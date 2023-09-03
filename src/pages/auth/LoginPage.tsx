@@ -2,14 +2,23 @@ import React, { useContext } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Formik, Form, Field } from 'formik';
 import cn from 'classnames';
-import { AuthContext } from 'context';
+import { AuthContext, MainContext } from 'context';
 import { usePageError } from 'hooks/usePageError';
 import { validateEmail, validatePassword } from 'utils/validation';
 import { NavBarRoute } from 'types/NavBarRoute';
+import styles from './Auth.module.scss';
+
+const {
+  Form: form,
+  'Form--dark': dark,
+  'Form__title--dark': titleLight,
+  'Form__label--dark': labelLight,
+} = styles;
 
 export const LoginPage: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  const { darkTheme } = useContext(MainContext);
 
   const [error, setError] = usePageError('');
   const { login } = useContext(AuthContext);
@@ -41,10 +50,25 @@ export const LoginPage: React.FC = () => {
         }}
       >
         {({ touched, errors, isSubmitting }) => (
-          <Form className="box">
-            <h1 className="title">Log in</h1>
+          <Form
+            className={cn('box', form, {
+              [dark]: darkTheme,
+            })}
+          >
+            <h1
+              className={cn('title', {
+                [titleLight]: darkTheme,
+              })}
+            >
+              Log in
+            </h1>
             <div className="field">
-              <label htmlFor="email" className="label">
+              <label
+                htmlFor="email"
+                className={cn('label', {
+                  [labelLight]: darkTheme,
+                })}
+              >
                 Email
               </label>
 
@@ -76,7 +100,12 @@ export const LoginPage: React.FC = () => {
               )}
             </div>
             <div className="field">
-              <label htmlFor="password" className="label">
+              <label
+                htmlFor="password"
+                className={cn('label', {
+                  [labelLight]: darkTheme,
+                })}
+              >
                 Password
               </label>
 

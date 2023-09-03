@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Formik, Form, Field } from 'formik';
 import cn from 'classnames';
@@ -6,10 +6,20 @@ import { usePageError } from 'hooks/usePageError';
 import { authService } from 'services/authService';
 import { validateEmail, validatePassword } from 'utils/validation';
 import { NavBarRoute } from 'types/NavBarRoute';
+import { MainContext } from 'context';
+import styles from './Auth.module.scss';
+
+const {
+  Form: form,
+  'Form--dark': dark,
+  'Form__title--dark': titleLight,
+  'Form__label--dark': labelLight,
+} = styles;
 
 export const RegistrationPage: React.FC = () => {
   const [error, setError] = usePageError('');
   const [registered, setRegistered] = useState(false);
+  const { darkTheme } = useContext(MainContext);
 
   if (registered) {
     return (
@@ -60,10 +70,25 @@ export const RegistrationPage: React.FC = () => {
         }}
       >
         {({ touched, errors, isSubmitting }) => (
-          <Form className="box">
-            <h1 className="title">Sign up</h1>
+          <Form
+            className={cn('box', form, {
+              [dark]: darkTheme,
+            })}
+          >
+            <h1
+              className={cn('title', {
+                [titleLight]: darkTheme,
+              })}
+            >
+              Sign up
+            </h1>
             <div className="field">
-              <label htmlFor="email" className="label">
+              <label
+                htmlFor="email"
+                className={cn('label', {
+                  [labelLight]: darkTheme,
+                })}
+              >
                 Email
               </label>
 
@@ -95,7 +120,12 @@ export const RegistrationPage: React.FC = () => {
               )}
             </div>
             <div className="field">
-              <label htmlFor="password" className="label">
+              <label
+                htmlFor="password"
+                className={cn('label', {
+                  [labelLight]: darkTheme,
+                })}
+              >
                 Password
               </label>
 
