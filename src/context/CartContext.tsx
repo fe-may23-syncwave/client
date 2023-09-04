@@ -1,7 +1,5 @@
 import { useLocalStorage } from 'hooks/useLocalStorage';
-import React, {
-  createContext, useMemo,
-} from 'react';
+import React, { createContext, useMemo } from 'react';
 import { Product } from 'types/Product';
 
 interface Cart {
@@ -64,7 +62,7 @@ export const CartProvider: React.FC<Props> = ({ children }) => {
       return;
     }
 
-    setCart(prevCart => [...prevCart, { ...product, count: 1 }]);
+    setCart((prevCart) => [...prevCart, { ...product, count: 1 }]);
   };
 
   const handleAdd = (product: Cart) => {

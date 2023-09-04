@@ -8,10 +8,7 @@ interface Props {
   product: Product;
 }
 
-export const AddToCartButton: React.FC<Props> = ({
-  product,
-  styles,
-}) => {
+export const AddToCartButton: React.FC<Props> = ({ product, styles }) => {
   const isAddedToCart = false;
   const { saveToCart } = useContext(CartContext);
 
