@@ -1,57 +1,82 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable max-len */
 import { BackButton } from 'components/BackButton';
-import React from 'react';
+import React, { useContext, useMemo, useState } from 'react';
 import './CartPage.scss';
 import { Link } from 'react-router-dom';
+import classNames from 'classnames';
+import { CartContext } from 'context/CartContext';
+
+const CLOUDINARY
+  = 'https://res.cloudinary.com/myfinance/image/upload/v1693416024/syncwave/';
 
 export const CartPage: React.FC = () => {
-  const CLOUDINARY
-    = 'https://res.cloudinary.com/myfinance/image/upload/v1693416024/syncwave/';
+  const {
+    cart,
+    saveToCart,
+    removeFromCart,
+    increaseCount,
+    decreaseCount,
+    totalItems,
+    totalPrice,
+  } = useContext(CartContext);
+
+  const [counter, setCounter] = useState(1);
+
+  const handleMinus = () => {
+    setCounter(counter - 1);
+  };
+
+  const handlePlus = () => {
+    setCounter(counter + 1);
+  };
+
+  const isOne = useMemo(() => {
+    return counter === 1;
+  }, [counter]);
 
   const products = [
     {
-      id: '1',
-      category: 'phones',
-      phoneId: 'apple-iphone-7-32gb-black',
+      category_id: 1,
+      productId: 'apple-iphone-7-32gb-black',
       itemId: 'apple-iphone-7-32gb-black',
       name: 'Apple iPhone 7 32GB Black',
       fullPrice: 400,
-      price: 375,
-      screen: "4.7' IPS",
-      capacity: '32GB',
-      color: 'black',
+      discountPrice: 375,
+      screen: '4.7\' IPS',
+      capacity_id: 1,
+      color_id: 1,
       ram: '2GB',
       year: 2016,
       image: 'img/phones/apple-iphone-7/black/00.jpg',
     },
     {
-      id: '2',
-      category: 'phones',
-      phoneId: 'apple-iphone-7-plus-32gb-black',
-      itemId: 'apple-iphone-7-plus-32gb-black',
-      name: 'Apple iPhone 7 Plus 32GB Black',
-      fullPrice: 540,
-      price: 500,
-      screen: "5.5' IPS",
-      capacity: '32GB',
-      color: 'black',
-      ram: '3GB',
-      year: 2016,
-      image: 'img/phones/apple-iphone-7-plus/black/00.jpg',
+      category_id: 1,
+      productId: 'apple-iphone-11-128gb-yellow',
+      itemId: 'apple-iphone-11-128gb-yellow',
+      name: 'Apple iPhone 11 128GB Yellow',
+      fullPrice: 1100,
+      discountPrice: 1050,
+      screen: '6.1\' IPS',
+      capacity_id: 3,
+      color_id: 3,
+      ram: '4GB',
+      year: 2019,
+      image: 'img/phones/apple-iphone-11/yellow/00.jpg',
     },
     {
-      id: '3',
-      category: 'phones',
-      phoneId: 'apple-iphone-8-64gb-gold',
-      itemId: 'apple-iphone-8-64gb-gold',
-      name: 'Apple iPhone 8 64GB Gold',
-      fullPrice: 600,
-      price: 550,
-      screen: "4.7' IPS",
-      capacity: '64GB',
-      color: 'gold',
+      category_id: 1,
+      productId: 'apple-iphone-7-32gb-black',
+      itemId: 'apple-iphone-7-32gb-black',
+      name: 'Apple iPhone 7 32GB Black',
+      fullPrice: 400,
+      discountPrice: 375,
+      screen: '4.7\' IPS',
+      capacity_id: 1,
+      color_id: 1,
       ram: '2GB',
-      year: 2017,
-      image: 'img/phones/apple-iphone-8/gold/00.jpg',
+      year: 2016,
+      image: 'img/phones/apple-iphone-7/black/00.jpg',
     },
   ];
   // these products are for testing
@@ -59,13 +84,14 @@ export const CartPage: React.FC = () => {
   return (
     <>
       <BackButton />
+
       <div className="cart__page">
         <h1 className="cart__title">Cart</h1>
 
         <div className="cart__content">
           <section className="cart__products">
             {products.map((product) => (
-              <li className="box cart__product" key={product.id}>
+              <li className="box cart__product" key={product.productId}>
                 <div className="cart__product__main">
                   <button
                     className="delete cart__product__button"
@@ -74,7 +100,7 @@ export const CartPage: React.FC = () => {
                     x
                   </button>
 
-                  <Link to={product.phoneId} className="cart__product__link">
+                  <Link to={product.productId} className="cart__product__link">
                     <div className="cart__product__image-block">
                       <img
                         src={`${CLOUDINARY}/${product.image}`}
@@ -90,23 +116,27 @@ export const CartPage: React.FC = () => {
                   <div className="cart__product__quantity">
                     <button
                       type="button"
-                      className="button is-small cart__product__button"
+                      className={classNames('button is-small cart__product__button', {
+                        'is-static': isOne,
+                      })}
+                      onClick={handleMinus}
                     >
                       -
                     </button>
 
-                    <p className="cart__product__counter">1</p>
+                    <p className="cart__product__counter">{counter}</p>
 
                     <button
                       type="button"
                       className="button is-small cart__product__button"
+                      onClick={handlePlus}
                     >
                       +
                     </button>
                   </div>
 
                   <p className="cart__product__price">
-                    {`$${product.price * 1}`}
+                    {`$${(product.discountPrice || product.fullPrice) * counter}`}
                   </p>
                 </div>
               </li>

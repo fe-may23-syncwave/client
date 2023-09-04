@@ -177,18 +177,12 @@
       gap: 13px;
     }
 
-    &__button {
-      border-radius: 50% !important;
-    }
-
     &__button:hover {
       border: 1px solid $color-secondary !important;
-      border-radius: 50% !important;
     }
 
     &__button:focus {
       border: 1px solid $color-primary !important;
-      border-radius: 50% !important;
       box-shadow: none !important;
     }
 
