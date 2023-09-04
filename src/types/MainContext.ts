@@ -1,10 +1,10 @@
-import { Phone } from './PhoneType';
+import { Product } from './Product';
 
 export type MainContextType = {
-  favProducts: Phone[];
+  favProducts: Product[];
   hasErrorOnFav: boolean;
-  products: Phone[];
-  handleLike: (product: Phone) => void;
+  products: Product[];
+  handleLike: (product: Product) => void;
   toggleTheme: () => void;
   darkTheme: boolean;
   globalPerPage: string;

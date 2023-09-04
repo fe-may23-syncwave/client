@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
-import { Phone } from 'types/PhoneType';
+import { Product } from 'types/Product';
 
 export function useLocalStorage<T>(
   key: string,
   startValue: T,
-): [T, (value: Phone[] | boolean) => void] {
+): [T, (value: Product[] | boolean) => void] {
   const [value, setValue] = useState(() => {
     const data = localStorage.getItem(key);
 

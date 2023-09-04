@@ -1,7 +1,7 @@
 import { getFavorites } from 'api/favorites';
 import React, { createContext, useEffect, useState } from 'react';
 import { MainContextType } from 'types/MainContext';
-import { Phone } from 'types/PhoneType';
+import { Product } from 'types/Product';
 import { useLocalStorage } from 'utils/localStorageHook';
 
 export const MainContext = createContext<MainContextType>({
@@ -22,7 +22,7 @@ interface Props {
 }
 
 export const Context: React.FC<Props> = ({ children }) => {
-  const [products, setProducts] = useLocalStorage<Phone[]>(
+  const [products, setProducts] = useLocalStorage<Product[]>(
     'favorite-products',
     [],
   );
@@ -31,7 +31,7 @@ export const Context: React.FC<Props> = ({ children }) => {
     false,
   );
 
-  const [favProducts, setFavProducts] = useState<Phone[]>([]);
+  const [favProducts, setFavProducts] = useState<Product[]>([]);
   const [hasErrorOnFav, setHasErrorOnFav] = useState(false);
 
   const [globalPerPage, setGlobalPerPage] = useState('4');
@@ -43,12 +43,12 @@ export const Context: React.FC<Props> = ({ children }) => {
       .catch(() => setHasErrorOnFav(true));
   }, []);
 
-  const handleLike = (product: Phone) => {
-    const isFav = products.find((curr) => curr.phoneId === product.phoneId);
+  const handleLike = (product: Product) => {
+    const isFav = products.find((curr) => curr.productId === product.productId);
 
     if (isFav) {
       const newSet = products.filter(
-        (curr) => curr.phoneId !== product.phoneId,
+        (curr) => curr.productId !== product.productId,
       );
 
       setProducts(newSet);

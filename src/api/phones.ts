@@ -1,6 +1,14 @@
-import { Phone } from 'types/PhoneType';
+import { Product } from 'types/Product';
 import { client } from '../utils/fetchPhones';
 
-export const getPhones = (url: string) => {
-  return client.get<Phone[]>(url);
+export const getProducts = (url: string) => {
+  return client.get<Product[]>(url);
 };
+
+export function getProductById(productId: string) {
+  const url = `/products?productId=${productId}`;
+
+  const product = client.get<Product>(url);
+
+  return product;
+}

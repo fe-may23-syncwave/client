@@ -1,17 +1,17 @@
 import React from 'react';
 import { ProductCard } from 'components/ProductCard';
-import { Phone } from 'types/PhoneType';
 import './ProductsList.scss';
+import { Product } from 'types/Product';
 
 interface Props {
-  products: Phone[];
+  products: Product[];
 }
 
 export const ProductsList: React.FC<Props> = ({ products }) => {
   return (
     <section className="products">
       {products.map((product) => (
-        <ProductCard product={product} key={product.id} />
+        <ProductCard product={product} key={product.productId} />
       ))}
     </section>
   );

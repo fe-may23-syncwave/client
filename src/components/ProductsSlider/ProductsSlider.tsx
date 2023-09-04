@@ -2,13 +2,13 @@ import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { A11y, Navigation, Pagination } from 'swiper/modules';
 import 'swiper/swiper-bundle.css';
+import { Product } from 'types/Product';
 import { ProductCard } from '../ProductCard';
-import { Phone } from '../../types/PhoneType';
 
 import './ProductsSlider.scss';
 
 interface Props {
-  phones: Phone[];
+  phones: Product[];
   title: string;
 }
 
@@ -49,8 +49,8 @@ export const ProductsSlider: React.FC<Props> = (props) => {
           breakpoints={breakpoints}
           navigation
         >
-          {props.phones.map((phone: Phone) => (
-            <SwiperSlide key={phone.id}>
+          {props.phones.map((phone: Product) => (
+            <SwiperSlide key={phone.productId}>
               <ProductCard product={phone} />
             </SwiperSlide>
           ))}

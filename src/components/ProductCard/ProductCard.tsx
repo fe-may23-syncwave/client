@@ -1,22 +1,21 @@
-/* eslint-disable max-len */
 import React from 'react';
 import './ProductCard.scss';
 import { Link } from 'react-router-dom';
-import { Phone } from '../../types/PhoneType';
+import { Product } from 'types/Product';
 import { AddToCartButton, FavouritesButton } from './buttons';
 
 const CLOUDINARY
   = 'https://res.cloudinary.com/myfinance/image/upload/v1693416024/syncwave/';
 
 interface Props {
-  product: Phone;
+  product: Product;
 }
 
 export const ProductCard: React.FC<Props> = ({ product }) => {
   return (
     <li className="product">
       <div className="product__container">
-        <Link to={product.phoneId} className="product__link">
+        <Link to={product.productId} className="product__link">
           <div className="product__image-block">
             <img
               src={`${CLOUDINARY}/${product.image}`}
@@ -28,7 +27,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
         </Link>
 
         <div className="product__prices">
-          <p className="product__price">{`$${product.price}`}</p>
+          <p className="product__price">{`$${product.discountPrice}`}</p>
           <p className="product__price-full">{`$${product.fullPrice}`}</p>
         </div>
 
@@ -39,7 +38,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
           </div>
           <div className="product__info-block">
             <p className="product__info-title">Capacity</p>
-            <p className="product__info-data">{product.capacity}</p>
+            <p className="product__info-data">{product.capacity_id}</p>
           </div>
           <div className="product__info-block">
             <p className="product__info-title">RAM</p>

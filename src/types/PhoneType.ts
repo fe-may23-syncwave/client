@@ -1,4 +1,5 @@
 export interface Phone {
+  productId: string;
   id: string;
   phoneId: string;
   name: string;
