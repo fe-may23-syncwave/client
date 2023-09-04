@@ -1,0 +1,40 @@
+@import 'styles/utils/shared';
+
+.Form {
+  // background: $color-border;
+  box-shadow:
+    3px 3px lightcoral,
+    -0.5em 0 0.4em $color-link;
+
+  &--dark {
+    background: $background-color;
+    color: $color-white;
+    border: 1px solid $color-border;
+
+    // box-shadow:
+    //   3px 3px $color-red,
+    //   -1em 0 0.4em #808000;
+    // box-shadow:
+    //   3px 3px $color-red,
+    //   -0.5em 0 0.4em $color-link;
+  }
+
+  &__title {
+    &--dark {
+      color: $color-white;
+    }
+  }
+
+  &__label {
+    &--dark {
+      color: $color-white;
+    }
+  }
+
+  &__link {
+    margin-left: 10px;
+    text-decoration: underline;
+    font-weight: bold;
+    color: $color-link;
+  }
+}

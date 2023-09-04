@@ -5,4 +5,8 @@ export enum NavBarRoute {
   Accessories = 'accessories',
   Favorites = 'favorites',
   Cart = 'cart',
+
+  Register = '/sign-up',
+  Login = '/login',
+  Users = '/users',
 }

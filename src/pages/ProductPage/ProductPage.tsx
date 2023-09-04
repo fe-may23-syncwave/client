@@ -36,8 +36,8 @@ const product = {
   name: 'Apple iPhone 11 64GB Purple',
   capacityAvailable: ['64GB', '128GB', '256GB'],
   capacity: '64GB',
-  priceRegular: 932,
-  priceDiscount: 880,
+  priceRegular: 932, // fullPrice
+  priceDiscount: 880, // discountPrice
   colorsAvailable: ['black', 'green', 'yellow', 'white', 'purple', 'red'],
   color: 'purple',
   images: [
@@ -135,7 +135,7 @@ export const ProductPage: React.FC = () => {
 
             <div className="product-page__rightbar">
               <div className="product-page__select-container">
-                <div className="product-page__colours colours">
+                <div className="product-page__colors colors">
                   <p className="product-page__subtitle">Available colors</p>
 
                   <ProductColors

@@ -1,14 +1,31 @@
 /* eslint-disable max-len */
+/* eslint-disable no-console */
+/* eslint-disable operator-linebreak */
 import { BackButton } from 'components/BackButton';
 import React, { useContext, useEffect, useState } from 'react';
 import './CartPage.scss';
 import { Link } from 'react-router-dom';
-import { CartContext } from 'context/CartContext';
+import { AuthContext, CartContext } from 'context';
+import { NavBarRoute } from 'types/NavBarRoute';
+import classNames from 'classnames';
 
 const CLOUDINARY
   = 'https://res.cloudinary.com/myfinance/image/upload/v1693416024/syncwave/';
 
 export const CartPage: React.FC = () => {
+  const { user, isAuth } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  console.log('user', user, 'isAuth', isAuth);
+
+  const onCheckout = () => {
+    if (!user) {
+      navigate(NavBarRoute.Login, { replace: true });
+    } else {
+      navigate(NavBarRoute.Users, { replace: true });
+    }
+  }
+  
   const {
     cart, handleAdd, handleDelete, handleRemove,
   }
@@ -87,7 +104,7 @@ export const CartPage: React.FC = () => {
                         +
                       </button>
                     </div>
-
+                    
                     <p className="cart__product__price">
                       {`$${
                         (product.discountPrice || product.fullPrice)
@@ -103,7 +120,12 @@ export const CartPage: React.FC = () => {
               <h3 className="cart__checkout__full-price">{`$${totalPrice}`}</h3>
               <p className="cart__checkout__total-count">{`Total for ${totalItems} items`}</p>
               <hr className="cart__checkout__line" />
-              <button type="button" className="cart__checkout__button">
+              <button
+                type="button"
+                className="cart__checkout__button"
+                // disabled={!user || products.length === 0}
+                onClick={onCheckout}
+              >
                 Checkout
               </button>
             </section>
