@@ -1,4 +1,4 @@
-const BASE_URL = 'http://localhost:4000';
+const BASE_URL = 'http://localhost:3000';
 // the link should be changed when the server is ready
 
 function wait(delay: number) {

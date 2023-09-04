@@ -23,18 +23,18 @@ export type Color =
 export type Ram = '3GB' | '4GB' | '6GB' | '8GB' | '12GB' | '16GB';
 
 export interface Product {
-  id: string,
-  category_id: number,
-  productId: string,
-  itemId?: string,
-  name: string,
-  fullPrice: number,
-  discountPrice?: number,
-  screen?: string,
-  capacity_id?: number,
-  color?: string,
-  color_id?: number,
-  ram?: string,
-  year?: number,
-  image: string,
+  id: string;
+  category_id: number;
+  productId: string;
+  itemId?: string;
+  name: string;
+  fullPrice: number;
+  discountPrice?: number;
+  screen?: string;
+  capacity_id?: number;
+  color?: string;
+  color_id?: number;
+  ram?: string;
+  year?: number;
+  image: string;
 }
