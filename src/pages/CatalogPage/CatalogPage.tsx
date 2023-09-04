@@ -154,6 +154,7 @@ const products = [
 export const CatalogPage: React.FC<Props> = ({ title }) => {
   const location = useLocation();
   const navigate = useNavigate();
+
   const queryParams = new URLSearchParams(location.search);
   const perPageParam = queryParams.get('perPage') || '4';
   const perSortByParam = queryParams.get('sort');

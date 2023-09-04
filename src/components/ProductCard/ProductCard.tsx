@@ -16,7 +16,11 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
   return (
     <li className="product">
       <div className="product__container">
-        <Link to={product.phoneId} className="product__link">
+        <Link
+          to={`/${product.category}/${product.phoneId}`}
+          relative="path"
+          className="product__link"
+        >
           <div className="product__image-block">
             <img
               src={`${CLOUDINARY}/${product.image}`}
