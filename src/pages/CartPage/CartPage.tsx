@@ -4,16 +4,17 @@
 import { BackButton } from 'components/BackButton';
 import React, { useContext, useEffect, useState } from 'react';
 import './CartPage.scss';
-import { Link } from 'react-router-dom';
-import { AuthContext, CartContext } from 'context';
+import { Link, useNavigate } from 'react-router-dom';
+import { AuthContext, CartContext, MainContext } from 'context';
 import { NavBarRoute } from 'types/NavBarRoute';
 import classNames from 'classnames';
 
-const CLOUDINARY
-  = 'https://res.cloudinary.com/myfinance/image/upload/v1693416024/syncwave/';
+const CLOUDINARY =
+  'https://res.cloudinary.com/myfinance/image/upload/v1693416024/syncwave/';
 
 export const CartPage: React.FC = () => {
   const { user, isAuth } = useContext(AuthContext);
+  const { darkTheme } = useContext(MainContext);
   const navigate = useNavigate();
 
   console.log('user', user, 'isAuth', isAuth);
@@ -24,12 +25,12 @@ export const CartPage: React.FC = () => {
     } else {
       navigate(NavBarRoute.Users, { replace: true });
     }
-  }
-  
+  };
+
   const {
     cart, handleAdd, handleDelete, handleRemove,
-  }
-    = useContext(CartContext);
+  } =
+    useContext(CartContext);
   const [totalPrice, setTotalPrice] = useState(0);
   const [totalItems, setTotalItems] = useState(0);
 
@@ -53,12 +54,20 @@ export const CartPage: React.FC = () => {
         <h1 className="cart__title">Cart</h1>
 
         {cart.length === 0 ? (
-          <h1>There are no products</h1>
+          <div className="cart__block">
+            <h1 className="cart__title">Your cart is empty...</h1>
+            <p className="cart__subtitle">
+              But it&apos;s never too late to fix it!
+            </p>
+            <a className="back-home" href="/home">
+              Go main page
+            </a>
+          </div>
         ) : (
           <div className="cart__content">
             <section className="cart__products">
               {cart.map((product) => (
-                <li className="box cart__product" key={product.productId}>
+                <li className="box cart__product" key={product.itemId}>
                   <div className="cart__product__main">
                     <button
                       className="delete cart__product__button"
@@ -87,7 +96,10 @@ export const CartPage: React.FC = () => {
                     <div className="cart__product__quantity">
                       <button
                         type="button"
-                        className="button is-small cart__product__button"
+                        className={classNames('cart__product__counter-button', {
+                          'cart__product__counter-button__active':
+                            product.count !== 1 && darkTheme,
+                        })}
                         disabled={product.count === 1}
                         onClick={() => handleDelete(product)}
                       >
@@ -98,17 +110,19 @@ export const CartPage: React.FC = () => {
 
                       <button
                         type="button"
-                        className="button is-small cart__product__button"
+                        className={classNames('cart__product__counter-button', {
+                          'cart__product__counter-button__active': darkTheme,
+                        })}
                         onClick={() => handleAdd(product)}
                       >
                         +
                       </button>
                     </div>
-                    
+
                     <p className="cart__product__price">
                       {`$${
-                        (product.discountPrice || product.fullPrice)
-                        * product.count
+                        (product.discountPrice || product.fullPrice) *
+                        product.count
                       }`}
                     </p>
                   </div>

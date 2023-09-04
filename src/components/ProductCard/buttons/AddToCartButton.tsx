@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { CartContext } from 'context';
+import { CartContext, MainContext } from 'context';
 import { useContext } from 'react';
 import { Product } from 'types/Product';
 
@@ -9,8 +9,10 @@ interface Props {
 }
 
 export const AddToCartButton: React.FC<Props> = ({ product, styles }) => {
-  const isAddedToCart = false;
-  const { saveToCart } = useContext(CartContext);
+  const { saveToCart, cart } = useContext(CartContext);
+  const { darkTheme } = useContext(MainContext);
+
+  const isAddedToCart = cart.some((item) => item.itemId === product.itemId);
 
   return (
     <div className="cart-button">
@@ -18,6 +20,7 @@ export const AddToCartButton: React.FC<Props> = ({ product, styles }) => {
         type="button"
         className={classNames(styles[0], {
           [styles[1]]: isAddedToCart,
+          'product__add--dark': darkTheme && isAddedToCart,
         })}
         onClick={() => {
           saveToCart(product);
