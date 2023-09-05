@@ -33,7 +33,7 @@ export const UsersPage: React.FC = () => {
   }, []);
 
   const handleDeleteOrder = (id: number) => {
-    deleteOrder(id).catch((error) => setError(error));
+    deleteOrder(id);
 
     setOrders((prev) => prev.filter((order) => order.id !== id));
   };

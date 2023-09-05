@@ -51,7 +51,7 @@ export const CartPage: React.FC = () => {
       navigate(NavBarRoute.Users, { replace: true });
 
       const data = {
-        userId: 2111,
+        userId: user.id,
         totalPrice,
         quantity: totalItems,
       };
