@@ -15,13 +15,13 @@ export const Search = () => {
   const { darkTheme } = React.useContext(MainContext);
   const [searchParams, setSearchParams] = useSearchParams();
   const inputRef = useRef<null | HTMLInputElement>(null);
-  const query = searchParams.get('query') || '';
-  const [searchValue, setSearchValue] = useState(query);
+  const search = searchParams.get('search') || '';
+  const [searchValue, setSearchValue] = useState(search);
   const location = useLocation();
 
   useMemo(() => {
-    setSearchValue(query);
-  }, [query]);
+    setSearchValue(search);
+  }, [search]);
 
   const searchIsVisible
     = location.pathname === '/phones'
@@ -36,7 +36,7 @@ export const Search = () => {
     (event: React.ChangeEvent<HTMLInputElement>) => {
       setSearchParams(
         getSearchWith(searchParams, {
-          query: event.target.value.trim() || null,
+          search: event.target.value.trim() || null,
         }),
       );
     },
@@ -50,7 +50,7 @@ export const Search = () => {
 
   const resetSearch = () => {
     setSearchValue('');
-    setSearchParams(getSearchWith(searchParams, { query: null }));
+    setSearchParams(getSearchWith(searchParams, { search: null }));
   };
 
   return (
