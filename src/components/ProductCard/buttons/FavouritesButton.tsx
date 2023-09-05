@@ -10,12 +10,9 @@ interface Props {
 
 export const FavouritesButton: React.FC<Props> = ({ product, styles }) => {
   const {
-    products,
-    handleLike,
-    darkTheme,
-    notifyFavs,
-    notifyFavsDelete,
-  } = React.useContext(MainContext);
+    products, handleLike, darkTheme, notifyFavs, notifyFavsDelete,
+  }
+    = React.useContext(MainContext);
 
   const isFav = products.find((curr) => curr.productId === product.productId);
 

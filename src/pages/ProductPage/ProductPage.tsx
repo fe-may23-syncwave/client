@@ -7,6 +7,7 @@ import {
   AddToCartButton,
   FavouritesButton,
 } from 'components/ProductCard/buttons';
+import { capitalizeText } from 'utils/capitalizeText';
 import { ProductsSlider } from 'components/ProductsSlider';
 import { ProductColors } from '../../components/ProductColors';
 import { ProductCapacity } from '../../components/ProductCapacity';
@@ -87,10 +88,6 @@ const productsArray = Array(9)
   }));
 
 const techSpecs = Object.entries(product).slice(-7);
-
-const capitalizeText = (word: string) => {
-  return word[0].toUpperCase() + word.slice(1);
-};
 
 export const ProductPage: React.FC = () => {
   const [mainPhoto, setmainPhoto] = useState<string>(product.images[0]);
