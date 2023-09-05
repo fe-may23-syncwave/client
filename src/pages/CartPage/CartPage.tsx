@@ -12,8 +12,8 @@ import { getCategoryName } from 'utils/getCategoryName';
 import { CATEGORY_ID } from 'utils/constants';
 import './CartPage.scss';
 
-const CLOUDINARY
-  = 'https://res.cloudinary.com/myfinance/image/upload/v1693416024/syncwave/';
+const CLOUDINARY =
+  'https://res.cloudinary.com/myfinance/image/upload/v1693416024/syncwave/';
 
 export const CartPage: React.FC = () => {
   const { user, isAuth } = useContext(AuthContext);
@@ -56,8 +56,7 @@ export const CartPage: React.FC = () => {
         quantity: totalItems,
       };
 
-      postOrder(data)
-        .catch(() => setPostError(true));
+      postOrder(data).catch(() => setPostError(true));
     }
   };
 

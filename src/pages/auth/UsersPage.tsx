@@ -26,15 +26,14 @@ export const UsersPage: React.FC = () => {
       });
 
     getOrders('orders')
-      .then(data => setOrders(data))
+      .then((data) => setOrders(data))
       .catch((error) => {
         setError(error.message);
       });
   }, []);
 
   const handleDeleteOrder = (id: number) => {
-    deleteOrder(id)
-      .catch(error => setError(error));
+    deleteOrder(id).catch((error) => setError(error));
 
     setOrders((prev) => prev.filter((order) => order.id !== id));
   };
