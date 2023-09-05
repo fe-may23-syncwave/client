@@ -1,49 +1,71 @@
-import React from 'react';
-import './HomePage.scss';
-
+/* eslint-disable */
+import React, { useEffect, useState } from 'react';
 import { Slider } from '../../components/Slider';
 import { ProductsSlider } from '../../components/ProductsSlider';
-
-const productForTesting = {
-  id: '6',
-  category_id: 1,
-  productId: 'apple-iphone-11-256gb-green',
-  itemId: 'apple-iphone-11-256gb-green',
-  name: 'Apple iPhone 11 256GB Green',
-  fullPrice: 1172,
-  price: 1115,
-  screen: "6.1' IPS",
-  capacity_id: 1,
-  color: 'green',
-  ram: '4GB',
-  year: 2019,
-  image: 'img/phones/apple-iphone-11/green/00.jpg',
-};
-
-const productsArray = Array(9)
-  .fill(productForTesting)
-  .map((product, index) => ({
-    ...product,
-    productId: (parseInt(product.id, 10) + index).toString(),
-    name: `${product.name} (${index + 1})`,
-  }));
+import { ProductCategories } from '../../components/ProductCategories';
+import { getProducts } from '../../api/phones';
+import { Product } from '../../types/Product';
+import { useLocalStorage } from '../../hooks/useLocalStorage';
 
 export const HomePage: React.FC = () => {
+  const [hotPrices, setHotPrices] = useState<Product[]>([]);
+  const [brandNew, setBrandNew] = useState<Product[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [storedData, setStoredData] = useLocalStorage<Product[]>('productsData', []);
+
+  const processAndSetData = (data: Product[]) => {
+    const discountedProducts = data
+      .filter(product => product.discountPrice !== undefined)
+      .sort((a, b) => (b.fullPrice - (b.discountPrice || b.fullPrice))
+        - (a.fullPrice - (a.discountPrice || a.fullPrice)))
+      .slice(0, 12);
+
+    setHotPrices(discountedProducts);
+
+    const nonDiscountedProducts = data
+      .sort((a, b) => b.fullPrice - a.fullPrice)
+      .slice(0, 12);
+
+    setBrandNew(nonDiscountedProducts);
+  };
+
+  useEffect(() => {
+    if (storedData.length > 0) {
+      processAndSetData(storedData);
+      setLoading(false);
+    } else {
+      getProducts('/products')
+        .then((data: Product[]) => {
+          setStoredData(data);
+          processAndSetData(data);
+          setLoading(false);
+        })
+        .catch(() => {
+          setLoading(false);
+        });
+    }
+  }, [storedData]);
+
+  if (loading) {
+    return <div>Loading</div>;
+  }
+
   return (
     <div className="home-page">
       <h1 className="home-page__title">Welcome to Nice Gadgets store!</h1>
       <Slider />
-      {productsArray.length > 0 && (
-        <ProductsSlider phones={productsArray} title="Brand new models" />
-      )}
 
-      <h2 className="home-page__categories">
-        Shop by category(your advertising could be here)
-      </h2>
+      <ProductsSlider
+        title="Brand new models"
+        phones={brandNew}
+      />
 
-      {productsArray.length > 0 && (
-        <ProductsSlider phones={productsArray} title="Hot prices" />
-      )}
+      <ProductCategories />
+
+      <ProductsSlider
+        title="Hot prices"
+        phones={hotPrices}
+      />
     </div>
   );
 };
