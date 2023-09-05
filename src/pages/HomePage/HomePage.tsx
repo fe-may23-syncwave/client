@@ -6,14 +6,14 @@ import { ProductsSlider } from '../../components/ProductsSlider';
 
 const productForTesting = {
   id: '6',
-  category: 'phones',
-  phoneId: 'apple-iphone-11-256gb-green',
+  category_id: 1,
+  productId: 'apple-iphone-11-256gb-green',
   itemId: 'apple-iphone-11-256gb-green',
   name: 'Apple iPhone 11 256GB Green',
   fullPrice: 1172,
   price: 1115,
   screen: "6.1' IPS",
-  capacity: '256GB',
+  capacity_id: 1,
   color: 'green',
   ram: '4GB',
   year: 2019,
@@ -24,7 +24,7 @@ const productsArray = Array(9)
   .fill(productForTesting)
   .map((product, index) => ({
     ...product,
-    id: (parseInt(product.id, 10) + index).toString(),
+    productId: (parseInt(product.id, 10) + index).toString(),
     name: `${product.name} (${index + 1})`,
   }));
 
