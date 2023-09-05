@@ -36,22 +36,35 @@ export const HomePage: React.FC = () => {
     setBrandNew(nonDiscountedProducts);
   };
 
+  // useEffect(() => {
+  //   if (storedData.length > 0) {
+  //     processAndSetData(storedData);
+  //     setLoading(false);
+  //   } else {
+  //     getProducts('/tablets')
+  //       .then((data: Product[]) => {
+  //         setStoredData(data);
+  //         processAndSetData(data);
+  //         console.log(data);
+  //         setLoading(false);
+  //       })
+  //       .catch(error => {
+  //         console.error(error);
+  //         setLoading(false);
+  //       });
+  //   }
+  // }, [storedData]);
+
   useEffect(() => {
-    if (storedData.length > 0) {
-      processAndSetData(storedData);
-      setLoading(false);
-    } else {
-      getProducts('/products')
-        .then((data: Product[]) => {
-          setStoredData(data);
-          processAndSetData(data);
-          setLoading(false);
-        })
-        .catch(() => {
-          setLoading(false);
-        });
-    }
-  }, [storedData]);
+    getProducts('/products')
+      .then((data: Product[]) => {
+        processAndSetData(data);
+        setLoading(false);
+      })
+      .catch(() => {
+        setLoading(false);
+      });
+  }, []);
 
   if (loading) {
     return <div>Loading</div>;
