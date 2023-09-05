@@ -73,47 +73,47 @@ export const Context: React.FC<Props> = ({ children }) => {
   };
 
   const notifyFavs = () => toast.success('Successfully added to favorites.', {
-    position: 'top-center',
+    position: 'top-right',
     autoClose: 2000,
     hideProgressBar: false,
     closeOnClick: true,
     pauseOnHover: true,
     draggable: true,
     progress: undefined,
-    theme: 'light',
+    theme: darkTheme ? 'dark' : 'light',
   });
 
   const notifyFavsDelete = () => toast.success('Successfully removed from favorites.', {
-    position: 'top-center',
+    position: 'top-right',
     autoClose: 2000,
     hideProgressBar: false,
     closeOnClick: true,
     pauseOnHover: true,
     draggable: true,
     progress: undefined,
-    theme: 'light',
+    theme: darkTheme ? 'dark' : 'light',
   });
 
   const notifyCart = () => toast.success('Successfully added to cart.', {
-    position: 'top-center',
+    position: 'top-right',
     autoClose: 2000,
     hideProgressBar: false,
     closeOnClick: true,
     pauseOnHover: true,
     draggable: true,
     progress: undefined,
-    theme: 'light',
+    theme: darkTheme ? 'dark' : 'light',
   });
 
   const notifyCartDelete = () => toast.success('Successfully removed from cart.', {
-    position: 'top-center',
+    position: 'top-right',
     autoClose: 2000,
     hideProgressBar: false,
     closeOnClick: true,
     pauseOnHover: true,
     draggable: true,
     progress: undefined,
-    theme: 'light',
+    theme: darkTheme ? 'dark' : 'light',
   });
 
   const params = {
