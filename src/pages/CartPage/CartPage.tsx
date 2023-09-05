@@ -7,6 +7,8 @@ import './CartPage.scss';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext, CartContext, MainContext } from 'context';
 import { NavBarRoute } from 'types/NavBarRoute';
+import { getCategoryName } from 'utils/getCategoryName';
+import { CATEGORY_ID } from 'utils/constants';
 import classNames from 'classnames';
 
 const CLOUDINARY =
@@ -46,6 +48,8 @@ export const CartPage: React.FC = () => {
     setTotalPrice(newTotalPrice);
   }, [cart]);
 
+  console.log(cart);
+
   return (
     <>
       <BackButton />
@@ -78,7 +82,10 @@ export const CartPage: React.FC = () => {
                     </button>
 
                     <Link
-                      to={product.productId}
+                      to={`/${getCategoryName(product.category_id, CATEGORY_ID)}/${
+                        product.productId
+                      }`}
+                      relative="path"
                       className="cart__product__link"
                     >
                       <div className="cart__product__image-block">
