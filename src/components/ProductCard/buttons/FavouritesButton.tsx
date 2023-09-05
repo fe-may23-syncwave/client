@@ -9,9 +9,17 @@ interface Props {
 }
 
 export const FavouritesButton: React.FC<Props> = ({ product, styles }) => {
-  const { products, handleLike, darkTheme } = React.useContext(MainContext);
+  const {
+    products,
+    handleLike,
+    darkTheme,
+    notifyFavs,
+    notifyFavsDelete,
+  } = React.useContext(MainContext);
 
   const isFav = products.find((curr) => curr.productId === product.productId);
+
+  const isAddedToFavs = isFav !== undefined;
 
   return (
     <div className="favourites-button">
@@ -21,7 +29,15 @@ export const FavouritesButton: React.FC<Props> = ({ product, styles }) => {
           [styles[1]]: isFav,
           'product__favourites-dark': darkTheme,
         })}
-        onClick={() => handleLike(product)}
+        onClick={() => {
+          handleLike(product);
+
+          if (!isAddedToFavs) {
+            notifyFavs();
+          } else {
+            notifyFavsDelete();
+          }
+        }}
       >
         <p hidden>add to favourites</p>
       </button>

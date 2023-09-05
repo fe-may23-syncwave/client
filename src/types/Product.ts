@@ -32,7 +32,6 @@ export interface Product {
   discountPrice?: number;
   screen?: string;
   capacity_id?: number;
-  color?: string;
   color_id?: number;
   ram?: string;
   year?: number;

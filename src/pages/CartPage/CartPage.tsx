@@ -16,7 +16,7 @@ const CLOUDINARY =
 
 export const CartPage: React.FC = () => {
   const { user, isAuth } = useContext(AuthContext);
-  const { darkTheme } = useContext(MainContext);
+  const { darkTheme, notifyCartDelete } = useContext(MainContext);
   const navigate = useNavigate();
 
   console.log('user', user, 'isAuth', isAuth);
@@ -64,7 +64,7 @@ export const CartPage: React.FC = () => {
               But it&apos;s never too late to fix it!
             </p>
             <a className="back-home" href="/home">
-              Go main page
+              Go to main page
             </a>
           </div>
         ) : (
@@ -76,7 +76,10 @@ export const CartPage: React.FC = () => {
                     <button
                       className="delete cart__product__button"
                       type="button"
-                      onClick={() => handleRemove(product)}
+                      onClick={() => {
+                        handleRemove(product);
+                        notifyCartDelete();
+                      }}
                     >
                       x
                     </button>
