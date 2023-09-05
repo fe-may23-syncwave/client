@@ -7,7 +7,8 @@ import { Product } from 'types/Product';
 import { AddToCartButton, FavouritesButton } from './buttons';
 
 // eslint-disable-next-line max-len
-const CLOUDINARY = 'https://res.cloudinary.com/myfinance/image/upload/v1693416024/syncwave/';
+const CLOUDINARY
+  = 'https://res.cloudinary.com/myfinance/image/upload/v1693416024/syncwave/';
 
 interface Props {
   product: Product;

@@ -82,9 +82,10 @@ export const CartPage: React.FC = () => {
                     </button>
 
                     <Link
-                      to={`/${getCategoryName(product.category_id, CATEGORY_ID)}/${
-                        product.productId
-                      }`}
+                      to={`/${getCategoryName(
+                        product.category_id,
+                        CATEGORY_ID,
+                      )}/${product.productId}`}
                       relative="path"
                       className="cart__product__link"
                     >
