@@ -1,4 +1,4 @@
-/* eslint-disable no-console */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { MainContext } from 'context/MainContext';
 import { ProductsList } from 'pages/ProductsList';
 import React from 'react';
@@ -8,8 +8,6 @@ import './FavoritesPage.scss';
 export const FavoritesPage: React.FC = () => {
   const { favProducts, hasErrorOnFav, products }
     = React.useContext(MainContext);
-
-  console.log(favProducts, hasErrorOnFav);
 
   return (
     <div className="favourites__page">
