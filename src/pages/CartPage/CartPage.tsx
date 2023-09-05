@@ -63,7 +63,7 @@ export const CartPage: React.FC = () => {
             <p className="cart__subtitle">
               But it&apos;s never too late to fix it!
             </p>
-            <a className="back-home" href="/client/#">
+            <a className="back-home" href="#/">
               Go main page
             </a>
           </div>
