@@ -3,9 +3,8 @@
 import React, { useMemo } from 'react';
 import { NavBarRoute } from 'types/NavBarRoute';
 
-import { MainContext } from 'context/MainContext';
-import { CartContext } from 'context';
-        
+import { CartContext, AuthContext, MainContext } from 'context';
+
 import { Link } from './Link';
 import { ReactComponent as FavoritesIcon } from '../../assets/icons/heart_dark.svg';
 import { ReactComponent as FavoritesIconLight } from '../../assets/icons/heart-light.svg';

@@ -16,7 +16,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
     <li className="product">
       <div className="product__container">
         <Link
-          to={`/${product.category}/${product.productId}`}
+          to={`/${product.category_id}/${product.productId}`}
           relative="path"
           className="product__link"
         >
