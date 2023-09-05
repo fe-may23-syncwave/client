@@ -7,6 +7,8 @@ import './CartPage.scss';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext, CartContext, MainContext } from 'context';
 import { NavBarRoute } from 'types/NavBarRoute';
+import { getCategoryName } from 'utils/getCategoryName';
+import { CATEGORY_ID } from 'utils/constants';
 import classNames from 'classnames';
 
 const CLOUDINARY =
@@ -14,7 +16,7 @@ const CLOUDINARY =
 
 export const CartPage: React.FC = () => {
   const { user, isAuth } = useContext(AuthContext);
-  const { darkTheme } = useContext(MainContext);
+  const { darkTheme, notifyCartDelete } = useContext(MainContext);
   const navigate = useNavigate();
 
   console.log('user', user, 'isAuth', isAuth);
@@ -46,6 +48,8 @@ export const CartPage: React.FC = () => {
     setTotalPrice(newTotalPrice);
   }, [cart]);
 
+  console.log(cart);
+
   return (
     <>
       <BackButton />
@@ -72,13 +76,20 @@ export const CartPage: React.FC = () => {
                     <button
                       className="delete cart__product__button"
                       type="button"
-                      onClick={() => handleRemove(product)}
+                      onClick={() => {
+                        handleRemove(product);
+                        notifyCartDelete();
+                      }}
                     >
                       x
                     </button>
 
                     <Link
-                      to={product.productId}
+                      to={`/${getCategoryName(
+                        product.category_id,
+                        CATEGORY_ID,
+                      )}/${product.productId}`}
+                      relative="path"
                       className="cart__product__link"
                     >
                       <div className="cart__product__image-block">

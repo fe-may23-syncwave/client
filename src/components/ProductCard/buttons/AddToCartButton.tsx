@@ -10,7 +10,7 @@ interface Props {
 
 export const AddToCartButton: React.FC<Props> = ({ product, styles }) => {
   const { saveToCart, cart } = useContext(CartContext);
-  const { darkTheme } = useContext(MainContext);
+  const { darkTheme, notifyCart } = useContext(MainContext);
 
   const isAddedToCart = cart.some((item) => item.itemId === product.itemId);
 
@@ -24,7 +24,9 @@ export const AddToCartButton: React.FC<Props> = ({ product, styles }) => {
         })}
         onClick={() => {
           saveToCart(product);
+          notifyCart();
         }}
+        disabled={isAddedToCart}
       >
         {isAddedToCart ? 'Added to cart' : 'Add to cart'}
       </button>

@@ -11,4 +11,8 @@ export type MainContextType = {
   globalSort: string;
   setGlobalPerPage: (v: string) => void;
   setGlobalSort: (v: string) => void;
+  notifyFavs: () => void,
+  notifyCart: () => void,
+  notifyFavsDelete: () => void,
+  notifyCartDelete: () => void,
 };
