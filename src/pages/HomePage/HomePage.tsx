@@ -11,13 +11,20 @@ export const HomePage: React.FC = () => {
   const [hotPrices, setHotPrices] = useState<Product[]>([]);
   const [brandNew, setBrandNew] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
-  const [storedData, setStoredData] = useLocalStorage<Product[]>('productsData', []);
+  const [storedData, setStoredData] = useLocalStorage<Product[]>(
+    'productsData',
+    [],
+  );
 
   const processAndSetData = (data: Product[]) => {
     const discountedProducts = data
-      .filter(product => product.discountPrice !== undefined)
-      .sort((a, b) => (b.fullPrice - (b.discountPrice || b.fullPrice))
-        - (a.fullPrice - (a.discountPrice || a.fullPrice)))
+      .filter((product) => product.discountPrice !== undefined)
+      .sort(
+        (a, b) =>
+          b.fullPrice -
+          (b.discountPrice || b.fullPrice) -
+          (a.fullPrice - (a.discountPrice || a.fullPrice)),
+      )
       .slice(0, 12);
 
     setHotPrices(discountedProducts);
@@ -55,17 +62,11 @@ export const HomePage: React.FC = () => {
       <h1 className="home-page__title">Welcome to Nice Gadgets store!</h1>
       <Slider />
 
-      <ProductsSlider
-        title="Brand new models"
-        phones={brandNew}
-      />
+      <ProductsSlider title="Brand new models" phones={brandNew} />
 
       <ProductCategories />
 
-      <ProductsSlider
-        title="Hot prices"
-        phones={hotPrices}
-      />
+      <ProductsSlider title="Hot prices" phones={hotPrices} />
     </div>
   );
 };
