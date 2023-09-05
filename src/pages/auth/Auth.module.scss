@@ -38,3 +38,79 @@
     color: $color-link;
   }
 }
+
+.Title {
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 1.13;
+  color: $color-primary !important;
+}
+
+.Subtitle {
+  font-size: 21px;
+  font-weight: 600;
+  line-height: 1.13;
+  color: $color-primary !important;
+  margin-bottom: 30px;
+
+  &__text {
+    color: $color-primary !important;
+  }
+
+  &__icon {
+    margin: auto;
+  }
+
+  &__id,
+  &__email {
+    margin: 0 !important;
+  }
+}
+
+td {
+  vertical-align: middle !important;
+}
+
+td:first-child {
+  background: $color-elements;
+  color: $color-primary;
+  width: 20px;
+}
+
+@media (max-width: 700px) {
+  th:nth-child(3),
+  th:nth-child(4),
+  td:nth-child(3),
+  td:nth-child(4) {
+    display: none;
+  }
+
+  .Subtitle__text {
+    width: 20px;
+    padding: 0;
+  }
+
+  .Subtitle__email {
+    display: none;
+  }
+}
+
+.Icon__button {
+  width: 18px;
+  height: 18px;
+  border: none;
+  background-color: $background-card;
+}
+
+.Process {
+  line-height: 38px;
+  width: 160px;
+  font-size: 14px;
+  border: 1px solid $color-buttons;
+  margin-top: 20px;
+  background-color: $color-buttons;
+  color: white;
+  transition:
+    background-color 0.3s,
+    color 0.3s;
+}

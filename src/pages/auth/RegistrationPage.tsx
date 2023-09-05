@@ -24,8 +24,10 @@ export const RegistrationPage: React.FC = () => {
   if (registered) {
     return (
       <section className="">
-        <h1 className="title">Check your email</h1>
-        <p>We have sent you an email with the activation link</p>
+        <h1 className={styles.Title}>Check your email</h1>
+        <p className={styles.Title}>
+          We have sent you an email with the activation link
+        </p>
       </section>
     );
   }
