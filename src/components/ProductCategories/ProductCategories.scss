@@ -1,4 +1,4 @@
-@import "styles/utils/shared";
+@import 'styles/utils/shared';
 
 .product-categories {
   .product-categories__title {
@@ -53,7 +53,6 @@
         font-weight: 700;
         line-height: normal;
         margin-top: 24px;
-
       }
 
       .product-categories__description {
@@ -66,15 +65,15 @@
       }
 
       &:nth-child(1) .product-categories__image-wrapper {
-        background: #6D6474;
+        background: #6d6474;
       }
 
       &:nth-child(2) .product-categories__image-wrapper {
-        background: #D53C51;
+        background: #d53c51;
       }
 
       &:nth-child(3) .product-categories__image-wrapper {
-        background: #6D6474;
+        background: #6d6474;
       }
     }
   }
@@ -95,5 +94,3 @@
     }
   }
 }
-
-

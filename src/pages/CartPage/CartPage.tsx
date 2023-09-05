@@ -48,15 +48,15 @@ export const CartPage: React.FC = () => {
     if (!user) {
       navigate(NavBarRoute.Login, { replace: true });
     } else {
-      navigate(NavBarRoute.Users, { replace: true });
-
       const data = {
         userId: user.id,
         totalPrice,
         quantity: totalItems,
       };
 
-      postOrder(data).catch(() => setPostError(true));
+      postOrder(data)
+        .then(() => navigate(NavBarRoute.Users, { replace: true }))
+        .catch(() => setPostError(true));
     }
   };
 
