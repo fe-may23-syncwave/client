@@ -1,65 +1,44 @@
 /* eslint-disable @typescript-eslint/no-shadow */
+/* eslint-disable no-console */
 import { usePageError } from 'hooks/usePageError';
-import React, { useContext, useState } from 'react';
-// import { userService } from 'services/userService';
+import React, { useContext, useEffect, useState } from 'react';
+import { userService } from 'services/userService';
 import { MainContext } from 'context';
-// import { IUser } from 'types/User';
-import styles from './Auth.module.scss';
+import { deleteOrder, getOrders } from 'api/orders';
+import { IUser } from 'types/User';
+import { Order } from 'types/Order';
 import { ReactComponent as CloseDark } from '../../assets/icons/close-dark.svg';
 import { ReactComponent as Close } from '../../assets/icons/close-light.svg';
+import styles from './Auth.module.scss';
 
 export const UsersPage: React.FC = () => {
-  const [error] = usePageError('');
-  // const [users, setUsers] = useState<IUser[]>([]);
+  const [orders, setOrders] = useState<Order[]>([]);
+  const [error, setError] = usePageError('');
+  const [users, setUsers] = useState<IUser[]>([]);
   const { darkTheme } = useContext(MainContext);
 
-  // useEffect(() => {
-  //   userService
-  //     .getAll()
-  //     .then(({ data }) => setUsers(data))
-  //     .catch((error) => {
-  //       setError(error.message);
-  //     });
-  // }, []);
+  useEffect(() => {
+    userService
+      .getAll()
+      .then(({ data }) => setUsers(data))
+      .catch((error) => {
+        setError(error.message);
+      });
 
-  const orders1 = [
-    {
-      id: 1,
-      userId: 3,
-      totalPrice: 300,
-      quantity: 3,
-      user: {
-        id: 9,
-        email: 'nemac4343@gmail.com',
-      },
-    },
-    {
-      id: 3,
-      userId: 2,
-      totalPrice: 3200,
-      quantity: 5,
-      user: {
-        id: 2,
-        email: 'fantityloc@gmail.com',
-      },
-    },
-    {
-      id: 4,
-      userId: 12,
-      totalPrice: 900,
-      quantity: 1,
-      user: {
-        id: 6,
-        email: 'climentinegirey@gmail.com',
-      },
-    },
-  ];
-
-  const [orders, setOrders] = useState(orders1);
+    getOrders('orders')
+      .then((data) => setOrders(data))
+      .catch((error) => {
+        setError(error.message);
+      });
+  }, []);
 
   const handleDeleteOrder = (id: number) => {
+    deleteOrder(id).catch((error) => setError(error));
+
     setOrders((prev) => prev.filter((order) => order.id !== id));
   };
+
+  console.log(users);
 
   return (
     <div className="content">
