@@ -2,11 +2,10 @@ import React from 'react';
 import './ProductCard.scss';
 import { Link } from 'react-router-dom';
 import { getCategoryName } from 'utils/getCategoryName';
-import { CAPACITY_ID, CATEGORY_ID } from 'utils/constants';
+import { CAPACITY_ID, CATEGORY_ID, COLOR_ID } from 'utils/constants';
 import { Product } from 'types/Product';
 import { AddToCartButton, FavouritesButton } from './buttons';
 
-// eslint-disable-next-line max-len
 const CLOUDINARY
   = 'https://res.cloudinary.com/myfinance/image/upload/v1693416024/syncwave/';
 
@@ -14,7 +13,50 @@ interface Props {
   product: Product;
 }
 
+// const tablet = {
+//   id: 98,
+//   category_id: 2,
+//   productId: 'apple-ipad-mini-6-256gb-purple',
+//   itemId: 'apple-ipad-mini-6-256gb-purple',
+//   name: 'Apple iPad Mini 6 256GB Purple',
+//   fullPrice: 972,
+//   discountPrice: 874,
+//   screen: "8,3' IPS",
+//   capacity_id: 4,
+//   color_id: 9,
+//   ram: '4GB',
+//   year: 2021,
+//   image: 'img/tablets/apple-ipad-mini-6/purple/00.jpg',
+// };
+
+// const product = {
+//   id: 111,
+//   category_id: 3,
+//   productId: 'iphone-7-silicon-case-red',
+//   itemId: null,
+//   name: 'iPhone 7 Silicone Case Red',
+//   fullPrice: 49,
+//   discountPrice: null,
+//   screen: null,
+//   capacity_id: null,
+//   color_id: 7,
+//   ram: null,
+//   year: null,
+//   image: 'img/accessories/iphone-7-cases/red/00.jpg',
+// };
+
 export const ProductCard: React.FC<Props> = ({ product }) => {
+  const techSpecsTechnics = [
+    ['Screen', product.screen],
+    ['Capacity', getCategoryName(product.capacity_id || 0, CAPACITY_ID)],
+    ['RAM', product.ram],
+  ];
+
+  const techSpecsAscesories = [
+    ['Color', getCategoryName(product.color_id || 0, COLOR_ID)],
+    ['Made in', 'USA'],
+  ];
+
   return (
     <li className="product">
       <div className="product__container">
@@ -46,21 +88,20 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
           )}
         </div>
 
-        <div className="product__info">
-          <div className="product__info-block">
-            <p className="product__info-title">Screen</p>
-            <p className="product__info-data">{product.screen}</p>
-          </div>
-          <div className="product__info-block">
-            <p className="product__info-title">Capacity</p>
-            {product.capacity_id !== undefined
-              ? getCategoryName(product.capacity_id, CAPACITY_ID)
-              : ''}
-          </div>
-          <div className="product__info-block">
-            <p className="product__info-title">RAM</p>
-            <p className="product__info-data">{product.ram}</p>
-          </div>
+        <div className="product__techspecs">
+          {product.category_id === 1 || product.category_id === 2
+            ? techSpecsTechnics.map((spec) => (
+              <div className="product__techspecs-block" key={spec[0]}>
+                <p className="product__techspecs-title">{spec[0]}</p>
+                <p className="product__techspecs-data">{spec[1]}</p>
+              </div>
+            ))
+            : techSpecsAscesories.map((spec) => (
+              <div className="product__techspecs-block" key={spec[0]}>
+                <p className="product__techspecs-title">{spec[0]}</p>
+                <p className="product__techspecs-data">{spec[1]}</p>
+              </div>
+            ))}
         </div>
 
         <div className="product__buttons">

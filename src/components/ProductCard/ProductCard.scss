@@ -108,7 +108,7 @@
     text-decoration: line-through;
   }
 
-  &__info {
+  &__techspecs {
     display: flex;
     flex-direction: column;
     gap: 8px;
@@ -116,14 +116,14 @@
     padding-bottom: 8px;
   }
 
-  &__info-block {
+  &__techspecs-block {
     display: flex;
     justify-content: space-between;
     font-size: 12px;
     font-weight: 700;
   }
 
-  &__info-title {
+  &__techspecs-title {
     color: $color-secondary;
   }
 
