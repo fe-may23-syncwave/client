@@ -1,18 +1,18 @@
-@import 'styles/utils/shared';
+@import 'styles/utils/shared'; //
 
-.colours {
+.colors {
   display: flex;
   flex-direction: column;
   padding-bottom: 24px;
   position: relative;
 
-  &__content {
+  &__container {
     display: flex;
     flex-direction: row;
     gap: 8px;
   }
 
-  &__colour {
+  &__color {
     height: 32px;
     width: 32px;
     border-radius: 50%;

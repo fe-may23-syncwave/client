@@ -1,8 +1,10 @@
 /* eslint-disable no-console */
 /* eslint-disable max-len */
-import React, { useState } from 'react';
+import React, { useMemo } from 'react';
 import { NavBarRoute } from 'types/NavBarRoute';
-import { MainContext, AuthContext } from 'context';
+
+import { CartContext, AuthContext, MainContext } from 'context';
+
 import { Link } from './Link';
 import { ReactComponent as FavoritesIcon } from '../../assets/icons/heart_dark.svg';
 import { ReactComponent as FavoritesIconLight } from '../../assets/icons/heart-light.svg';
@@ -23,7 +25,11 @@ export const NavBarIcons: React.FC<Props> = ({
   className,
   onClick = () => {},
 }) => {
-  const [cartCounter] = useState(3);
+  const { cart } = React.useContext(CartContext);
+
+  const cartCounter = useMemo(() => {
+    return cart.reduce((acc, { count }) => acc + count, 0);
+  }, [cart]);
 
   const { products, darkTheme } = React.useContext(MainContext);
   const { isAuth, logout } = React.useContext(AuthContext);

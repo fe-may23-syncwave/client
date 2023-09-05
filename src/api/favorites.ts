@@ -1,6 +1,6 @@
-import { Phone } from 'types/PhoneType';
+import { Product } from 'types/Product';
 import { client } from '../utils/fetchPhones';
 
 export const getFavorites = (url: string) => {
-  return client.get<Phone[]>(url);
+  return client.get<Product[]>(url);
 };

@@ -14,19 +14,19 @@ import { BackButton } from '../../components/BackButton';
 import { BreadCrumbs } from '../../components/BreadCrumbs';
 
 const productForTesting = {
-  id: '6',
-  category: 'phones',
-  phoneId: 'apple-iphone-11-256gb-green',
-  itemId: 'apple-iphone-11-256gb-green',
-  name: 'Apple iPhone 11 256GB Green',
-  fullPrice: 1172,
-  price: 1115,
-  screen: "6.1' IPS",
-  capacity: '256GB',
-  color: 'green',
-  ram: '4GB',
-  year: 2019,
-  image: 'img/phones/apple-iphone-11/green/00.jpg',
+  id: '5',
+  category_id: 1,
+  productId: 'apple-iphone-7-32gb-black',
+  itemId: 'apple-iphone-7-32gb-black',
+  name: 'Apple iPhone 7 32GB Black',
+  fullPrice: 400,
+  discountPrice: 375,
+  screen: "4.7' IPS",
+  capacity_id: 1,
+  color_id: 1,
+  ram: '2GB',
+  year: 2016,
+  image: 'img/phones/apple-iphone-7/black/00.jpg',
 };
 // add to avoid errors, should be delete when db is ready
 
@@ -36,8 +36,8 @@ const product = {
   name: 'Apple iPhone 11 64GB Purple',
   capacityAvailable: ['64GB', '128GB', '256GB'],
   capacity: '64GB',
-  priceRegular: 932,
-  priceDiscount: 880,
+  priceRegular: 932, // fullPrice
+  priceDiscount: 880, // discountPrice
   colorsAvailable: ['black', 'green', 'yellow', 'white', 'purple', 'red'],
   color: 'purple',
   images: [
@@ -135,7 +135,7 @@ export const ProductPage: React.FC = () => {
 
             <div className="product-page__rightbar">
               <div className="product-page__select-container">
-                <div className="product-page__colours colours">
+                <div className="product-page__colors colors">
                   <p className="product-page__subtitle">Available colors</p>
 
                   <ProductColors

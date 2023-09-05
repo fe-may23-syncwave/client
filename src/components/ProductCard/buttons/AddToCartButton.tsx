@@ -1,14 +1,18 @@
 import classNames from 'classnames';
-import { Phone } from 'types/PhoneType';
+import { CartContext, MainContext } from 'context';
+import { useContext } from 'react';
+import { Product } from 'types/Product';
 
 interface Props {
-  product: Phone;
   styles: string[];
+  product: Product;
 }
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const AddToCartButton: React.FC<Props> = ({ product, styles }) => {
-  const isAddedToCart = false;
+  const { saveToCart, cart } = useContext(CartContext);
+  const { darkTheme, notifyCart } = useContext(MainContext);
+
+  const isAddedToCart = cart.some((item) => item.itemId === product.itemId);
 
   return (
     <div className="cart-button">
@@ -16,7 +20,13 @@ export const AddToCartButton: React.FC<Props> = ({ product, styles }) => {
         type="button"
         className={classNames(styles[0], {
           [styles[1]]: isAddedToCart,
+          'product__add--dark': darkTheme && isAddedToCart,
         })}
+        onClick={() => {
+          saveToCart(product);
+          notifyCart();
+        }}
+        disabled={isAddedToCart}
       >
         {isAddedToCart ? 'Added to cart' : 'Add to cart'}
       </button>

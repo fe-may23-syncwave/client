@@ -1,22 +1,30 @@
-/* eslint-disable max-len */
 import React from 'react';
 import './ProductCard.scss';
 import { Link } from 'react-router-dom';
-import { Phone } from '../../types/PhoneType';
+import { getCategoryName } from 'utils/getCategoryName';
+import { CAPACITY_ID, CATEGORY_ID } from 'utils/constants';
+import { Product } from 'types/Product';
 import { AddToCartButton, FavouritesButton } from './buttons';
 
+// eslint-disable-next-line max-len
 const CLOUDINARY
   = 'https://res.cloudinary.com/myfinance/image/upload/v1693416024/syncwave/';
 
 interface Props {
-  product: Phone;
+  product: Product;
 }
 
 export const ProductCard: React.FC<Props> = ({ product }) => {
   return (
     <li className="product">
       <div className="product__container">
-        <Link to={product.phoneId} className="product__link">
+        <Link
+          to={`/${getCategoryName(product.category_id, CATEGORY_ID)}/${
+            product.productId
+          }`}
+          relative="path"
+          className="product__link"
+        >
           <div className="product__image-block">
             <img
               src={`${CLOUDINARY}/${product.image}`}
@@ -24,12 +32,18 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
               className="product__image"
             />
           </div>
-          <h2 className="product__title">{`${product.name} (XXXXX)`}</h2>
+          <h2 className="product__title">{`${product.name} XXXX`}</h2>
         </Link>
 
         <div className="product__prices">
-          <p className="product__price">{`$${product.price}`}</p>
-          <p className="product__price-full">{`$${product.fullPrice}`}</p>
+          <p className="product__price">
+            {product.discountPrice
+              ? `$${product.discountPrice}`
+              : `$${product.fullPrice}`}
+          </p>
+          {product.discountPrice && (
+            <p className="product__price-full">{`$${product.fullPrice}`}</p>
+          )}
         </div>
 
         <div className="product__info">
@@ -39,7 +53,9 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
           </div>
           <div className="product__info-block">
             <p className="product__info-title">Capacity</p>
-            <p className="product__info-data">{product.capacity}</p>
+            {product.capacity_id !== undefined
+              ? getCategoryName(product.capacity_id, CAPACITY_ID)
+              : ''}
           </div>
           <div className="product__info-block">
             <p className="product__info-title">RAM</p>

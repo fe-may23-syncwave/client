@@ -1,7 +1,10 @@
+/* eslint-disable max-len */
 import { getFavorites } from 'api/favorites';
 import React, { createContext, useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { MainContextType } from 'types/MainContext';
-import { Phone } from 'types/PhoneType';
+import { Product } from 'types/Product';
 import { useLocalStorage } from 'utils/localStorageHook';
 
 export const MainContext = createContext<MainContextType>({
@@ -15,6 +18,10 @@ export const MainContext = createContext<MainContextType>({
   globalSort: 'all',
   setGlobalPerPage: () => {},
   setGlobalSort: () => {},
+  notifyFavs: () => {},
+  notifyCart: () => {},
+  notifyFavsDelete: () => {},
+  notifyCartDelete: () => {},
 });
 
 interface Props {
@@ -22,7 +29,7 @@ interface Props {
 }
 
 export const Context: React.FC<Props> = ({ children }) => {
-  const [products, setProducts] = useLocalStorage<Phone[]>(
+  const [products, setProducts] = useLocalStorage<Product[]>(
     'favorite-products',
     [],
   );
@@ -31,7 +38,7 @@ export const Context: React.FC<Props> = ({ children }) => {
     false,
   );
 
-  const [favProducts, setFavProducts] = useState<Phone[]>([]);
+  const [favProducts, setFavProducts] = useState<Product[]>([]);
   const [hasErrorOnFav, setHasErrorOnFav] = useState(false);
 
   const [globalPerPage, setGlobalPerPage] = useState('4');
@@ -43,12 +50,12 @@ export const Context: React.FC<Props> = ({ children }) => {
       .catch(() => setHasErrorOnFav(true));
   }, []);
 
-  const handleLike = (product: Phone) => {
-    const isFav = products.find((curr) => curr.phoneId === product.phoneId);
+  const handleLike = (product: Product) => {
+    const isFav = products.find((curr) => curr.productId === product.productId);
 
     if (isFav) {
       const newSet = products.filter(
-        (curr) => curr.phoneId !== product.phoneId,
+        (curr) => curr.productId !== product.productId,
       );
 
       setProducts(newSet);
@@ -65,6 +72,50 @@ export const Context: React.FC<Props> = ({ children }) => {
     setDarkTheme(!darkTheme);
   };
 
+  const notifyFavs = () => toast.success('Successfully added to favorites.', {
+    position: 'top-center',
+    autoClose: 2000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: 'light',
+  });
+
+  const notifyFavsDelete = () => toast.success('Successfully removed from favorites.', {
+    position: 'top-center',
+    autoClose: 2000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: 'light',
+  });
+
+  const notifyCart = () => toast.success('Successfully added to cart.', {
+    position: 'top-center',
+    autoClose: 2000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: 'light',
+  });
+
+  const notifyCartDelete = () => toast.success('Successfully removed from cart.', {
+    position: 'top-center',
+    autoClose: 2000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: 'light',
+  });
+
   const params = {
     favProducts,
     hasErrorOnFav,
@@ -76,6 +127,10 @@ export const Context: React.FC<Props> = ({ children }) => {
     globalSort,
     setGlobalPerPage,
     setGlobalSort,
+    notifyFavs,
+    notifyCart,
+    notifyFavsDelete,
+    notifyCartDelete,
   };
 
   return <MainContext.Provider value={params}>{children}</MainContext.Provider>;
