@@ -3,13 +3,14 @@
 /* eslint-disable operator-linebreak */
 import { BackButton } from 'components/BackButton';
 import React, { useContext, useEffect, useState } from 'react';
-import './CartPage.scss';
+import classNames from 'classnames';
+import { postOrder } from 'api/orders';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext, CartContext, MainContext } from 'context';
 import { NavBarRoute } from 'types/NavBarRoute';
 import { getCategoryName } from 'utils/getCategoryName';
 import { CATEGORY_ID } from 'utils/constants';
-import classNames from 'classnames';
+import './CartPage.scss';
 
 const CLOUDINARY =
   'https://res.cloudinary.com/myfinance/image/upload/v1693416024/syncwave/';
@@ -19,22 +20,17 @@ export const CartPage: React.FC = () => {
   const { darkTheme, notifyCartDelete } = useContext(MainContext);
   const navigate = useNavigate();
 
-  console.log('user', user, 'isAuth', isAuth);
-
-  const onCheckout = () => {
-    if (!user) {
-      navigate(NavBarRoute.Login, { replace: true });
-    } else {
-      navigate(NavBarRoute.Users, { replace: true });
-    }
-  };
-
   const {
     cart, handleAdd, handleDelete, handleRemove,
   } =
     useContext(CartContext);
   const [totalPrice, setTotalPrice] = useState(0);
   const [totalItems, setTotalItems] = useState(0);
+
+  const [postError, setPostError] = useState(false);
+
+  console.log('user', user, 'isAuth', isAuth);
+  console.log(postError);
 
   useEffect(() => {
     const newTotalPrice = cart.reduce(
@@ -48,7 +44,21 @@ export const CartPage: React.FC = () => {
     setTotalPrice(newTotalPrice);
   }, [cart]);
 
-  console.log(cart);
+  const onCheckout = () => {
+    if (!user) {
+      navigate(NavBarRoute.Login, { replace: true });
+    } else {
+      const data = {
+        userId: user.id,
+        totalPrice,
+        quantity: totalItems,
+      };
+
+      postOrder(data)
+        .then(() => navigate(NavBarRoute.Users, { replace: true }))
+        .catch(() => setPostError(true));
+    }
+  };
 
   return (
     <>
@@ -94,7 +104,7 @@ export const CartPage: React.FC = () => {
                     >
                       <div className="cart__product__image-block">
                         <img
-                          src={`${CLOUDINARY}/${product.image}`}
+                          src={`${CLOUDINARY}${product.image}`}
                           alt={product.name}
                           className="cart__product__image"
                         />
