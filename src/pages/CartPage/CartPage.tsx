@@ -75,7 +75,9 @@ export const CartPage: React.FC = () => {
       <div className="cart__page">
         <h1 className="cart__title">Cart</h1>
 
-        {cart.length === 0 ? <EmptyPage title="cart" /> : (
+        {cart.length === 0 ? (
+          <EmptyPage title="cart" />
+        ) : (
           <div className="cart__content">
             <section className="cart__products">
               {cart.map((product) => (
