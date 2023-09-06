@@ -46,7 +46,7 @@ export const UsersPage: React.FC = () => {
 
       {error && <p className="notification is-danger is-light">{error}</p>}
 
-      {orders.length > 0 && !error && (
+      {orders.length > 0 && (
         <>
           <table className={styles.Admin__block}>
             <thead>
