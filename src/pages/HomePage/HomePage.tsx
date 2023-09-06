@@ -5,16 +5,12 @@ import { ProductsSlider } from '../../components/ProductsSlider';
 import { ProductCategories } from '../../components/ProductCategories';
 import { getBestDiscount, getHighPrices } from '../../api/products';
 import { Product } from '../../types/Product';
-// import { useLocalStorage } from '../../hooks/useLocalStorage';
 import './HomePage.scss';
+import { Typography } from 'components/common/Typography';
 
 export const HomePage: React.FC = () => {
   const [hotPrices, setHotPrices] = useState<Product[]>([]);
   const [brandNew, setBrandNew] = useState<Product[]>([]);
-  // const [storedData, setStoredData] = useLocalStorage<Product[]>(
-  //   'productsData',
-  //   [],
-  // );
 
   useEffect(() => {
     getHighPrices()
@@ -22,7 +18,7 @@ export const HomePage: React.FC = () => {
         const { hightPrice } = response;
         setBrandNew(hightPrice);
       })
-      .catch(error => {
+      .catch((error) => {
         console.error('HomePage Error:', error);
       });
 
@@ -31,14 +27,17 @@ export const HomePage: React.FC = () => {
         const { bestDiscount } = response;
         setHotPrices(bestDiscount);
       })
-      .catch(error => {
+      .catch((error) => {
         console.error('HomePage Error:', error);
       });
   }, []);
 
   return (
     <div className="home-page">
-      <h1 className="home-page__title">Welcome to Nice Gadgets store!</h1>
+      <Typography type="h1" className="home-page__title">
+        Welcome to Nice Gadgets store!
+      </Typography>
+
       <Slider />
 
       <ProductsSlider title="Brand new models" phones={brandNew} />
