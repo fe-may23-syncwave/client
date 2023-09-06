@@ -3,6 +3,7 @@ import './ProductCard.scss';
 import { Link } from 'react-router-dom';
 import { getCategoryName } from 'utils/getCategoryName';
 import { CAPACITY_ID, CATEGORY_ID, COLOR_ID } from 'utils/constants';
+import { createId } from 'utils/createId';
 import { Product } from 'types/Product';
 import { AddToCartButton, FavouritesButton } from './buttons';
 
@@ -14,6 +15,8 @@ interface Props {
 }
 
 export const ProductCard: React.FC<Props> = ({ product }) => {
+  const ID = createId(product.productId);
+
   const techSpecsTechnics = [
     ['Screen', product.screen],
     ['Capacity', getCategoryName(product.capacity_id || 0, CAPACITY_ID)],
@@ -42,7 +45,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
               className="product__image"
             />
           </div>
-          <h2 className="product__title">{`${product.name} XXXX`}</h2>
+          <h2 className="product__title">{`${product.name} (${ID})`}</h2>
         </Link>
 
         <div className="product__prices">

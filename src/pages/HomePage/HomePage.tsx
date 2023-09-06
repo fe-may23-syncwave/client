@@ -3,9 +3,17 @@ import React, { useEffect, useState } from 'react';
 import { Slider } from '../../components/Slider';
 import { ProductsSlider } from '../../components/ProductsSlider';
 import { ProductCategories } from '../../components/ProductCategories';
-import { getProducts } from '../../api/products';
+import { getBestDiscount, getHighPrices, getProducts } from '../../api/products';
 import { Product } from '../../types/Product';
 import { useLocalStorage } from '../../hooks/useLocalStorage';
+
+interface BestDiscountResponse {
+  bestDiscount: Product[];
+}
+
+interface NewestResponse {
+  newest: Product[];
+}
 
 export const HomePage: React.FC = () => {
   const [hotPrices, setHotPrices] = useState<Product[]>([]);
@@ -16,55 +24,31 @@ export const HomePage: React.FC = () => {
     [],
   );
 
-  const processAndSetData = (data: Product[]) => {
-    const discountedProducts = data
-      .filter((product) => product.discountPrice !== undefined)
-      .sort(
-        (a, b) =>
-          b.fullPrice -
-          (b.discountPrice || b.fullPrice) -
-          (a.fullPrice - (a.discountPrice || a.fullPrice)),
-      )
-      .slice(0, 12);
-
-    setHotPrices(discountedProducts);
-
-    const nonDiscountedProducts = data
-      .sort((a, b) => b.fullPrice - a.fullPrice)
-      .slice(0, 12);
-
-    setBrandNew(nonDiscountedProducts);
-  };
-
-  // useEffect(() => {
-  //   if (storedData.length > 0) {
-  //     processAndSetData(storedData);
-  //     setLoading(false);
-  //   } else {
-  //     getProducts('/tablets')
-  //       .then((data: Product[]) => {
-  //         setStoredData(data);
-  //         processAndSetData(data);
-  //         console.log(data);
-  //         setLoading(false);
-  //       })
-  //       .catch(error => {
-  //         console.error(error);
-  //         setLoading(false);
-  //       });
-  //   }
-  // }, [storedData]);
-
   useEffect(() => {
-    getProducts('/products')
-      .then((data: Product[]) => {
-        processAndSetData(data);
+    getHighPrices()
+      .then((response) => {
+        const { hightPrice } = response;
+        setBrandNew(hightPrice);
+      })
+      .catch(() => {
         setLoading(false);
+      });
+
+    getBestDiscount()
+      .then((response) => {
+        const { bestDiscount } = response;
+        setHotPrices(bestDiscount);
       })
       .catch(() => {
         setLoading(false);
       });
   }, []);
+
+  useEffect(() => {
+    if (brandNew.length > 0 && hotPrices.length > 0) {
+      setLoading(false);
+    }
+  }, [brandNew, hotPrices]);
 
   if (loading) {
     return <div>Loading</div>;
