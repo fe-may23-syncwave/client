@@ -20,6 +20,7 @@
     @media (min-width: 730px) {
       display: flex;
       align-items: center;
+      height: 100%;
     }
   }
 
@@ -51,6 +52,7 @@
     letter-spacing: 0.48px;
     text-transform: uppercase;
     padding: 8px;
+    height: 100%;
 
     @include transition;
 
@@ -94,7 +96,8 @@
     height: inherit;
     width: 50%;
     min-width: 64px;
-    border: 1px solid $color-secondary;
+    border-left: 1px solid $color-secondary;
+    border-top: 1px solid $color-secondary;
 
     &__icon {
       position: relative;
