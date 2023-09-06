@@ -2,14 +2,14 @@
 
 .search {
   &__form {
-    height: 63px;
-    display: flex;
-    padding-left: 8px;
-    border: 1px solid var(--color-elements);
+    display: none;
 
     @include onTablet {
       // padding-left: 12px;
-      height: 47px;
+      display: flex;
+      height: 100%;
+      padding-left: 8px;
+      border: 1px solid $color-elements;
     }
 
     @include onDesktop {
