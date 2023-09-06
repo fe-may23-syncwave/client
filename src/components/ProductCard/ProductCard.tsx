@@ -13,38 +13,6 @@ interface Props {
   product: Product;
 }
 
-// const tablet = {
-//   id: 98,
-//   category_id: 2,
-//   productId: 'apple-ipad-mini-6-256gb-purple',
-//   itemId: 'apple-ipad-mini-6-256gb-purple',
-//   name: 'Apple iPad Mini 6 256GB Purple',
-//   fullPrice: 972,
-//   discountPrice: 874,
-//   screen: "8,3' IPS",
-//   capacity_id: 4,
-//   color_id: 9,
-//   ram: '4GB',
-//   year: 2021,
-//   image: 'img/tablets/apple-ipad-mini-6/purple/00.jpg',
-// };
-
-// const product = {
-//   id: 111,
-//   category_id: 3,
-//   productId: 'iphone-7-silicon-case-red',
-//   itemId: null,
-//   name: 'iPhone 7 Silicone Case Red',
-//   fullPrice: 49,
-//   discountPrice: null,
-//   screen: null,
-//   capacity_id: null,
-//   color_id: 7,
-//   ram: null,
-//   year: null,
-//   image: 'img/accessories/iphone-7-cases/red/00.jpg',
-// };
-
 export const ProductCard: React.FC<Props> = ({ product }) => {
   const techSpecsTechnics = [
     ['Screen', product.screen],
