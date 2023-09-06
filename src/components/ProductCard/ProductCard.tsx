@@ -15,7 +15,7 @@ interface Props {
 }
 
 export const ProductCard: React.FC<Props> = ({ product }) => {
-  const ID = createId(product.productId);
+  const ID = createId(product.itemId);
 
   const techSpecsTechnics = [
     ['Screen', product.screen],
