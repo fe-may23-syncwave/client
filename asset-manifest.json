@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/client/static/css/main.c8d32c31.css",
-    "main.js": "/client/static/js/main.026c0fac.js",
+    "main.css": "/client/static/css/main.a97e7edf.css",
+    "main.js": "/client/static/js/main.d8472b21.js",
     "static/css/955.31d97cdc.chunk.css": "/client/static/css/955.31d97cdc.chunk.css",
     "static/js/955.91f8ab63.chunk.js": "/client/static/js/955.91f8ab63.chunk.js",
     "static/css/596.758d091e.chunk.css": "/client/static/css/596.758d091e.chunk.css",
@@ -27,6 +27,7 @@
     "static/media/fa-brands-400.ttf": "/client/static/media/fa-brands-400.016b4a6cdced82ab3aa1.ttf",
     "static/media/fa-solid-900.woff2": "/client/static/media/fa-solid-900.b6879d41b0852f01ed5b.woff2",
     "static/media/fa-brands-400.woff2": "/client/static/media/fa-brands-400.878f31251d960bd6266f.woff2",
+    "static/media/email-marketing.png": "/client/static/media/email-marketing.0f5bbfbc93a4f4048df1.png",
     "static/media/fa-regular-400.ttf": "/client/static/media/fa-regular-400.50701fbb8177c2dde530.ttf",
     "static/media/banner-accessories.png": "/client/static/media/banner-accessories.bdd2e0fca0159e52f41c.png",
     "static/media/fa-regular-400.woff2": "/client/static/media/fa-regular-400.b041b1fa4fe241b23445.woff2",
@@ -57,8 +58,8 @@
     "static/media/moonIcon.svg": "/client/static/media/moonIcon.27ca3a0067236b9562ac5183f9377b51.svg",
     "static/media/logout.svg": "/client/static/media/logout.774d90503ef14bd20f35e5fe2e77ce83.svg",
     "static/media/logout-light.svg": "/client/static/media/logout-light.af23af3cf34e24d5f1f9f744a37b7dde.svg",
-    "main.c8d32c31.css.map": "/client/static/css/main.c8d32c31.css.map",
-    "main.026c0fac.js.map": "/client/static/js/main.026c0fac.js.map",
+    "main.a97e7edf.css.map": "/client/static/css/main.a97e7edf.css.map",
+    "main.d8472b21.js.map": "/client/static/js/main.d8472b21.js.map",
     "955.31d97cdc.chunk.css.map": "/client/static/css/955.31d97cdc.chunk.css.map",
     "955.91f8ab63.chunk.js.map": "/client/static/js/955.91f8ab63.chunk.js.map",
     "596.758d091e.chunk.css.map": "/client/static/css/596.758d091e.chunk.css.map",
@@ -77,7 +78,7 @@
     "850.d838797c.chunk.js.map": "/client/static/js/850.d838797c.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.c8d32c31.css",
-    "static/js/main.026c0fac.js"
+    "static/css/main.a97e7edf.css",
+    "static/js/main.d8472b21.js"
   ]
 }
