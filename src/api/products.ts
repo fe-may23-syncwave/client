@@ -28,7 +28,7 @@ export const getNewest = (): Promise<NewestResponse> => {
 };
 
 export function getProductById(productId: string) {
-  const url = `/products?productId=${productId}`;
+  const url = `products/${productId}`;
 
   const product = client.get<Product>(url);
 
