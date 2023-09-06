@@ -141,6 +141,7 @@
     height: 274px;
     width: 274px;
     object-fit: contain;
+    background-color: $color-white;
 
     @include onMobile {
       margin-bottom: 16px;
@@ -152,8 +153,8 @@
     }
 
     @include onDesktop {
-      height: 442px;
-      width: 442px;
+      height: 464px;
+      width: 464px;
     }
   }
 

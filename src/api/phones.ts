@@ -1,4 +1,4 @@
-import { Product } from 'types/Product';
+import { Product, ProductWithDetails } from 'types/Product';
 import { client } from '../utils/fetchClient';
 import {
   BestDiscountResponse,
@@ -21,6 +21,14 @@ export function getProductById(productId: string) {
   const url = `/products?productId=${productId}`;
 
   const product = client.get<Product>(url);
+
+  return product;
+}
+
+export function getProductByIdWihDetails(link: string) {
+  const url = link;
+
+  const product = client.get<ProductWithDetails>(url);
 
   return product;
 }
