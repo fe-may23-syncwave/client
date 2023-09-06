@@ -2,6 +2,8 @@
 /* eslint-disable no-console */
 import { usePageError } from 'hooks/usePageError';
 import React, { useContext, useEffect, useState } from 'react';
+import useWindowSize from 'react-use/lib/useWindowSize';
+import Confetti from 'react-confetti';
 import { userService } from 'services/userService';
 import { MainContext } from 'context';
 import { deleteOrder, getOrders } from 'api/orders';
@@ -16,6 +18,9 @@ export const UsersPage: React.FC = () => {
   const [error, setError] = usePageError('');
   const [users, setUsers] = useState<IUser[]>([]);
   const { darkTheme } = useContext(MainContext);
+
+  const { width, height } = useWindowSize();
+  const [showConfetti, setShowConfetti] = useState(false);
 
   useEffect(() => {
     userService
@@ -36,6 +41,13 @@ export const UsersPage: React.FC = () => {
     deleteOrder(id);
 
     setOrders((prev) => prev.filter((order) => order.id !== id));
+  };
+
+  const startConfetti = () => {
+    setShowConfetti(true);
+    setTimeout(() => {
+      setShowConfetti(false);
+    }, 8000);
   };
 
   console.log(users);
@@ -100,9 +112,14 @@ export const UsersPage: React.FC = () => {
               ))}
             </tbody>
           </table>
-          <button type="button" className={styles.Process}>
+          <button
+            type="button"
+            className={styles.Process}
+            onClick={startConfetti}
+          >
             Send for processing
           </button>
+          {showConfetti && <Confetti width={width} height={height} />}
         </>
       )}
     </div>
