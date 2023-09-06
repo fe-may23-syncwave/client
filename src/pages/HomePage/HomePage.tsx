@@ -6,23 +6,15 @@ import { ProductCategories } from '../../components/ProductCategories';
 import {
   getBestDiscount,
   getHighPrices,
-  getProducts,
 } from '../../api/products';
 import { Product } from '../../types/Product';
+import { Loader } from 'components/common/Loader';
 import { useLocalStorage } from '../../hooks/useLocalStorage';
-
-interface BestDiscountResponse {
-  bestDiscount: Product[];
-}
-
-interface NewestResponse {
-  newest: Product[];
-}
 
 export const HomePage: React.FC = () => {
   const [hotPrices, setHotPrices] = useState<Product[]>([]);
   const [brandNew, setBrandNew] = useState<Product[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
   const [storedData, setStoredData] = useLocalStorage<Product[]>(
     'productsData',
     [],
@@ -35,7 +27,7 @@ export const HomePage: React.FC = () => {
         setBrandNew(hightPrice);
       })
       .catch(() => {
-        setLoading(false);
+        setIsLoading(false);
       });
 
     getBestDiscount()
@@ -44,18 +36,18 @@ export const HomePage: React.FC = () => {
         setHotPrices(bestDiscount);
       })
       .catch(() => {
-        setLoading(false);
+        setIsLoading(false);
       });
   }, []);
 
   useEffect(() => {
     if (brandNew.length > 0 && hotPrices.length > 0) {
-      setLoading(false);
+      setIsLoading(false);
     }
   }, [brandNew, hotPrices]);
 
-  if (loading) {
-    return <div>Loading</div>;
+  if (isLoading) {
+    return <Loader />;
   }
 
   return (
