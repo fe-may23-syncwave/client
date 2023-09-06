@@ -138,7 +138,7 @@ export const ProductPage: React.FC = () => {
 
   useEffect(() => {
     setIsLoading(true);
-    getProductByIdWihDetails(`/${typeOfProducts}/${productId}`)
+    getProductByIdWihDetails(`${typeOfProducts}/${productId}`)
       .then((prod) => {
         setProduct(prod);
         setMainPhoto(prod.images[0]);
