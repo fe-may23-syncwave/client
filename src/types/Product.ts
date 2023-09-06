@@ -26,7 +26,7 @@ export interface Product {
   id: string;
   category_id: number;
   productId: string;
-  itemId?: string;
+  itemId: string;
   name: string;
   fullPrice: number;
   discountPrice?: number;

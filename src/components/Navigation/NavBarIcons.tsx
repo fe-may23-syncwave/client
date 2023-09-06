@@ -31,10 +31,10 @@ export const NavBarIcons: React.FC<Props> = ({
     return cart.reduce((acc, { count }) => acc + count, 0);
   }, [cart]);
 
-  const { products, darkTheme } = React.useContext(MainContext);
+  const { favProducts, darkTheme } = React.useContext(MainContext);
   const { isAuth, logout } = React.useContext(AuthContext);
 
-  const favoritesCounter = products.length;
+  const favoritesCounter = favProducts.length;
 
   const ProfileIcon = darkTheme ? <ProfileIconLight /> : <ProfileIconDark />;
   const LogoutIcon = darkTheme ? <LogoutIconLight /> : <LogoutIconDark />;

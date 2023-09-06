@@ -10,7 +10,7 @@ import {
 } from 'components/ProductCard/buttons';
 import { Loader } from 'components/common/Loader';
 import { NotFoundPage } from 'pages/NotFoundPage';
-import { getProductByIdWihDetails } from 'api/phones';
+import { getProductByIdWihDetails } from 'api/products';
 import { capitalizeText } from 'utils/capitalizeText';
 import { createId } from 'utils/createId';
 import { ProductsSlider } from 'components/ProductsSlider';
