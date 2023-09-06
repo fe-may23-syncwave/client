@@ -2,7 +2,6 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
 import { MainContext } from 'context/MainContext';
-import { DarkMode } from 'components/DarkMode';
 import { ReactComponent as Icon } from '../../assets/icons/menu.svg';
 import { ReactComponent as IconLight } from '../../assets/icons/menu-light.svg';
 import { Link } from './Link';
@@ -22,7 +21,6 @@ export const Navigation: React.FC<Props> = ({ openModal }) => {
   return (
     <nav className={styles.Nav}>
       <NavBarLinks className={styles.Nav__left_container} />
-      <DarkMode />
       <NavBarIcons className={styles.Nav__right_container} />
 
       <div
