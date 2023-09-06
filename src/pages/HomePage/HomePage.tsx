@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { Slider } from '../../components/Slider';
 import { ProductsSlider } from '../../components/ProductsSlider';
 import { ProductCategories } from '../../components/ProductCategories';
-import {getBestDiscount, getHighPrices, getProducts} from '../../api/phones';
+import { getBestDiscount, getHighPrices, getProducts } from '../../api/phones';
 import { Product } from '../../types/Product';
 import { useLocalStorage } from '../../hooks/useLocalStorage';
 
@@ -18,7 +18,7 @@ interface NewestResponse {
 export const HomePage: React.FC = () => {
   const [hotPrices, setHotPrices] = useState<Product[]>([]);
   const [brandNew, setBrandNew] = useState<Product[]>([]);
-  const [loading, setLoading] = useState(true); // Set this to true initially so that you display a loading state until the data is fetched.
+  const [loading, setLoading] = useState(true);
   const [storedData, setStoredData] = useLocalStorage<Product[]>(
     'productsData',
     [],
@@ -61,7 +61,6 @@ export const HomePage: React.FC = () => {
       .catch(() => {
         setLoading(false);
       });
-
   }, []);
 
   useEffect(() => {
