@@ -1,18 +1,12 @@
-import { Product, ProductWithDetails } from 'types/Product';
-import { Count } from 'types/CountType';
+import { Product, ProductWithDetails } from '../types/Product';
 import { client } from '../utils/fetchClient';
 import {
   BestDiscountResponse,
   HighPricesResponse,
-  NewestResponse,
 } from '../types/responseTypes';
 
 export const getProducts = (url: string) => {
   return client.get<Product[]>(url);
-};
-
-export const getAmount = (url: string) => {
-  return client.get<Count>(url);
 };
 
 export const getHighPrices = (): Promise<HighPricesResponse> => {
@@ -23,12 +17,8 @@ export const getBestDiscount = (): Promise<BestDiscountResponse> => {
   return client.get<BestDiscountResponse>('home/bestDiscount');
 };
 
-export const getNewest = (): Promise<NewestResponse> => {
-  return client.get<NewestResponse>('home/newest');
-};
-
 export function getProductById(productId: string) {
-  const url = `products/${productId}`;
+  const url = `/products?productId=${productId}`;
 
   const product = client.get<Product>(url);
 

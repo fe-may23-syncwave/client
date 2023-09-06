@@ -12,17 +12,19 @@ import { getCategoryName } from 'utils/getCategoryName';
 import { CATEGORY_ID } from 'utils/constants';
 import './CartPage.scss';
 import { orderService } from 'services/orderService';
+import { EmptyPage } from 'components/EmptyPage';
 
 const CLOUDINARY =
   'https://res.cloudinary.com/myfinance/image/upload/v1693416024/syncwave/';
 
 export const CartPage: React.FC = () => {
   const { user, isAuth } = useContext(AuthContext);
-  const { darkTheme, notifyCartDelete } = useContext(MainContext);
+  const { darkTheme, notifyCartDelete, setFavProducts } =
+    useContext(MainContext);
   const navigate = useNavigate();
 
   const {
-    cart, handleAdd, handleDelete, handleRemove,
+    cart, setCart, handleAdd, handleDelete, handleRemove,
   } =
     useContext(CartContext);
   const [totalPrice, setTotalPrice] = useState(0);
@@ -58,10 +60,11 @@ export const CartPage: React.FC = () => {
       orderService
         .postOrder(data)
         .then(() => navigate(NavBarRoute.Users, { replace: true }))
+        .then(() => {
+          setFavProducts([]);
+          setCart([]);
+        })
         .catch(() => setPostError(true));
-      // postOrder(data)
-      //   .then(() => navigate(NavBarRoute.Users, { replace: true }))
-      //   .catch(() => setPostError(true));
     }
   };
 
@@ -73,15 +76,7 @@ export const CartPage: React.FC = () => {
         <h1 className="cart__title">Cart</h1>
 
         {cart.length === 0 ? (
-          <div className="cart__block">
-            <h1 className="cart__title">Your cart is empty...</h1>
-            <p className="cart__subtitle">
-              But it&apos;s never too late to fix it!
-            </p>
-            <a className="back-home" href="#/">
-              Go main page
-            </a>
-          </div>
+          <EmptyPage title="cart" />
         ) : (
           <div className="cart__content">
             <section className="cart__products">

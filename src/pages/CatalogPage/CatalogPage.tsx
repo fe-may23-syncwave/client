@@ -10,6 +10,8 @@ import { calculateTotalPages } from 'utils/calculateTotal';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { getAmount, getProducts } from 'api/products';
 import { Product } from 'types/Product';
+import { Loader } from 'components/common/Loader';
+// import { divide } from 'lodash';
 
 interface Props {
   title: string;
@@ -23,6 +25,7 @@ export const CatalogPage: React.FC<Props> = ({ title, type }) => {
   const queryParams = new URLSearchParams(location.search);
   const perPageParam = queryParams.get('perPage') || '4';
   const perSortByParam = queryParams.get('sort');
+  const search = queryParams.get('search') || '';
 
   const [products, setProducts] = useState<Product[]>([]);
   const [hasError, setHasError] = useState(false);
@@ -42,20 +45,25 @@ export const CatalogPage: React.FC<Props> = ({ title, type }) => {
 
   const [activePage, setActivePage] = useState(1);
   const [productsLength, setProductsLength] = useState(0);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    setLoading(true);
     getAmount('home/productCounts')
       .then((data) => setProductsLength(data.counts[type]))
-      .catch(() => setHasError(true));
+      .catch(() => setHasError(true))
+      .finally(() => setLoading(false));
   }, [type]);
 
   useEffect(() => {
+    setLoading(true);
     getProducts(
-      `products?category=${type}&page=${activePage}&perPage=${perPage}&sortBy=${sortBy}`,
+      `products?category=${type}&page=${activePage}&perPage=${perPage}&sortBy=${sortBy}&search=${search}`,
     )
       .then(setProducts)
-      .catch(() => setHasError(true));
-  }, [type, perPage, sortBy, activePage]);
+      .catch(() => setHasError(true))
+      .finally(() => setLoading(false));
+  }, [type, perPage, sortBy, activePage, search]);
 
   const handleChangePerPage = (value: string) => {
     setActivePage(1);
@@ -94,12 +102,15 @@ export const CatalogPage: React.FC<Props> = ({ title, type }) => {
       <BreadCrumbs />
       <div className="catalog__page">
         <h1 className="catalog__title">{title}</h1>
-        {!hasError && (
+        {loading && <Loader />}
+        {!hasError && !loading && (
           <p className="catalog__subtitle">{`${productsLength} models`}</p>
         )}
-        {hasError && <h2 className="catalog__title">There is some problems</h2>}
+        {hasError && !loading && (
+          <h2 className="catalog__title">There is some problems</h2>
+        )}
 
-        {products.length > 0 && !hasError && (
+        {products.length > 0 && !hasError && !loading && (
           <>
             <Dropdowns
               handleDropdownChange={handleDropdownChange}
@@ -115,6 +126,12 @@ export const CatalogPage: React.FC<Props> = ({ title, type }) => {
               />
             )}
           </>
+        )}
+
+        {products.length === 0 && (
+          <p className="catalog__no-result">
+            Nothing found &#x1F50D;. Make sure your query is spelled correctly.
+          </p>
         )}
       </div>
     </>

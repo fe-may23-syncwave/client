@@ -4,7 +4,7 @@
   position: relative;
   display: flex;
   align-items: center;
-  border-bottom: 1px solid $color-elements;
+  border-bottom: 1px solid $color-secondary;
   overflow: hidden;
   height: 48px;
   line-height: 48px;
@@ -37,7 +37,7 @@
   width: 64px;
   height: 48px;
   cursor: pointer;
-  border-left: 1px solid $color-elements;
+  border-left: 1px solid $color-secondary;
 }
 
 .Modal__Dark {

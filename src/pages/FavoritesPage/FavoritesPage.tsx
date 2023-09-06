@@ -4,6 +4,7 @@ import { ProductsList } from 'pages/ProductsList';
 import React from 'react';
 
 import './FavoritesPage.scss';
+import { EmptyPage } from 'components/EmptyPage';
 
 export const FavoritesPage: React.FC = () => {
   const { favProducts } = React.useContext(MainContext);
@@ -18,7 +19,7 @@ export const FavoritesPage: React.FC = () => {
           <ProductsList products={favProducts} />
         </>
       ) : (
-        <h2>You haven&apos;t added anything to your favorite products yet</h2>
+        <EmptyPage title="favourites page" />
       )}
     </div>
   );

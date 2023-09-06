@@ -8,6 +8,7 @@ import { useLocalStorage } from 'utils/localStorageHook';
 
 export const MainContext = createContext<MainContextType>({
   favProducts: [],
+  setFavProducts: () => {},
   handleLike: () => {},
   toggleTheme: () => {},
   darkTheme: false,
@@ -108,6 +109,7 @@ export const Context: React.FC<Props> = ({ children }) => {
 
   const params = {
     favProducts,
+    setFavProducts,
     handleLike,
     toggleTheme,
     darkTheme,

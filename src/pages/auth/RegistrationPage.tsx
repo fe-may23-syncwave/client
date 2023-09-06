@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Formik, Form, Field } from 'formik';
 import cn from 'classnames';
 import { usePageError } from 'hooks/usePageError';
+import { Typography } from 'components/common/Typography';
 import { authService } from 'services/authService';
 import { validateEmail, validatePassword } from 'utils/validation';
 import { NavBarRoute } from 'types/NavBarRoute';
@@ -39,6 +40,15 @@ export const RegistrationPage: React.FC = () => {
 
   return (
     <>
+      <Typography
+        type="h1"
+        className={cn('title', {
+          [titleLight]: darkTheme,
+        })}
+      >
+        Sign up
+      </Typography>
+
       <Formik
         initialValues={{
           email: '',
@@ -82,13 +92,6 @@ export const RegistrationPage: React.FC = () => {
               [dark]: darkTheme,
             })}
           >
-            <h1
-              className={cn('title', {
-                [titleLight]: darkTheme,
-              })}
-            >
-              Sign up
-            </h1>
             <div className="field">
               <label
                 htmlFor="email"
@@ -96,7 +99,7 @@ export const RegistrationPage: React.FC = () => {
                   [labelLight]: darkTheme,
                 })}
               >
-                Email
+                <Typography type="label">Email</Typography>
               </label>
 
               <div className="control has-icons-left has-icons-right">
@@ -133,7 +136,7 @@ export const RegistrationPage: React.FC = () => {
                   [labelLight]: darkTheme,
                 })}
               >
-                Password
+                <Typography type="label">Password</Typography>
               </label>
 
               <div className="control has-icons-left has-icons-right">
@@ -176,17 +179,22 @@ export const RegistrationPage: React.FC = () => {
                 Sign up
               </button>
             </div>
-            Already have an account?
+            <Typography type="text" tagName="span">
+              Already have an account?
+            </Typography>
             <Link
               to={NavBarRoute.Login}
               style={{
                 marginLeft: '10px',
                 textDecoration: 'underline',
                 fontWeight: 'bold',
-                color: '#ee971a',
+                // color: '#ee971a',
+                color: '#905bff',
               }}
             >
-              Log in
+              <Typography type="text" tagName="span">
+                Log in
+              </Typography>
             </Link>
           </Form>
         )}

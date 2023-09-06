@@ -94,7 +94,8 @@
     height: inherit;
     width: 50%;
     min-width: 64px;
-    border: 1px solid $color-elements;
+    border-right: 1px solid $color-secondary;
+    border-left: 1px solid $color-secondary;
 
     &__icon {
       position: relative;
