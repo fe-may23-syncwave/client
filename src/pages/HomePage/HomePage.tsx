@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { Slider } from '../../components/Slider';
 import { ProductsSlider } from '../../components/ProductsSlider';
 import { ProductCategories } from '../../components/ProductCategories';
-import { getProducts } from '../../api/phones';
+import { getProducts } from '../../api/products';
 import { Product } from '../../types/Product';
 import { useLocalStorage } from '../../hooks/useLocalStorage';
 
