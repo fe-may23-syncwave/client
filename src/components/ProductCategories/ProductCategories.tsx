@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import './ProductCategories.scss'; // Direct import
+import './ProductCategories.scss';
 import phonesImage from '../../assets/images/categories/category-phones.png';
 import tabletsImage from '../../assets/images/categories/category-tablets.png';
 // eslint-disable-next-line max-len
