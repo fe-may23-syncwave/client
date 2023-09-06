@@ -22,7 +22,7 @@ export const HomePage: React.FC = () => {
         const { hightPrice } = response;
         setBrandNew(hightPrice);
       })
-      .catch(error => {
+      .catch((error) => {
         console.error('HomePage Error:', error);
       });
 
@@ -31,7 +31,7 @@ export const HomePage: React.FC = () => {
         const { bestDiscount } = response;
         setHotPrices(bestDiscount);
       })
-      .catch(error => {
+      .catch((error) => {
         console.error('HomePage Error:', error);
       });
   }, []);

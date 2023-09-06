@@ -117,7 +117,8 @@ export const ProductPage: React.FC = () => {
                       <button
                         type="button"
                         className={classNames('photos__sidebar--wrapper', {
-                          'photos__sidebar--wrapper--active': image === mainPhoto,
+                          'photos__sidebar--wrapper--active':
+                            image === mainPhoto,
                         })}
                         onClick={() => setMainPhoto(image)}
                         key={image}
@@ -155,7 +156,9 @@ export const ProductPage: React.FC = () => {
                   {product.capacity && product.capacityAvailable && (
                     <div className="product-page__select-container">
                       <div className="product-page__capacity capacity">
-                        <p className="product-page__subtitle">Select capacity</p>
+                        <p className="product-page__subtitle">
+                          Select capacity
+                        </p>
                         <ProductCapacity
                           capacities={product.capacityAvailable}
                           currentCapacity={product.capacity}
@@ -205,7 +208,9 @@ export const ProductPage: React.FC = () => {
                               ? data[0].toUpperCase()
                               : capitalizeText(String(data[0]))}
                           </p>
-                          <p className="info__techspecs--data">{String(data[1])}</p>
+                          <p className="info__techspecs--data">
+                            {String(data[1])}
+                          </p>
                         </div>
                       ))}
                   </div>
@@ -229,9 +234,7 @@ export const ProductPage: React.FC = () => {
                           {desc.title}
                         </h3>
 
-                        <p className="info__about--description">
-                          {desc.text}
-                        </p>
+                        <p className="info__about--description">{desc.text}</p>
                       </Fragment>
                     ))}
                   </div>
@@ -244,7 +247,9 @@ export const ProductPage: React.FC = () => {
                             ? data[0].toUpperCase()
                             : capitalizeText(String(data[0]))}
                         </p>
-                        <p className="info__techspecs--data">{String(data[1])}</p>
+                        <p className="info__techspecs--data">
+                          {String(data[1])}
+                        </p>
                       </div>
                     ))}
                   </div>
