@@ -9,8 +9,8 @@ import { GoToTopButton } from './GoToTopButton';
 
 export enum FooterLink {
   Github = 'https://github.com/fe-may23-syncwave/client',
-  Contacts = 'contacts',
-  Rights = '#',
+  Contacts = 'https://goo.gl/maps/BmXqVNG6ch3Ny5rS9',
+  Rights = 'https://choosealicense.com/licenses/mit/',
 }
 
 type Props = {
