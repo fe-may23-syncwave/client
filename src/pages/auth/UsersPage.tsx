@@ -5,8 +5,9 @@ import React, { useContext, useEffect, useState } from 'react';
 import useWindowSize from 'react-use/lib/useWindowSize';
 import Confetti from 'react-confetti';
 import { userService } from 'services/userService';
+import { orderService } from 'services/orderService';
 import { MainContext } from 'context';
-import { deleteOrder, getOrders } from 'api/orders';
+// import { deleteOrder, getOrders } from 'api/orders';
 import { IUser } from 'types/User';
 import { Order } from 'types/Order';
 import { ReactComponent as CloseDark } from '../../assets/icons/close-dark.svg';
@@ -30,15 +31,28 @@ export const UsersPage: React.FC = () => {
         setError(error.message);
       });
 
-    getOrders('orders')
-      .then((data) => setOrders(data))
+    // orderService
+    //   .getAllOrders()
+    //   .then((data) => setOrders(data))
+    //   .catch((error) => {
+    //     setError(error.message);
+    //   });
+
+    orderService
+      .getOrders()
+      .then((response) => {
+        const { data } = response;
+
+        setOrders(data);
+      })
       .catch((error) => {
         setError(error.message);
       });
   }, []);
 
   const handleDeleteOrder = (id: number) => {
-    deleteOrder(id);
+    orderService.deleteOrder(id);
+    // deleteOrder(id);
 
     setOrders((prev) => prev.filter((order) => order.id !== id));
   };
@@ -51,6 +65,7 @@ export const UsersPage: React.FC = () => {
   };
 
   console.log(users);
+  console.log(orders);
 
   return (
     <div className="content">
@@ -58,7 +73,7 @@ export const UsersPage: React.FC = () => {
 
       {error && <p className="notification is-danger is-light">{error}</p>}
 
-      {orders.length > 0 && (
+      {orders.length > 0 && !error && (
         <>
           <table className={styles.Admin__block}>
             <thead>

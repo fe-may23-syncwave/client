@@ -4,13 +4,14 @@
 import { BackButton } from 'components/BackButton';
 import React, { useContext, useEffect, useState } from 'react';
 import classNames from 'classnames';
-import { postOrder } from 'api/orders';
+// import { postOrder } from 'api/orders';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext, CartContext, MainContext } from 'context';
 import { NavBarRoute } from 'types/NavBarRoute';
 import { getCategoryName } from 'utils/getCategoryName';
 import { CATEGORY_ID } from 'utils/constants';
 import './CartPage.scss';
+import { orderService } from 'services/orderService';
 
 const CLOUDINARY =
   'https://res.cloudinary.com/myfinance/image/upload/v1693416024/syncwave/';
@@ -54,9 +55,13 @@ export const CartPage: React.FC = () => {
         quantity: totalItems,
       };
 
-      postOrder(data)
+      orderService
+        .postOrder(data)
         .then(() => navigate(NavBarRoute.Users, { replace: true }))
         .catch(() => setPostError(true));
+      // postOrder(data)
+      //   .then(() => navigate(NavBarRoute.Users, { replace: true }))
+      //   .catch(() => setPostError(true));
     }
   };
 
