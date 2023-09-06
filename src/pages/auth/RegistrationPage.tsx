@@ -8,6 +8,8 @@ import { validateEmail, validatePassword } from 'utils/validation';
 import { NavBarRoute } from 'types/NavBarRoute';
 import { MainContext } from 'context';
 import styles from './Auth.module.scss';
+import emailImg from '../../assets/images/email-marketing.png';
+import { StylishComponent } from '../../components/StylishComponent';
 
 const {
   Form: form,
@@ -18,17 +20,20 @@ const {
 
 export const RegistrationPage: React.FC = () => {
   const [error, setError] = usePageError('');
-  const [registered, setRegistered] = useState(false);
+  const [registered, setRegistered] = useState(true);
   const { darkTheme } = useContext(MainContext);
 
   if (registered) {
     return (
-      <section className="">
-        <h1 className={styles.Title}>Check your email</h1>
-        <p className={styles.Title}>
-          We have sent you an email with the activation link
-        </p>
-      </section>
+      <StylishComponent
+        text={(
+          <>
+            <h1>Check your email</h1>
+            <p>We have sent you an email with the activation link</p>
+          </>
+        )}
+        imageSrc={emailImg}
+      />
     );
   }
 
