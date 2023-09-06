@@ -1,0 +1,43 @@
+@import 'styles/utils/shared';
+
+.cart {
+  &__block {
+    margin: auto;
+    text-align: center;
+  }
+
+  &__title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 48px;
+    font-weight: 600;
+    line-height: 56px;
+    letter-spacing: -0.48px;
+    color: $color-primary;
+    margin-bottom: 32px;
+  }
+
+  &__subtitle {
+    font-family: 'Montserrat', sans-serif;
+    color: $color-primary;
+    font-size: 24px;
+  }
+}
+
+.back-home {
+  display: inline-block;
+  border: 2px solid $color-buttons;
+  color: $color-buttons;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding: 0.75rem 1rem 0.6rem;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+  transition: all $duration;
+  margin-top: 20px;
+
+  &:hover {
+    background: #222;
+    box-shadow: 0 3px 8px $color-buttons;
+    color: #ddd;
+  }
+}
+

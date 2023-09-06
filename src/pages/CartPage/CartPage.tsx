@@ -12,6 +12,7 @@ import { getCategoryName } from 'utils/getCategoryName';
 import { CATEGORY_ID } from 'utils/constants';
 import './CartPage.scss';
 import { orderService } from 'services/orderService';
+import { EmptyPage } from 'components/EmptyPage';
 
 const CLOUDINARY =
   'https://res.cloudinary.com/myfinance/image/upload/v1693416024/syncwave/';
@@ -74,17 +75,7 @@ export const CartPage: React.FC = () => {
       <div className="cart__page">
         <h1 className="cart__title">Cart</h1>
 
-        {cart.length === 0 ? (
-          <div className="cart__block">
-            <h1 className="cart__title">Your cart is empty...</h1>
-            <p className="cart__subtitle">
-              But it&apos;s never too late to fix it!
-            </p>
-            <a className="back-home" href="#/">
-              Go main page
-            </a>
-          </div>
-        ) : (
+        {cart.length === 0 ? <EmptyPage title="cart" /> : (
           <div className="cart__content">
             <section className="cart__products">
               {cart.map((product) => (
