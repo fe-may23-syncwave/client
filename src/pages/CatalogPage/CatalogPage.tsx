@@ -10,6 +10,7 @@ import { calculateTotalPages } from 'utils/calculateTotal';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { getAmount, getProducts } from 'api/products';
 import { Product } from 'types/Product';
+import { Loader } from 'components/common/Loader';
 
 interface Props {
   title: string;
@@ -42,19 +43,24 @@ export const CatalogPage: React.FC<Props> = ({ title, type }) => {
 
   const [activePage, setActivePage] = useState(1);
   const [productsLength, setProductsLength] = useState(0);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    setLoading(true);
     getAmount('home/productCounts')
       .then((data) => setProductsLength(data.counts[type]))
-      .catch(() => setHasError(true));
+      .catch(() => setHasError(true))
+      .finally(() => setLoading(false));
   }, [type]);
 
   useEffect(() => {
+    setLoading(true);
     getProducts(
       `products?category=${type}&page=${activePage}&perPage=${perPage}&sortBy=${sortBy}`,
     )
       .then(setProducts)
-      .catch(() => setHasError(true));
+      .catch(() => setHasError(true))
+      .finally(() => setLoading(false));
   }, [type, perPage, sortBy, activePage]);
 
   const handleChangePerPage = (value: string) => {
@@ -94,12 +100,15 @@ export const CatalogPage: React.FC<Props> = ({ title, type }) => {
       <BreadCrumbs />
       <div className="catalog__page">
         <h1 className="catalog__title">{title}</h1>
-        {!hasError && (
+        {loading && <Loader />}
+        {!hasError && !loading && (
           <p className="catalog__subtitle">{`${productsLength} models`}</p>
         )}
-        {hasError && <h2 className="catalog__title">There is some problems</h2>}
+        {hasError && !loading && (
+          <h2 className="catalog__title">There is some problems</h2>
+        )}
 
-        {products.length > 0 && !hasError && (
+        {products.length > 0 && !hasError && !loading && (
           <>
             <Dropdowns
               handleDropdownChange={handleDropdownChange}

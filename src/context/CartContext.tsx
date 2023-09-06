@@ -22,6 +22,7 @@ interface Cart {
 
 type ContextProps = {
   cart: Cart[];
+  setCart: (product: []) => void;
   saveToCart: (product: Product) => void;
   isInCart: (productId: string) => boolean;
   handleDelete: (cart: Cart) => void;
@@ -31,6 +32,7 @@ type ContextProps = {
 
 export const CartContext = createContext<ContextProps>({
   cart: [],
+  setCart: () => {},
   saveToCart: () => {},
   isInCart: () => false,
   handleAdd: () => {},
@@ -98,6 +100,7 @@ export const CartProvider: React.FC<Props> = ({ children }) => {
   const contextValue = useMemo(
     () => ({
       cart,
+      setCart,
       saveToCart,
       isInCart,
       handleDelete,
