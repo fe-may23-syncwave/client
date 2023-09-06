@@ -10,7 +10,11 @@ import {
 } from 'components/ProductCard/buttons';
 import { Loader } from 'components/common/Loader';
 import { NotFoundPage } from 'pages/NotFoundPage';
-import { getNewest, getProductById, getProductByIdWihDetails } from 'api/products';
+import {
+  getNewest,
+  getProductById,
+  getProductByIdWihDetails,
+} from 'api/products';
 import { capitalizeText } from 'utils/capitalizeText';
 import { createId } from 'utils/createId';
 import { ProductsSlider } from 'components/ProductsSlider';
@@ -37,16 +41,15 @@ export const ProductPage: React.FC = () => {
     setIsLoading(true);
     getProductByIdWihDetails(`${typeOfProducts}/${productId}`)
       .then((prod) => {
-        getProductById(prod.id)
-          .then(data => setPrepared(data));
+        getProductById(prod.id).then((data) => setPrepared(data));
         setProduct(prod);
         setMainPhoto(prod.images[0]);
       })
       .catch((error) => {
         // eslint-disable-next-line no-console
         console.error('Error:', error);
-        setIsLoading(false);
-      });
+      })
+      .finally(() => setIsLoading(false));
   }, [productId, typeOfProducts]);
 
   useEffect(() => {
