@@ -76,6 +76,13 @@
     &--yellow {
       background-color: #e4e486;
     }
+
+    transition: transform $duration ease-in-out;
+    transform: scale(1);
+
+    &:hover {
+      transform: scale(1.05);
+    }
   }
 
   &__wrapper {
@@ -88,6 +95,8 @@
     border-radius: 50%;
 
     transition: border-color $duration;
+    transition: transform $duration ease-in-out;
+    transform: scale(1);
 
     &--selected {
       border-color: $color-primary;
@@ -96,6 +105,7 @@
     &:hover {
       cursor: pointer;
       border-color: $color-primary;
+      transform: scale(1.06);
     }
   }
 }
