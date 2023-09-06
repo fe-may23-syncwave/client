@@ -10,7 +10,7 @@ import {
 } from 'components/ProductCard/buttons';
 import { Loader } from 'components/common/Loader';
 import { NotFoundPage } from 'pages/NotFoundPage';
-import { getProductByIdWihDetails } from 'api/products';
+import { getNewest, getProductByIdWihDetails } from 'api/products';
 import { capitalizeText } from 'utils/capitalizeText';
 import { createId } from 'utils/createId';
 import { ProductsSlider } from 'components/ProductsSlider';
@@ -18,7 +18,7 @@ import { ProductColors } from '../../components/ProductColors';
 import { ProductCapacity } from '../../components/ProductCapacity';
 import { BackButton } from '../../components/BackButton';
 import { BreadCrumbs } from '../../components/BreadCrumbs';
-import { ProductWithDetails } from '../../types/Product';
+import { Product, ProductWithDetails } from '../../types/Product';
 
 const productForTesting = {
   id: '5',
@@ -85,14 +85,6 @@ const productForTesting = {
 //   cell: ['GPRS', 'EDGE', 'WCDMA', 'UMTS', 'HSPA', 'LTE'],
 // };
 
-const productsArray = Array(9)
-  .fill(productForTesting)
-  .map((prod, index) => ({
-    ...prod,
-    id: (parseInt(prod.id, 10) + index).toString(),
-    name: `${prod.name} (${index + 1})`,
-  }));
-
 // const product2 = {
 //   id: 'iphone-11-silicone-case-black',
 //   name: 'iPhone 11 Silicone Case Black',
@@ -131,6 +123,7 @@ const CLOUDINARY
 export const ProductPage: React.FC = () => {
   const { productId } = useParams();
   const [product, setProduct] = useState<ProductWithDetails | null>(null);
+  const [newestProducts, setNewestProducts] = useState<Product[]>([]);
   const [mainPhoto, setMainPhoto] = useState<string>('');
   const [isLoading, setIsLoading] = useState(false);
   const currentURL = window.location.href;
@@ -150,6 +143,19 @@ export const ProductPage: React.FC = () => {
         setIsLoading(false);
       });
   }, [productId, typeOfProducts]);
+
+  useEffect(() => {
+    getNewest()
+      .then((response) => {
+        const { newest } = response;
+
+        setNewestProducts(newest);
+      })
+      .catch((error) => {
+        // eslint-disable-next-line no-console
+        console.error('Error:', error);
+      });
+  }, []);
 
   if (isLoading) {
     return <Loader />;
@@ -346,8 +352,8 @@ export const ProductPage: React.FC = () => {
       </div>
 
       <div className="product-page__slider">
-        {productsArray.length > 0 && (
-          <ProductsSlider phones={productsArray} title="Hot prices" />
+        {newestProducts.length > 0 && (
+          <ProductsSlider phones={newestProducts} title="Hot prices" />
         )}
       </div>
     </>
