@@ -27,7 +27,6 @@ export function getProductById(productId: string) {
 
 export function getProductByIdWihDetails(link: string) {
   const url = link;
-
   const product = client.get<ProductWithDetails>(url);
 
   return product;
