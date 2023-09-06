@@ -4,6 +4,7 @@ import { client } from '../utils/fetchClient';
 import {
   BestDiscountResponse,
   HighPricesResponse,
+  NewestResponse,
 } from '../types/responseTypes';
 
 export const getProducts = (url: string) => {
@@ -20,6 +21,10 @@ export const getHighPrices = (): Promise<HighPricesResponse> => {
 
 export const getBestDiscount = (): Promise<BestDiscountResponse> => {
   return client.get<BestDiscountResponse>('home/bestDiscount');
+};
+
+export const getNewest = (): Promise<NewestResponse> => {
+  return client.get<NewestResponse>('home/newest');
 };
 
 export function getProductById(productId: string) {
