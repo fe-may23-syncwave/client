@@ -20,14 +20,12 @@
     @media (min-width: 730px) {
       display: flex;
       align-items: center;
-      height: 100%;
     }
   }
 
   &__right_container {
     display: none;
-
-    @media (min-width: 730px) {
+    @include onTablet {
       display: flex;
       align-items: center;
       justify-content: center;
@@ -37,8 +35,7 @@
 
   &__menu {
     height: 100%;
-
-    @media (min-width: 730px) {
+    @include onTablet {
       display: none;
     }
   }
@@ -54,7 +51,6 @@
     letter-spacing: 0.48px;
     text-transform: uppercase;
     padding: 8px;
-    height: 100%;
 
     @include transition;
 
@@ -98,8 +94,7 @@
     height: inherit;
     width: 50%;
     min-width: 64px;
-    border-left: 1px solid $color-secondary;
-    border-top: 1px solid $color-secondary;
+    border: 1px solid $color-secondary;
 
     &__icon {
       position: relative;
