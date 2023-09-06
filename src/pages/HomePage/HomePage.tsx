@@ -6,7 +6,6 @@ import { ProductCategories } from '../../components/ProductCategories';
 import {
   getBestDiscount,
   getHighPrices,
-  getProducts,
 } from '../../api/products';
 import { Product } from '../../types/Product';
 import { useLocalStorage } from '../../hooks/useLocalStorage';

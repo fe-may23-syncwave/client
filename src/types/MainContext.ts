@@ -2,6 +2,7 @@ import { Product } from './Product';
 
 export type MainContextType = {
   favProducts: Product[];
+  setFavProducts: (product: []) => void;
   handleLike: (product: Product) => void;
   toggleTheme: () => void;
   darkTheme: boolean;

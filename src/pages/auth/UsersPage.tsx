@@ -7,9 +7,9 @@ import Confetti from 'react-confetti';
 import { userService } from 'services/userService';
 import { orderService } from 'services/orderService';
 import { MainContext } from 'context';
-// import { deleteOrder, getOrders } from 'api/orders';
 import { IUser } from 'types/User';
 import { Order } from 'types/Order';
+import { Loader } from 'components/common/Loader';
 import { ReactComponent as CloseDark } from '../../assets/icons/close-dark.svg';
 import { ReactComponent as Close } from '../../assets/icons/close-light.svg';
 import styles from './Auth.module.scss';
@@ -18,25 +18,20 @@ export const UsersPage: React.FC = () => {
   const [orders, setOrders] = useState<Order[]>([]);
   const [error, setError] = usePageError('');
   const [users, setUsers] = useState<IUser[]>([]);
+  const [loading, setLoading] = useState(false);
   const { darkTheme } = useContext(MainContext);
 
   const { width, height } = useWindowSize();
   const [showConfetti, setShowConfetti] = useState(false);
 
   useEffect(() => {
+    setLoading(true);
     userService
       .getAll()
       .then(({ data }) => setUsers(data))
       .catch((error) => {
         setError(error.message);
       });
-
-    // orderService
-    //   .getAllOrders()
-    //   .then((data) => setOrders(data))
-    //   .catch((error) => {
-    //     setError(error.message);
-    //   });
 
     orderService
       .getOrders()
@@ -47,12 +42,12 @@ export const UsersPage: React.FC = () => {
       })
       .catch((error) => {
         setError(error.message);
-      });
+      })
+      .finally(() => setLoading(false));
   }, []);
 
   const handleDeleteOrder = (id: number) => {
     orderService.deleteOrder(id);
-    // deleteOrder(id);
 
     setOrders((prev) => prev.filter((order) => order.id !== id));
   };
@@ -70,10 +65,13 @@ export const UsersPage: React.FC = () => {
   return (
     <div className="content">
       <h1 className={styles.Title}>Admin panel</h1>
+      {loading && <Loader />}
 
-      {error && <p className="notification is-danger is-light">{error}</p>}
+      {error && !loading && (
+        <p className="notification is-danger is-light">{error}</p>
+      )}
 
-      {orders.length > 0 && !error && (
+      {orders.length > 0 && !error && !loading && (
         <>
           <table className={styles.Admin__block}>
             <thead>
