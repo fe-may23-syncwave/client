@@ -5,24 +5,16 @@ import { ProductsSlider } from '../../components/ProductsSlider';
 import { ProductCategories } from '../../components/ProductCategories';
 import { getBestDiscount, getHighPrices } from '../../api/products';
 import { Product } from '../../types/Product';
-import { useLocalStorage } from '../../hooks/useLocalStorage';
-
-interface BestDiscountResponse {
-  bestDiscount: Product[];
-}
-
-interface NewestResponse {
-  newest: Product[];
-}
+// import { useLocalStorage } from '../../hooks/useLocalStorage';
+import './HomePage.scss';
 
 export const HomePage: React.FC = () => {
   const [hotPrices, setHotPrices] = useState<Product[]>([]);
   const [brandNew, setBrandNew] = useState<Product[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [storedData, setStoredData] = useLocalStorage<Product[]>(
-    'productsData',
-    [],
-  );
+  // const [storedData, setStoredData] = useLocalStorage<Product[]>(
+  //   'productsData',
+  //   [],
+  // );
 
   useEffect(() => {
     getHighPrices()
@@ -30,8 +22,8 @@ export const HomePage: React.FC = () => {
         const { hightPrice } = response;
         setBrandNew(hightPrice);
       })
-      .catch(() => {
-        setLoading(false);
+      .catch(error => {
+        console.error('HomePage Error:', error);
       });
 
     getBestDiscount()
@@ -39,20 +31,10 @@ export const HomePage: React.FC = () => {
         const { bestDiscount } = response;
         setHotPrices(bestDiscount);
       })
-      .catch(() => {
-        setLoading(false);
+      .catch(error => {
+        console.error('HomePage Error:', error);
       });
   }, []);
-
-  useEffect(() => {
-    if (brandNew.length > 0 && hotPrices.length > 0) {
-      setLoading(false);
-    }
-  }, [brandNew, hotPrices]);
-
-  // if (loading) {
-  //   return <div>Loading</div>;
-  // }
 
   return (
     <div className="home-page">
