@@ -65,7 +65,7 @@ export const ProductPage: React.FC = () => {
         console.error('Error:', error);
       });
   }, []);
-
+  
   function getTechSpecs(productType: string, prod: ProductWithDetails) {
     if (productType === 'phones') {
       return Object.entries(prod).slice(-7);
@@ -95,7 +95,7 @@ export const ProductPage: React.FC = () => {
 
     return [];
   }
-
+ 
   return (
     <>
       {isLoading && <Loader />}
@@ -149,14 +149,13 @@ export const ProductPage: React.FC = () => {
                         <p className="product-page__subtitle">
                           Available colors
                         </p>
-
                         <ProductColors
                           colors={product.colorsAvailable}
                           currentColor={product.color}
                         />
                       </div>
                     </div>
-
+                    
                     {product.capacity && product.capacityAvailable && (
                       <div className="product-page__select-container">
                         <div className="product-page__capacity capacity">
@@ -200,21 +199,20 @@ export const ProductPage: React.FC = () => {
                           'product-page__favourites',
                         ]}
                       />
+                      
+              <div className="product-page__description description">
+                {getTechSpecs(typeOfProducts, product)
+                  .slice(2)
+                  .map((data) => (
+                    <div key={data[0]} className="info__techspecs--content">
+                      <p className="info__techspecs--title">
+                        {data[0] === 'ram'
+                          ? data[0].toUpperCase()
+                          : capitalizeText(String(data[0]))}
+                      </p>
+                      <p className="info__techspecs--data">{String(data[1])}</p>
                     </div>
-
-                    <div className="product-page__description description">
-                      {getTechSpecs(typeOfProducts, product)
-                        .slice(2)
-                        .map((data) => (
-                          <div key={data[0]} className="info__techspecs--content">
-                            <p className="info__techspecs--title">
-                              {data[0] === 'ram'
-                                ? data[0].toUpperCase()
-                                : capitalizeText(String(data[0]))}
-                            </p>
-                            <p className="info__techspecs--data">{String(data[1])}</p>
-                          </div>
-                        ))}
+                    ))}
                     </div>
                   </div>
 

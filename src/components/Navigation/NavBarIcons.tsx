@@ -5,6 +5,8 @@ import { NavBarRoute } from 'types/NavBarRoute';
 
 import { CartContext, AuthContext, MainContext } from 'context';
 
+// import { ThemeSwitcher } from 'components/DarkMode/ThemeSwitcher';
+import { useLocation } from 'react-router-dom';
 import { Link } from './Link';
 import { ReactComponent as FavoritesIcon } from '../../assets/icons/heart_dark.svg';
 import { ReactComponent as FavoritesIconLight } from '../../assets/icons/heart-light.svg';
@@ -15,6 +17,8 @@ import { ReactComponent as ProfileIconDark } from '../../assets/icons/profile.sv
 import { ReactComponent as ProfileIconLight } from '../../assets/icons/profile-light.svg';
 import { ReactComponent as LogoutIconDark } from '../../assets/icons/logout.svg';
 import { ReactComponent as LogoutIconLight } from '../../assets/icons/logout-light.svg';
+import { ReactComponent as SunIcon } from '../../assets/icons/sunIcon.svg';
+import { ReactComponent as MoonIcon } from '../../assets/icons/moonIcon.svg';
 
 type Props = {
   className?: string;
@@ -25,13 +29,14 @@ export const NavBarIcons: React.FC<Props> = ({
   className,
   onClick = () => {},
 }) => {
+  const location = useLocation();
   const { cart } = React.useContext(CartContext);
 
   const cartCounter = useMemo(() => {
     return cart.reduce((acc, { count }) => acc + count, 0);
   }, [cart]);
 
-  const { favProducts, darkTheme } = React.useContext(MainContext);
+  const { favProducts, darkTheme, toggleTheme } = React.useContext(MainContext);
   const { isAuth, logout } = React.useContext(AuthContext);
 
   const favoritesCounter = favProducts.length;
@@ -48,6 +53,7 @@ export const NavBarIcons: React.FC<Props> = ({
       role="button"
     >
       <Search />
+
       <Link
         to={NavBarRoute.Login}
         icon={isAuth ? LogoutIcon : ProfileIcon}
@@ -64,6 +70,11 @@ export const NavBarIcons: React.FC<Props> = ({
         to={NavBarRoute.Cart}
         icon={darkTheme ? <CartIconLight /> : <CartIcon />}
         counter={cartCounter}
+      />
+      <Link
+        to={location.pathname}
+        icon={darkTheme ? <SunIcon /> : <MoonIcon />}
+        onClick={() => toggleTheme()}
       />
     </div>
   );
