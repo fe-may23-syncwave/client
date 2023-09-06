@@ -11,7 +11,7 @@ export const ProductsList: React.FC<Props> = ({ products }) => {
   return (
     <section className="products">
       {products.map((product) => (
-        <ProductCard product={product} key={product.productId} />
+        <ProductCard product={product} key={product.id} />
       ))}
     </section>
   );

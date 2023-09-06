@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { Slider } from '../../components/Slider';
 import { ProductsSlider } from '../../components/ProductsSlider';
 import { ProductCategories } from '../../components/ProductCategories';
-import { getBestDiscount, getHighPrices, getProducts } from '../../api/phones';
+import { getBestDiscount, getHighPrices } from '../../api/products';
 import { Product } from '../../types/Product';
 import { useLocalStorage } from '../../hooks/useLocalStorage';
 
@@ -23,25 +23,6 @@ export const HomePage: React.FC = () => {
     'productsData',
     [],
   );
-
-  // useEffect(() => {
-  //   if (storedData.length > 0) {
-  //     processAndSetData(storedData);
-  //     setLoading(false);
-  //   } else {
-  //     getProducts('/tablets')
-  //       .then((data: Product[]) => {
-  //         setStoredData(data);
-  //         processAndSetData(data);
-  //         console.log(data);
-  //         setLoading(false);
-  //       })
-  //       .catch(error => {
-  //         console.error(error);
-  //         setLoading(false);
-  //       });
-  //   }
-  // }, [storedData]);
 
   useEffect(() => {
     getHighPrices()

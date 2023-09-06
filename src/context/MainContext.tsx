@@ -1,6 +1,5 @@
 /* eslint-disable max-len */
-import { getFavorites } from 'api/favorites';
-import React, { createContext, useEffect, useState } from 'react';
+import React, { createContext, useState } from 'react';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { MainContextType } from 'types/MainContext';
@@ -9,8 +8,7 @@ import { useLocalStorage } from 'utils/localStorageHook';
 
 export const MainContext = createContext<MainContextType>({
   favProducts: [],
-  hasErrorOnFav: false,
-  products: [],
+  setFavProducts: () => {},
   handleLike: () => {},
   toggleTheme: () => {},
   darkTheme: false,
@@ -29,7 +27,7 @@ interface Props {
 }
 
 export const Context: React.FC<Props> = ({ children }) => {
-  const [products, setProducts] = useLocalStorage<Product[]>(
+  const [favProducts, setFavProducts] = useLocalStorage<Product[]>(
     'favorite-products',
     [],
   );
@@ -38,34 +36,27 @@ export const Context: React.FC<Props> = ({ children }) => {
     false,
   );
 
-  const [favProducts, setFavProducts] = useState<Product[]>([]);
-  const [hasErrorOnFav, setHasErrorOnFav] = useState(false);
-
   const [globalPerPage, setGlobalPerPage] = useState('4');
   const [globalSort, setGlobalSort] = useState('age');
 
-  useEffect(() => {
-    getFavorites('/favorites')
-      .then(setFavProducts)
-      .catch(() => setHasErrorOnFav(true));
-  }, []);
-
   const handleLike = (product: Product) => {
-    const isFav = products.find((curr) => curr.productId === product.productId);
+    const isFav = favProducts.find(
+      (curr) => curr.productId === product.productId,
+    );
 
     if (isFav) {
-      const newSet = products.filter(
+      const newSet = favProducts.filter(
         (curr) => curr.productId !== product.productId,
       );
 
-      setProducts(newSet);
+      setFavProducts(newSet);
 
       return;
     }
 
-    const newSet = [...products, product];
+    const newSet = [...favProducts, product];
 
-    setProducts(newSet);
+    setFavProducts(newSet);
   };
 
   const toggleTheme = () => {
@@ -118,8 +109,7 @@ export const Context: React.FC<Props> = ({ children }) => {
 
   const params = {
     favProducts,
-    hasErrorOnFav,
-    products,
+    setFavProducts,
     handleLike,
     toggleTheme,
     darkTheme,

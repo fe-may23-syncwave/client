@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 // import { getProducts } from 'api/phones';
 // import { Phone } from 'types/PhoneType';
 import { ProductsList } from 'pages/ProductsList';
@@ -8,66 +8,28 @@ import { BreadCrumbs } from 'components/BreadCrumbs';
 import { Dropdowns } from 'components/Dropdowns';
 import { calculateTotalPages } from 'utils/calculateTotal';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { getAmount, getProducts } from 'api/products';
+import { Product } from 'types/Product';
+import { Loader } from 'components/common/Loader';
 
 interface Props {
   title: string;
+  type: string;
 }
 
-const products = [
-  {
-    id: '1',
-    category_id: 1,
-    productId: 'apple-iphone-7-32gb-black',
-    itemId: 'apple-iphone-7-32gb-black',
-    name: 'Apple iPhone 7 32GB Black',
-    fullPrice: 400,
-    discountPrice: 375,
-    screen: "4.7' IPS",
-    capacity_id: 1,
-    color_id: 1,
-    ram: '2GB',
-    year: 2016,
-    image: 'img/phones/apple-iphone-7/black/00.jpg',
-  },
-  {
-    id: '2',
-    category_id: 1,
-    productId: 'apple-iphone-11-128gb-yellow',
-    itemId: 'apple-iphone-11-128gb-yellow',
-    name: 'Apple iPhone 11 128GB Yellow',
-    fullPrice: 1100,
-    discountPrice: 1050,
-    screen: "6.1' IPS",
-    capacity_id: 3,
-    color_id: 3,
-    ram: '4GB',
-    year: 2019,
-    image: 'img/phones/apple-iphone-11/yellow/00.jpg',
-  },
-  {
-    id: '3',
-    category_id: 1,
-    productId: 'apple-iphone-8-32gb-black',
-    itemId: 'apple-iphone-8-32gb-black',
-    name: 'Apple iPhone 7 32GB Black',
-    fullPrice: 400,
-    discountPrice: 375,
-    screen: "4.7' IPS",
-    capacity_id: 1,
-    color_id: 1,
-    ram: '2GB',
-    year: 2016,
-    image: 'img/phones/apple-iphone-7/black/00.jpg',
-  },
-];
-
-export const CatalogPage: React.FC<Props> = ({ title }) => {
+export const CatalogPage: React.FC<Props> = ({ title, type }) => {
   const location = useLocation();
   const navigate = useNavigate();
 
   const queryParams = new URLSearchParams(location.search);
   const perPageParam = queryParams.get('perPage') || '4';
   const perSortByParam = queryParams.get('sort');
+
+  const [products, setProducts] = useState<Product[]>([]);
+  const [hasError, setHasError] = useState(false);
+
+  const [perPage, setPerPage] = useState(perPageParam || '4');
+  const [sortBy, setSortBy] = useState(perSortByParam || 'age');
 
   let preparedPerPage;
 
@@ -77,34 +39,39 @@ export const CatalogPage: React.FC<Props> = ({ title }) => {
     preparedPerPage = +perPageParam;
   }
 
-  const [perPage, setPerPage] = useState(perPageParam || '4');
-  const [sortBy, setSortBy] = useState(perSortByParam || 'age');
-
-  const [hasError] = useState(false);
   const [itemsOnPage, setItemsOnPage] = useState<number>(preparedPerPage);
 
   const [activePage, setActivePage] = useState(1);
-  const [startValue, setStartValue] = useState(1);
-  const [endValue, setEndvalue] = useState(itemsOnPage);
+  const [productsLength, setProductsLength] = useState(0);
+  const [loading, setLoading] = useState(false);
 
-  const changeCurrentPage = (selectedPage: number) => {
-    setActivePage(selectedPage);
-    setStartValue(selectedPage * itemsOnPage - itemsOnPage + 1);
-    setEndvalue(selectedPage * itemsOnPage);
-  };
+  useEffect(() => {
+    setLoading(true);
+    getAmount('home/productCounts')
+      .then((data) => setProductsLength(data.counts[type]))
+      .catch(() => setHasError(true))
+      .finally(() => setLoading(false));
+  }, [type]);
+
+  useEffect(() => {
+    setLoading(true);
+    getProducts(
+      `products?category=${type}&page=${activePage}&perPage=${perPage}&sortBy=${sortBy}`,
+    )
+      .then(setProducts)
+      .catch(() => setHasError(true))
+      .finally(() => setLoading(false));
+  }, [type, perPage, sortBy, activePage]);
 
   const handleChangePerPage = (value: string) => {
     setActivePage(1);
-    setStartValue(1);
 
     if (value === 'all') {
-      setEndvalue(1000);
       queryParams.delete('page');
 
       return;
     }
 
-    setEndvalue(1 * +value);
     queryParams.set('page', '1');
   };
 
@@ -126,33 +93,34 @@ export const CatalogPage: React.FC<Props> = ({ title }) => {
     navigate(`${location.pathname}?${queryParams.toString()}`);
   };
 
-  const amountOfPages = calculateTotalPages(itemsOnPage, products.length);
-
-  const productsOnPage = products.slice(startValue - 1, endValue);
+  const amountOfPages = calculateTotalPages(itemsOnPage, productsLength);
 
   return (
     <>
       <BreadCrumbs />
       <div className="catalog__page">
         <h1 className="catalog__title">{title}</h1>
-        {!hasError && (
-          <p className="catalog__subtitle">{`${products.length} models`}</p>
+        {loading && <Loader />}
+        {!hasError && !loading && (
+          <p className="catalog__subtitle">{`${productsLength} models`}</p>
         )}
-        {hasError && <h2 className="catalog__title">There is some problems</h2>}
+        {hasError && !loading && (
+          <h2 className="catalog__title">There is some problems</h2>
+        )}
 
-        {products.length > 0 && !hasError && (
+        {products.length > 0 && !hasError && !loading && (
           <>
             <Dropdowns
               handleDropdownChange={handleDropdownChange}
               perPage={perPage}
               sortBy={sortBy}
             />
-            <ProductsList products={productsOnPage} />
+            <ProductsList products={products} />
             {amountOfPages.length > 1 && (
               <Pagination
                 currentPage={activePage}
                 totalPages={amountOfPages}
-                onPageChange={(selectedPage) => changeCurrentPage(selectedPage)}
+                onPageChange={(selectedPage) => setActivePage(selectedPage)}
               />
             )}
           </>
@@ -161,14 +129,3 @@ export const CatalogPage: React.FC<Props> = ({ title }) => {
     </>
   );
 };
-
-// Leave it for fetching
-// const currentURL = window.location.href;
-// const typeOfProducts = currentURL.split('/').reverse()[0];
-
-// const [products, setProducts] = useState<Phone[]>([]);
-// useEffect(() => {
-//   getPhones(`/${typeOfProducts}`)
-//     .then(setProducts)
-//     .catch(() => setHasError(true));
-// }, []);
