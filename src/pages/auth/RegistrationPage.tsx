@@ -21,7 +21,7 @@ const {
 
 export const RegistrationPage: React.FC = () => {
   const [error, setError] = usePageError('');
-  const [registered, setRegistered] = useState(true);
+  const [registered, setRegistered] = useState(false);
   const { darkTheme } = useContext(MainContext);
 
   if (registered) {
