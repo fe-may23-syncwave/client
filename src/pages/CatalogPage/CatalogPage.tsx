@@ -11,6 +11,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { getAmount, getProducts } from 'api/products';
 import { Product } from 'types/Product';
 import { Loader } from 'components/common/Loader';
+// import { divide } from 'lodash';
 
 interface Props {
   title: string;
@@ -24,6 +25,7 @@ export const CatalogPage: React.FC<Props> = ({ title, type }) => {
   const queryParams = new URLSearchParams(location.search);
   const perPageParam = queryParams.get('perPage') || '4';
   const perSortByParam = queryParams.get('sort');
+  const search = queryParams.get('search') || '';
 
   const [products, setProducts] = useState<Product[]>([]);
   const [hasError, setHasError] = useState(false);
@@ -56,12 +58,12 @@ export const CatalogPage: React.FC<Props> = ({ title, type }) => {
   useEffect(() => {
     setLoading(true);
     getProducts(
-      `products?category=${type}&page=${activePage}&perPage=${perPage}&sortBy=${sortBy}`,
+      `products?category=${type}&page=${activePage}&perPage=${perPage}&sortBy=${sortBy}&search=${search}`,
     )
       .then(setProducts)
       .catch(() => setHasError(true))
       .finally(() => setLoading(false));
-  }, [type, perPage, sortBy, activePage]);
+  }, [type, perPage, sortBy, activePage, search]);
 
   const handleChangePerPage = (value: string) => {
     setActivePage(1);
@@ -124,6 +126,12 @@ export const CatalogPage: React.FC<Props> = ({ title, type }) => {
               />
             )}
           </>
+        )}
+
+        {products.length === 0 && (
+          <p className="catalog__no-result">
+            Nothing found &#x1F50D;. Make sure your query is spelled correctly.
+          </p>
         )}
       </div>
     </>
