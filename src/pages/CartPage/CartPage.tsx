@@ -18,7 +18,8 @@ const CLOUDINARY =
 
 export const CartPage: React.FC = () => {
   const { user, isAuth } = useContext(AuthContext);
-  const { darkTheme, notifyCartDelete, setFavProducts } = useContext(MainContext);
+  const { darkTheme, notifyCartDelete, setFavProducts } =
+    useContext(MainContext);
   const navigate = useNavigate();
 
   const {
