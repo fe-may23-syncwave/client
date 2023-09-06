@@ -10,7 +10,11 @@ import {
 } from 'components/ProductCard/buttons';
 import { Loader } from 'components/common/Loader';
 import { NotFoundPage } from 'pages/NotFoundPage';
-import { getNewest, getProductById, getProductByIdWihDetails } from 'api/products';
+import {
+  getNewest,
+  getProductById,
+  getProductByIdWihDetails,
+} from 'api/products';
 import { capitalizeText } from 'utils/capitalizeText';
 import { createId } from 'utils/createId';
 import { ProductsSlider } from 'components/ProductsSlider';
@@ -37,16 +41,15 @@ export const ProductPage: React.FC = () => {
     setIsLoading(true);
     getProductByIdWihDetails(`${typeOfProducts}/${productId}`)
       .then((prod) => {
-        getProductById(prod.id)
-          .then(data => setPrepared(data));
+        getProductById(prod.id).then((data) => setPrepared(data));
         setProduct(prod);
         setMainPhoto(prod.images[0]);
       })
       .catch((error) => {
         // eslint-disable-next-line no-console
         console.error('Error:', error);
-        setIsLoading(false);
-      });
+      })
+      .finally(() => setIsLoading(false));
   }, [productId, typeOfProducts]);
 
   useEffect(() => {
@@ -70,14 +73,35 @@ export const ProductPage: React.FC = () => {
     return <NotFoundPage />;
   }
 
-  const techSpecs = Object.entries(product).slice(-7);
+  function getTechSpecs(productType: string, prod: ProductWithDetails) {
+    if (productType === 'phones') {
+      return Object.entries(prod).slice(-7);
+    }
 
-  const techSpecsAscesories = [
-    ['Color', product.color],
-    ['Material', 'silicone'],
-    ['Warranty', '30 days'],
-    ['Made in', 'USA'],
-  ];
+    if (productType === 'accessories') {
+      const specs = [
+        ['Color', prod.color],
+        ['Material', 'silicone'],
+        ['Warranty', '30 days'],
+        ['Made in', 'USA'],
+      ];
+
+      return specs;
+    }
+
+    if (productType === 'tablets') {
+      const specs = [
+        ['Screen', prod.screen],
+        ['Resolution', prod.resolution],
+        ['Processor', prod.processor],
+        ['RAM', prod.ram],
+      ];
+
+      return specs;
+    }
+
+    return [];
+  }
 
   return (
     <>
@@ -149,7 +173,7 @@ export const ProductPage: React.FC = () => {
                 </h2>
 
                 <p className="product-page__price--reg">
-                  {`$${product.fullPrice}`}
+                  {product.discountPrice ? `$${product.fullPrice}` : ''}
                 </p>
               </div>
 
@@ -173,29 +197,16 @@ export const ProductPage: React.FC = () => {
               </div>
 
               <div className="product-page__description description">
-                {typeOfProducts !== 'accessories'
-                  ? techSpecs.slice(3).map((data) => (
+                {getTechSpecs(typeOfProducts, product)
+                  .slice(2)
+                  .map((data) => (
                     <div key={data[0]} className="info__techspecs--content">
                       <p className="info__techspecs--title">
                         {data[0] === 'ram'
                           ? data[0].toUpperCase()
                           : capitalizeText(String(data[0]))}
                       </p>
-                      <p className="info__techspecs--data">
-                        {String(data[1])}
-                      </p>
-                    </div>
-                  ))
-                  : techSpecsAscesories.map((data) => (
-                    <div key={data[0]} className="info__techspecs--content">
-                      <p className="info__techspecs--title">
-                        {data[0] === 'ram'
-                          ? data[0].toUpperCase()
-                          : capitalizeText(String(data[0]))}
-                      </p>
-                      <p className="info__techspecs--data">
-                        {String(data[1])}
-                      </p>
+                      <p className="info__techspecs--data">{String(data[1])}</p>
                     </div>
                   ))}
               </div>
@@ -225,31 +236,16 @@ export const ProductPage: React.FC = () => {
               </div>
               <div className="info__techspecs">
                 <h1 className="info__title">Tech specs</h1>
-                {typeOfProducts !== 'accessories'
-                  ? techSpecs.map((data) => (
-                    <div key={data[0]} className="info__techspecs--content">
-                      <p className="info__techspecs--title">
-                        {data[0] === 'ram'
-                          ? data[0].toUpperCase()
-                          : capitalizeText(String(data[0]))}
-                      </p>
-                      <p className="info__techspecs--data">
-                        {String(data[1])}
-                      </p>
-                    </div>
-                  ))
-                  : techSpecsAscesories.map((data) => (
-                    <div key={data[0]} className="info__techspecs--content">
-                      <p className="info__techspecs--title">
-                        {data[0] === 'ram'
-                          ? data[0].toUpperCase()
-                          : capitalizeText(String(data[0]))}
-                      </p>
-                      <p className="info__techspecs--data">
-                        {String(data[1])}
-                      </p>
-                    </div>
-                  ))}
+                {getTechSpecs(typeOfProducts, product).map((data) => (
+                  <div key={data[0]} className="info__techspecs--content">
+                    <p className="info__techspecs--title">
+                      {data[0] === 'ram'
+                        ? data[0].toUpperCase()
+                        : capitalizeText(String(data[0]))}
+                    </p>
+                    <p className="info__techspecs--data">{String(data[1])}</p>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
