@@ -21,4 +21,11 @@
     color: $color-secondary;
     margin-bottom: 20px;
   }
+
+  &__no-result {
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 56px;
+    color: $color-primary;
+  }
 }

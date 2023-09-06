@@ -16,14 +16,6 @@
     margin-bottom: 32px;
   }
 
-  &__block {
-    // display: flex;
-    // flex-direction: column;
-    // justify-content: center;
-    margin: auto;
-    text-align: center;
-  }
-
   &__subtitle {
     font-family: 'Montserrat', sans-serif;
     color: $color-primary;
@@ -254,23 +246,5 @@
     }
 
     // #endregion
-  }
-}
-
-.back-home {
-  display: inline-block;
-  border: 2px solid $color-buttons;
-  color: $color-buttons;
-  text-transform: uppercase;
-  font-weight: 600;
-  padding: 0.75rem 1rem 0.6rem;
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
-  transition: all $duration;
-  margin-top: 20px;
-
-  &:hover {
-    background: #222;
-    box-shadow: 0 3px 8px $color-buttons;
-    color: #ddd;
   }
 }
