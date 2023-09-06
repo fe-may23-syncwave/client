@@ -45,7 +45,7 @@ export const ProductPage: React.FC = () => {
 
         return prod;
       })
-      .then(prod => getProductById(prod.id).then((data) => setPrepared(data)))
+      .then((prod) => getProductById(prod.id).then((data) => setPrepared(data)))
       .catch((error) => {
         // eslint-disable-next-line no-console
         console.error('Error:', error);
@@ -83,7 +83,11 @@ export const ProductPage: React.FC = () => {
     <>
       {isLoading && <Loader />}
       {!isLoading && !product && !prepared && <NotFoundPage />}
-      {product && prepared && !isLoading && techSpecs && techSpecsAscesories && (
+      {product
+        && prepared
+        && !isLoading
+        && techSpecs
+        && techSpecsAscesories && (
         <>
           <BreadCrumbs />
           <div className="product-page">
@@ -99,7 +103,8 @@ export const ProductPage: React.FC = () => {
                       <button
                         type="button"
                         className={classNames('photos__sidebar--wrapper', {
-                          'photos__sidebar--wrapper--active': image === mainPhoto,
+                          'photos__sidebar--wrapper--active':
+                              image === mainPhoto,
                         })}
                         onClick={() => setMainPhoto(image)}
                         key={image}
@@ -125,7 +130,9 @@ export const ProductPage: React.FC = () => {
                 <div className="product-page__rightbar">
                   <div className="product-page__select-container">
                     <div className="product-page__colors colors">
-                      <p className="product-page__subtitle">Available colors</p>
+                      <p className="product-page__subtitle">
+                        Available colors
+                      </p>
 
                       <ProductColors
                         colors={product.colorsAvailable}
@@ -137,7 +144,9 @@ export const ProductPage: React.FC = () => {
                   {product.capacity && product.capacityAvailable && (
                     <div className="product-page__select-container">
                       <div className="product-page__capacity capacity">
-                        <p className="product-page__subtitle">Select capacity</p>
+                        <p className="product-page__subtitle">
+                          Select capacity
+                        </p>
                         <ProductCapacity
                           capacities={product.capacityAvailable}
                           currentCapacity={product.capacity}
@@ -180,7 +189,10 @@ export const ProductPage: React.FC = () => {
                   <div className="product-page__description description">
                     {typeOfProducts !== 'accessories'
                       ? techSpecs.slice(3).map((data) => (
-                        <div key={data[0]} className="info__techspecs--content">
+                        <div
+                          key={data[0]}
+                          className="info__techspecs--content"
+                        >
                           <p className="info__techspecs--title">
                             {data[0] === 'ram'
                               ? data[0].toUpperCase()
@@ -192,7 +204,10 @@ export const ProductPage: React.FC = () => {
                         </div>
                       ))
                       : techSpecsAscesories.map((data) => (
-                        <div key={data[0]} className="info__techspecs--content">
+                        <div
+                          key={data[0]}
+                          className="info__techspecs--content"
+                        >
                           <p className="info__techspecs--title">
                             {data[0] === 'ram'
                               ? data[0].toUpperCase()
@@ -224,7 +239,9 @@ export const ProductPage: React.FC = () => {
                           {desc.title}
                         </h3>
 
-                        <p className="info__about--description">{desc.text}</p>
+                        <p className="info__about--description">
+                          {desc.text}
+                        </p>
                       </Fragment>
                     ))}
                   </div>
@@ -232,7 +249,10 @@ export const ProductPage: React.FC = () => {
                     <h1 className="info__title">Tech specs</h1>
                     {typeOfProducts !== 'accessories'
                       ? techSpecs.map((data) => (
-                        <div key={data[0]} className="info__techspecs--content">
+                        <div
+                          key={data[0]}
+                          className="info__techspecs--content"
+                        >
                           <p className="info__techspecs--title">
                             {data[0] === 'ram'
                               ? data[0].toUpperCase()
@@ -244,7 +264,10 @@ export const ProductPage: React.FC = () => {
                         </div>
                       ))
                       : techSpecsAscesories.map((data) => (
-                        <div key={data[0]} className="info__techspecs--content">
+                        <div
+                          key={data[0]}
+                          className="info__techspecs--content"
+                        >
                           <p className="info__techspecs--title">
                             {data[0] === 'ram'
                               ? data[0].toUpperCase()
