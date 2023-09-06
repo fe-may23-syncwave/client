@@ -50,7 +50,7 @@ export const ProductsSlider: React.FC<Props> = (props) => {
           navigation
         >
           {props.phones.map((phone: Product) => (
-            <SwiperSlide key={phone.productId}>
+            <SwiperSlide key={phone.id}>
               <ProductCard product={phone} />
             </SwiperSlide>
           ))}
