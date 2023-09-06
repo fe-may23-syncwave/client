@@ -11,9 +11,7 @@ export const StylishComponent: React.FC<StylishComponentProps> = ({
   imageSrc,
 }) => (
   <div className="container">
-    <div className="textContainer">
-      {text}
-    </div>
-    <img src={imageSrc} alt="" className="image" />
+    <div className="container__text">{text}</div>
+    <img src={imageSrc} alt="" className="container__image" />
   </div>
 );

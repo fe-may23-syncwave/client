@@ -9,38 +9,38 @@
   width: 100%;
   overflow: hidden;
   padding: 5vh 20px 20px;
-}
 
-.image {
-  width: 50%;
-  max-width: 500px;
-  margin-bottom: 20px;
+  &__image {
+    width: 50%;
+    max-width: 500px;
+    margin-bottom: 20px;
 
-  @include onMobile {
-    width: 80%;
+    @include onMobile {
+      width: 80%;
+    }
+  }
+
+  &__text {
+    text-align: center;
+    font-size: 1.2rem;
+    color: $color-primary;
+
+    h1,
+    h2,
+    p {
+      margin: 10px 0;
+    }
+
+    @include onDesktop {
+      font-size: 1.4rem;
+    }
+
+    @include onTablet {
+      font-size: 1.3rem;
+    }
+
+    @include onMobile {
+      font-size: 1rem;
+    }
   }
 }
-
-.textContainer {
-  text-align: center;
-  font-size: 1.2rem;
-  color: $color-primary;
-
-  h1, h2, p {
-    margin: 10px 0;
-  }
-
-  @include onDesktop {
-    font-size: 1.4rem;
-  }
-
-  @include onTablet {
-    font-size: 1.3rem;
-  }
-
-  @include onMobile {
-    font-size: 1rem;
-  }
-}
-
-
