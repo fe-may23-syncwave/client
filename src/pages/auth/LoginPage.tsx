@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Formik, Form, Field } from 'formik';
 import cn from 'classnames';
+import { Typography } from 'components/common/Typography';
 import { AuthContext, MainContext } from 'context';
 import { usePageError } from 'hooks/usePageError';
 import { validateEmail, validatePassword } from 'utils/validation';
@@ -25,11 +26,18 @@ export const LoginPage: React.FC = () => {
 
   const navigateOnLogin = () => {
     navigate(location.state?.from?.pathname || '/cart');
-    // navigate(location.state?.from?.pathname || '/users');
   };
 
   return (
     <>
+      <Typography
+        type="h1"
+        className={cn('title', {
+          [titleLight]: darkTheme,
+        })}
+      >
+        Log in
+      </Typography>
       <Formik
         initialValues={{
           email: '',
@@ -55,13 +63,6 @@ export const LoginPage: React.FC = () => {
               [dark]: darkTheme,
             })}
           >
-            <h1
-              className={cn('title', {
-                [titleLight]: darkTheme,
-              })}
-            >
-              Log in
-            </h1>
             <div className="field">
               <label
                 htmlFor="email"
@@ -69,7 +70,7 @@ export const LoginPage: React.FC = () => {
                   [labelLight]: darkTheme,
                 })}
               >
-                Email
+                <Typography type="label">Email</Typography>
               </label>
 
               <div className="control has-icons-left has-icons-right">
@@ -106,7 +107,7 @@ export const LoginPage: React.FC = () => {
                   [labelLight]: darkTheme,
                 })}
               >
-                Password
+                <Typography type="label">Password</Typography>
               </label>
 
               <div className="control has-icons-left has-icons-right">
@@ -149,17 +150,22 @@ export const LoginPage: React.FC = () => {
                 Log in
               </button>
             </div>
-            Do not have an account?
+            <Typography type="text" tagName="span">
+              Do not have an account yet?
+            </Typography>
             <Link
               to={NavBarRoute.Register}
               style={{
                 marginLeft: '10px',
                 textDecoration: 'underline',
                 fontWeight: 'bold',
-                color: '#ee971a',
+                // color: '#ee971a',
+                color: '#905bff',
               }}
             >
-              Sign up
+              <Typography type="text" tagName="span">
+                Sign up
+              </Typography>
             </Link>
           </Form>
         )}
