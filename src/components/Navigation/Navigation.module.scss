@@ -76,6 +76,7 @@
 
     &--active {
       color: $color-primary;
+      // color: red;
 
       &::after {
         content: '';
@@ -96,8 +97,10 @@
     height: inherit;
     width: 50%;
     min-width: 64px;
-    border-left: 1px solid $color-secondary;
-    border-top: 1px solid $color-secondary;
+    border-left: 1px solid $color-nav-border;
+    // border-top: 1px solid $color-nav-border;
+    // border-left: 1px solid $color-secondary;
+    // border-top: 1px solid $color-secondary;
 
     &__icon {
       position: relative;

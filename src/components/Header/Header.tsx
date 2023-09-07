@@ -54,7 +54,13 @@ export const Header: React.FC<Props> = ({ className }) => {
         animationDuration={800}
       >
         <div className={ModalContent}>
-          <div className={classNames(styles.Header, className)}>
+          <div
+            className={classNames(styles.Header, className)}
+            style={{
+              height: '54px',
+              lineHeight: '54px',
+            }}
+          >
             <Logo className={styles.Header__logo} type="small" />
           </div>
 

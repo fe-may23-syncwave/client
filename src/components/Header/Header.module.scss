@@ -4,7 +4,9 @@
   position: relative;
   display: flex;
   align-items: center;
-  border-bottom: 1px solid $color-secondary;
+  // border-bottom: 1px solid $color-secondary;
+  border-bottom: 1px solid $color-nav-border;
+  // box-shadow: 0px 1px 0px 0px #e2e6e9;
   overflow: hidden;
   height: 48px;
   line-height: 48px;
@@ -32,12 +34,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  top: -18px;
+  top: -14px;
   right: -14px;
   width: 64px;
   height: 48px;
   cursor: pointer;
-  border-left: 1px solid $color-secondary;
+  // border-left: 1px solid $color-nav-border;
 }
 
 .Modal__Dark {
@@ -88,6 +90,10 @@
       display: flex;
       justify-content: space-between;
       height: 64px;
+      border-top: 1px solid $color-nav-border;
+
+      // box-shadow: -1px 0px 0px 0px #e2e6e9;
+      // box-shadow: 0px -1px 0px 0px #e2e6e9;
     }
   }
 
