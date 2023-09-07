@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-const BASE_URL = 'https://fe-may23-syncwave-product-catalog.onrender.com/';
+const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 export type RequestMethod = 'GET' | 'POST' | 'PATCH' | 'DELETE';
 
