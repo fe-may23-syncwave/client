@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/client/static/css/main.7c5fcbdc.css",
-    "main.js": "/client/static/js/main.062ed125.js",
+    "main.css": "/client/static/css/main.1e962428.css",
+    "main.js": "/client/static/js/main.92706fa8.js",
     "static/media/category-tablets.png": "/client/static/media/category-tablets.51782e18205a1ca01ce8.png",
     "static/media/category-phones.png": "/client/static/media/category-phones.af93d992917380dfe206.png",
     "static/media/fa-solid-900.ttf": "/client/static/media/fa-solid-900.d75e3fd1eb12e9bd6655.ttf",
@@ -15,6 +15,8 @@
     "static/media/fa-regular-400.ttf": "/client/static/media/fa-regular-400.50701fbb8177c2dde530.ttf",
     "static/media/banner-accessories.png": "/client/static/media/banner-accessories.bdd2e0fca0159e52f41c.png",
     "static/media/fa-regular-400.woff2": "/client/static/media/fa-regular-400.b041b1fa4fe241b23445.woff2",
+    "static/media/error-page.png": "/client/static/media/error-page.1fb2eb1fab9fbbd14b46.png",
+    "static/media/email.png": "/client/static/media/email.cd00318b87084012046b.png",
     "static/media/fa-v4compatibility.ttf": "/client/static/media/fa-v4compatibility.c6a0c95b0a95c4553700.ttf",
     "static/media/fa-v4compatibility.woff2": "/client/static/media/fa-v4compatibility.1bac2991f3dbfa237aec.woff2",
     "static/media/cart.svg": "/client/static/media/cart.1beda4df7b041090b588f858e7122d17.svg",
@@ -43,11 +45,11 @@
     "static/media/moonIcon.svg": "/client/static/media/moonIcon.27ca3a0067236b9562ac5183f9377b51.svg",
     "static/media/logout.svg": "/client/static/media/logout.774d90503ef14bd20f35e5fe2e77ce83.svg",
     "static/media/logout-light.svg": "/client/static/media/logout-light.af23af3cf34e24d5f1f9f744a37b7dde.svg",
-    "main.7c5fcbdc.css.map": "/client/static/css/main.7c5fcbdc.css.map",
-    "main.062ed125.js.map": "/client/static/js/main.062ed125.js.map"
+    "main.1e962428.css.map": "/client/static/css/main.1e962428.css.map",
+    "main.92706fa8.js.map": "/client/static/js/main.92706fa8.js.map"
   },
   "entrypoints": [
-    "static/css/main.7c5fcbdc.css",
-    "static/js/main.062ed125.js"
+    "static/css/main.1e962428.css",
+    "static/js/main.92706fa8.js"
   ]
 }
