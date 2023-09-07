@@ -1,4 +1,4 @@
-@import "styles/utils/shared";
+@import 'styles/utils/shared';
 
 .product-page {
   display: flex;
@@ -91,7 +91,8 @@
     border: 1px solid $color-buttons;
     background-color: $color-buttons;
     color: $background-color;
-    transition: background-color $duration,
+    transition:
+      background-color $duration,
       color $duration;
 
     @include onTablet {

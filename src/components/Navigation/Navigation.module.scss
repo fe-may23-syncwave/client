@@ -1,4 +1,4 @@
-@import "styles/utils/shared";
+@import 'styles/utils/shared';
 
 .Nav {
   display: flex;
@@ -80,7 +80,7 @@
       color: $color-primary;
 
       &::after {
-        content: "";
+        content: '';
         position: absolute;
         left: 0;
         bottom: 0;
@@ -94,7 +94,7 @@
       color: $color-after;
 
       &::after {
-        content: "";
+        content: '';
         position: absolute;
         left: 0;
         bottom: 0;

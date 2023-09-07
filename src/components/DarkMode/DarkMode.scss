@@ -1,4 +1,4 @@
-@import "styles/utils/shared";
+@import 'styles/utils/shared';
 
 .dark_mode {
   display: flex;
@@ -15,7 +15,7 @@
     transition: $duration;
 
     &:after {
-      content: "";
+      content: '';
       width: 25px;
       height: 25px;
       position: absolute;

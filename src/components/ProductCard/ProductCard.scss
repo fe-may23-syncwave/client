@@ -1,4 +1,4 @@
-@import "styles/utils/shared";
+@import 'styles/utils/shared';
 
 .product {
   display: flex;
@@ -88,7 +88,7 @@
     position: relative;
 
     &::after {
-      content: "";
+      content: '';
       position: absolute;
       bottom: 0;
       left: 0;
@@ -144,7 +144,8 @@
     border: 1px solid $color-buttons;
     background-color: $color-buttons;
     color: $color-white;
-    transition: background-color $duration,
+    transition:
+      background-color $duration,
       color $duration;
 
     @media (max-width: 910px) {
@@ -181,7 +182,8 @@
     background-image: url(../../assets/icons/heart_dark.svg);
     background-position: 50%;
     background-repeat: no-repeat;
-    transition: background-image $duration,
+    transition:
+      background-image $duration,
       box-shadow $duration,
       border $duration;
 

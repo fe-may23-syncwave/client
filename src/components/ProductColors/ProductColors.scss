@@ -1,4 +1,4 @@
-@import "styles/utils/shared"; //
+@import 'styles/utils/shared'; //
 
 .colors {
   display: flex;
@@ -94,7 +94,8 @@
     justify-content: center;
     border-radius: 50%;
 
-    transition: border-color $duration ease-in-out,
+    transition:
+      border-color $duration ease-in-out,
       transform $duration ease-in-out;
     transform: scale(1);
 
