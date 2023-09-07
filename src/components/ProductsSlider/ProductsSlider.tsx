@@ -15,16 +15,16 @@ interface Props {
 export const ProductsSlider: React.FC<Props> = (props) => {
   const breakpoints = {
     320: {
-      slidesPerView: 1.5,
+      slidesPerView: 1,
       spaceBetween: 18,
     },
     640: {
-      slidesPerView: 2.3,
-      spaceBetween: 70,
+      slidesPerView: 1.5,
+      spaceBetween: 18,
     },
     730: {
       slidesPerView: 2.5,
-      spaceBetween: 18,
+      spaceBetween: 30,
     },
     1050: {
       slidesPerView: 3.5,
