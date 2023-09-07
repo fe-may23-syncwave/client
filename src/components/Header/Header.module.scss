@@ -97,7 +97,10 @@
     }
   }
 
-  @include onTablet {
+  // @include onTablet {
+  //   display: none;
+  // }
+  @media (min-width: 730px) {
     display: none;
   }
 }
@@ -115,7 +118,10 @@
   right: 0;
   opacity: 1;
 
-  @include onTablet {
+  // @include onTablet {
+  //   display: none;
+  // }
+  @media (min-width: 730px) {
     display: none;
   }
 }
