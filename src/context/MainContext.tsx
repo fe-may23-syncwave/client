@@ -40,14 +40,10 @@ export const Context: React.FC<Props> = ({ children }) => {
   const [globalSort, setGlobalSort] = useState('age');
 
   const handleLike = (product: Product) => {
-    const isFav = favProducts.find(
-      (curr) => (curr.id === product.id),
-    );
+    const isFav = favProducts.find((curr) => curr.id === product.id);
 
     if (isFav) {
-      const newSet = favProducts.filter(
-        (curr) => curr.id !== product.id,
-      );
+      const newSet = favProducts.filter((curr) => curr.id !== product.id);
 
       setFavProducts(newSet);
 
