@@ -1,4 +1,4 @@
-@import 'styles/utils/shared';
+@import "styles/utils/shared";
 
 * {
   margin: 0;
@@ -7,7 +7,7 @@
 }
 
 html {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   color: $color-primary;
   scroll-behavior: smooth;
 }
@@ -22,10 +22,11 @@ a {
   text-decoration: none;
 }
 
-.input, .textarea, .select select {
+.input,
+.textarea,
+.select select {
   background-color: $background-color;
   border-color: $color-secondary;
   border-radius: 4px;
   color: $color-primary;
 }
-

@@ -1,8 +1,7 @@
-@import 'styles/utils/shared';
+@import "styles/utils/shared";
 
 .Form {
-  box-shadow:
-    3px 3px $color-elements,
+  box-shadow: 3px 3px $color-elements,
     -0.5em 0 0.4em $color-buttons;
 
   &--dark {
@@ -102,7 +101,6 @@ td:first-child {
   margin-top: 20px;
   background-color: $color-buttons;
   color: white;
-  transition:
-    background-color 0.3s,
+  transition: background-color 0.3s,
     color 0.3s;
 }
