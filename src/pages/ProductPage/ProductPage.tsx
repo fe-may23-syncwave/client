@@ -25,8 +25,7 @@ import { BackButton } from '../../components/BackButton';
 import { BreadCrumbs } from '../../components/BreadCrumbs';
 import { Product, ProductWithDetails } from '../../types/Product';
 
-const CLOUDINARY
-  = 'https://res.cloudinary.com/myfinance/image/upload/v1693416024/syncwave/';
+const CLOUDINARY = process.env.REACT_APP_CLOUDINARY_URL;
 
 export const ProductPage: React.FC = () => {
   const { productId } = useParams();
