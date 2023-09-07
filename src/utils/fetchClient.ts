@@ -4,11 +4,11 @@ const BASE_URL = 'https://fe-may23-syncwave-product-catalog.onrender.com/';
 
 export type RequestMethod = 'GET' | 'POST' | 'PATCH' | 'DELETE';
 
-function wait(delay: number) {
-  return new Promise((resolve) => {
-    setTimeout(resolve, delay);
-  });
-}
+// function wait(delay: number) {
+//   return new Promise((resolve) => {
+//     setTimeout(resolve, delay);
+//   });
+// }
 
 function request<T>(
   url: string,
@@ -24,15 +24,23 @@ function request<T>(
     };
   }
 
-  return wait(300)
-    .then(() => fetch(BASE_URL + url, options))
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error();
-      }
+  return fetch(BASE_URL + url, options).then((response) => {
+    if (!response.ok) {
+      throw new Error();
+    }
 
-      return response.json();
-    });
+    return response.json();
+  });
+
+  // return wait(100)
+  //   .then(() => fetch(BASE_URL + url, options))
+  //   .then((response) => {
+  //     if (!response.ok) {
+  //       throw new Error();
+  //     }
+
+  //     return response.json();
+  //   });
 }
 
 export const client = {

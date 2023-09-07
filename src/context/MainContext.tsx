@@ -40,14 +40,10 @@ export const Context: React.FC<Props> = ({ children }) => {
   const [globalSort, setGlobalSort] = useState('age');
 
   const handleLike = (product: Product) => {
-    const isFav = favProducts.find(
-      (curr) => curr.productId === product.productId,
-    );
+    const isFav = favProducts.find((curr) => curr.id === product.id);
 
     if (isFav) {
-      const newSet = favProducts.filter(
-        (curr) => curr.productId !== product.productId,
-      );
+      const newSet = favProducts.filter((curr) => curr.id !== product.id);
 
       setFavProducts(newSet);
 
@@ -64,44 +60,44 @@ export const Context: React.FC<Props> = ({ children }) => {
   };
 
   const notifyFavs = () => toast.success('Successfully added to favorites.', {
-    position: 'top-right',
-    autoClose: 2000,
+    position: 'bottom-right',
+    autoClose: 1000,
     hideProgressBar: false,
     closeOnClick: true,
-    pauseOnHover: true,
+    pauseOnHover: false,
     draggable: true,
     progress: undefined,
     theme: darkTheme ? 'dark' : 'light',
   });
 
   const notifyFavsDelete = () => toast.success('Successfully removed from favorites.', {
-    position: 'top-right',
-    autoClose: 2000,
+    position: 'bottom-right',
+    autoClose: 1000,
     hideProgressBar: false,
     closeOnClick: true,
-    pauseOnHover: true,
+    pauseOnHover: false,
     draggable: true,
     progress: undefined,
     theme: darkTheme ? 'dark' : 'light',
   });
 
   const notifyCart = () => toast.success('Successfully added to cart.', {
-    position: 'top-right',
-    autoClose: 2000,
+    position: 'bottom-right',
+    autoClose: 1000,
     hideProgressBar: false,
     closeOnClick: true,
-    pauseOnHover: true,
+    pauseOnHover: false,
     draggable: true,
     progress: undefined,
     theme: darkTheme ? 'dark' : 'light',
   });
 
   const notifyCartDelete = () => toast.success('Successfully removed from cart.', {
-    position: 'top-right',
-    autoClose: 2000,
+    position: 'bottom-right',
+    autoClose: 1000,
     hideProgressBar: false,
     closeOnClick: true,
-    pauseOnHover: true,
+    pauseOnHover: false,
     draggable: true,
     progress: undefined,
     theme: darkTheme ? 'dark' : 'light',

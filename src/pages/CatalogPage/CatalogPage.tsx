@@ -128,7 +128,7 @@ export const CatalogPage: React.FC<Props> = ({ title, type }) => {
           </>
         )}
 
-        {products.length === 0 && (
+        {products.length === 0 && !loading && (
           <p className="catalog__no-result">
             Nothing found &#x1F50D;. Make sure your query is spelled correctly.
           </p>
