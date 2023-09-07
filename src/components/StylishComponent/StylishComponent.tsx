@@ -3,7 +3,7 @@ import './StylishComponent.scss';
 
 type StylishComponentProps = {
   text: React.ReactNode;
-  imageSrc: string;
+  imageSrc?: string;
 };
 
 export const StylishComponent: React.FC<StylishComponentProps> = ({

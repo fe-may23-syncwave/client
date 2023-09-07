@@ -29,6 +29,7 @@
     h2,
     p {
       margin: 10px 0;
+      color: $color-primary;
     }
 
     @include onDesktop {
