@@ -6,7 +6,8 @@ import { Modal } from 'react-responsive-modal';
 import { ReactComponent as CloseIcon } from 'assets/icons/close.svg';
 import { ReactComponent as CloseIconLight } from 'assets/icons/close-light.svg';
 import { MainContext } from 'context/MainContext';
-import { NavBarLinks } from 'components/Navigation/NavBarLinks';
+// import { NavBarLinks } from 'components/Navigation/NavBarLinks';
+import { NavBarMenuLinks } from 'components/Navigation/NavBarMenuLinks';
 import { NavBarIcons } from '../Navigation/NavBarIcons';
 
 import { Logo } from '../common/Logo';
@@ -65,7 +66,10 @@ export const Header: React.FC<Props> = ({ className }) => {
           </div>
 
           <div className={ContentBody}>
-            <NavBarLinks className={ContentBlockLinks} onClick={onCloseModal} />
+            <NavBarMenuLinks
+              className={ContentBlockLinks}
+              onClick={onCloseModal}
+            />
 
             <NavBarIcons className={ContentBlockIcons} onClick={onCloseModal} />
           </div>
