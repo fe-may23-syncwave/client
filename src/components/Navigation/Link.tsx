@@ -7,6 +7,7 @@ import styles from './Navigation.module.scss';
 const {
   Nav__link: TextLink,
   'Nav__link--active': ActiveTextLink,
+  'Nav__link--active-menu': ActiveMenuLink,
   Nav__iconLink: IconLink,
   Nav__iconLink__icon: Icon,
   Nav__iconLink__icon__counter: IconCounter,
@@ -18,12 +19,19 @@ const getLinkClass = ({ isActive }: { isActive: boolean }) => {
   });
 };
 
+const getMenuLinkClass = ({ isActive }: { isActive: boolean }) => {
+  return classNames(TextLink, {
+    [ActiveMenuLink]: isActive,
+  });
+};
+
 interface Props {
   title?: string;
   to: string;
   icon?: React.ReactNode;
   counter?: number;
   onClick?: () => void;
+  isMenu?: boolean;
 }
 
 export const Link: React.FC<Props> = ({
@@ -32,11 +40,14 @@ export const Link: React.FC<Props> = ({
   icon,
   counter = 0,
   onClick = () => {},
+  isMenu = false,
 }) => {
+  const getActiveLink = isMenu ? getMenuLinkClass : getLinkClass;
+
   return (
     <NavLink
       to={to}
-      className={title ? getLinkClass : IconLink}
+      className={title ? getActiveLink : IconLink}
       onClick={onClick}
     >
       {title}
