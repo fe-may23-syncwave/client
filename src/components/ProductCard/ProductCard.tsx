@@ -7,8 +7,7 @@ import { createId } from 'utils/createId';
 import { Product } from 'types/Product';
 import { AddToCartButton, FavouritesButton } from './buttons';
 
-const CLOUDINARY
-  = 'https://res.cloudinary.com/myfinance/image/upload/v1693416024/syncwave/';
+const CLOUDINARY = process.env.REACT_APP_CLOUDINARY_URL;
 
 interface Props {
   product: Product;
