@@ -62,10 +62,10 @@ export const AccountActivationPage = () => {
               <p className="notification is-success is-light">
                 Your account is now active
               </p>
-              {/* eslint-disable-next-line react/button-has-type */}
               <button
+                type="button"
                 className="button is-primary"
-                onClick={() => navigate('/login')} // this will redirect to login page
+                onClick={() => navigate('/login')}
               >
                 Go to Login
               </button>
