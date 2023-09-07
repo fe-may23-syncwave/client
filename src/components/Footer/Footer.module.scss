@@ -1,7 +1,9 @@
 @import 'styles/utils/shared';
 
 .Footer {
-  border-top: 1px solid $color-primary;
+  // border-top: 1px solid $color-primary;
+  border-top: 1px solid $color-nav-border;
+  box-shadow: 0px -1px 0px 0px #e2e6e9;
 
   @include onTablet {
     font-size: 16px;

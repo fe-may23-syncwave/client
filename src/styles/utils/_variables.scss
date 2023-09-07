@@ -6,6 +6,7 @@
   --color-buttons: #313237;
   --color-icons: #b4bdc3;
   --color-border: #e2e6e9;
+  --color-nav-border: #e2e6e9;
 }
 
 .App[data-theme='dark'] {
@@ -16,6 +17,7 @@
   --color-buttons: #905bff;
   --color-icons: #3b3e4a;
   --color-border: #f5deb3;
+  --color-nav-border: #f1f2f9;
 }
 
 $background-color: var(--background-color);
@@ -25,6 +27,7 @@ $background-card: var(--background-card);
 $color-buttons: var(--color-buttons);
 $color-icons: var(--color-icons);
 $color-border: var(--color-border);
+$color-nav-border: var(--color-nav-border);
 
 $color-red: #eb5757;
 $color-green: #27ae60;
@@ -36,6 +39,7 @@ $color-secondary: #89939a;
 // $color-icons: #b4bdc3;
 $color-hover: #fafbfc;
 $color-link: #ee971a;
+$color-nav-border: #e2e6e9;
 
 $mobile-max-width: 639px;
 $tablet-min-width: 640px;
