@@ -118,7 +118,7 @@ export const CatalogPage: React.FC<Props> = ({ title, type }) => {
               sortBy={sortBy}
             />
             <ProductsList products={products} />
-            {amountOfPages.length > 1 && (
+            {amountOfPages.length > 1 && !search && (
               <Pagination
                 currentPage={activePage}
                 totalPages={amountOfPages}
