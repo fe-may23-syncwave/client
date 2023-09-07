@@ -52,7 +52,7 @@
 
       &::after {
         font-size: 10px;
-        color: $color-icons;
+        color: $color-primary;
       }
 
       @include onMobile {

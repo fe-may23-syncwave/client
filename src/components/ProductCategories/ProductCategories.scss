@@ -37,6 +37,7 @@
         position: relative;
         padding-top: 100%;
         overflow: hidden;
+        transition: all $duration;
 
         .product-categories__image {
           position: absolute;
@@ -45,6 +46,13 @@
           width: 100%;
           height: 100%;
           object-fit: cover;
+        }
+
+        &:hover {
+          cursor: pointer;
+          transform: scale(1.05);
+          transition: $duration;
+          box-shadow: 0 2px 16px 0 $color-secondary;
         }
       }
 

@@ -141,7 +141,7 @@
     height: 274px;
     width: 274px;
     object-fit: contain;
-    background-color: $color-white;
+    background-color: $background-color;
 
     @include onMobile {
       margin-bottom: 16px;
@@ -182,7 +182,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      background-color: $color-white;
+      background-color: $background-color;
 
       transition: border-color $duration;
 
@@ -240,7 +240,7 @@
   }
 }
 
-.info {
+.desription {
   &__content {
     display: flex;
     flex-direction: column;

@@ -17,6 +17,7 @@ import {
 } from 'api/products';
 import { capitalizeText } from 'utils/capitalizeText';
 import { createId } from 'utils/createId';
+import { getTechSpecs } from 'utils/getTechSpecs';
 import { ProductsSlider } from 'components/ProductsSlider';
 import { ProductColors } from '../../components/ProductColors';
 import { ProductCapacity } from '../../components/ProductCapacity';
@@ -67,36 +68,6 @@ export const ProductPage: React.FC = () => {
       });
   }, []);
 
-  function getTechSpecs(productType: string, prod: ProductWithDetails) {
-    if (productType === 'phones') {
-      return Object.entries(prod).slice(-7);
-    }
-
-    if (productType === 'accessories') {
-      const specs = [
-        ['Color', prod.color],
-        ['Material', 'silicone'],
-        ['Warranty', '30 days'],
-        ['Made in', 'USA'],
-      ];
-
-      return specs;
-    }
-
-    if (productType === 'tablets') {
-      const specs = [
-        ['Screen', prod.screen],
-        ['Resolution', prod.resolution],
-        ['Processor', prod.processor],
-        ['RAM', prod.ram],
-      ];
-
-      return specs;
-    }
-
-    return [];
-  }
-
   return (
     <>
       {isLoading && <Loader />}
@@ -141,7 +112,7 @@ export const ProductPage: React.FC = () => {
                   </div>
                 </div>
 
-                <div className="product-page__rightbar">
+                <div className="product-page__selects">
                   <div className="product-page__select-container">
                     <div className="product-page__colors colors">
                       <p className="product-page__subtitle">Available colors</p>
@@ -202,13 +173,13 @@ export const ProductPage: React.FC = () => {
                     {getTechSpecs(typeOfProducts, product)
                       .slice(2)
                       .map((data) => (
-                        <div key={data[0]} className="info__techspecs--content">
-                          <p className="info__techspecs--title">
+                        <div key={data[0]} className="desription__techspecs--content">
+                          <p className="desription__techspecs--title">
                             {data[0] === 'ram'
                               ? data[0].toUpperCase()
                               : capitalizeText(String(data[0]))}
                           </p>
-                          <p className="info__techspecs--data">
+                          <p className="desription__techspecs--data">
                             {String(data[1])}
                           </p>
                         </div>
@@ -223,31 +194,31 @@ export const ProductPage: React.FC = () => {
                 </div>
               </div>
 
-              <div className="product-page__info info">
-                <div className="info__content">
-                  <div className="info__about">
-                    <h1 className="info__title">About</h1>
+              <div className="product-page__desription desription">
+                <div className="desription__content">
+                  <div className="desription__about">
+                    <h1 className="desription__title">About</h1>
 
                     {product.description.map((desc) => (
                       <Fragment key={desc.title}>
-                        <h3 className="info__about--heading" key={desc.title}>
+                        <h3 className="desription__about--heading" key={desc.title}>
                           {desc.title}
                         </h3>
 
-                        <p className="info__about--description">{desc.text}</p>
+                        <p className="desription__about--description">{desc.text}</p>
                       </Fragment>
                     ))}
                   </div>
-                  <div className="info__techspecs">
-                    <h1 className="info__title">Tech specs</h1>
+                  <div className="desription__techspecs">
+                    <h1 className="desription__title">Tech specs</h1>
                     {getTechSpecs(typeOfProducts, product).map((data) => (
-                      <div key={data[0]} className="info__techspecs--content">
-                        <p className="info__techspecs--title">
+                      <div key={data[0]} className="desription__techspecs--content">
+                        <p className="desription__techspecs--title">
                           {data[0] === 'ram'
                             ? data[0].toUpperCase()
                             : capitalizeText(String(data[0]))}
                         </p>
-                        <p className="info__techspecs--data">
+                        <p className="desription__techspecs--data">
                           {String(data[1])}
                         </p>
                       </div>
