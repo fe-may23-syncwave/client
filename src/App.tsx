@@ -23,16 +23,16 @@ export function App() {
         <Outlet />
 
         <ToastContainer
-          position="top-right"
-          autoClose={2000}
+          position="bottom-right"
+          autoClose={1000}
           limit={3}
           hideProgressBar={false}
-          newestOnTop={false}
+          newestOnTop
           closeOnClick
           rtl={false}
           pauseOnFocusLoss
           draggable
-          pauseOnHover
+          pauseOnHover={false}
           theme={darkTheme ? 'dark' : 'light'}
           transition={Slide}
         />
