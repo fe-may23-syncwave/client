@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { Slider } from '../../components/Slider';
 import { ProductsSlider } from '../../components/ProductsSlider';
 import { ProductCategories } from '../../components/ProductCategories';
-import { getBestDiscount, getHighPrices } from '../../api/products';
+import { getAmount, getBestDiscount, getHighPrices } from '../../api/products';
 import { Product } from '../../types/Product';
 import './HomePage.scss';
 import { Typography } from 'components/common/Typography';
@@ -11,6 +11,11 @@ import { Typography } from 'components/common/Typography';
 export const HomePage: React.FC = () => {
   const [hotPrices, setHotPrices] = useState<Product[]>([]);
   const [brandNew, setBrandNew] = useState<Product[]>([]);
+  const [productCounts, setProductCounts] = useState({
+    phones: 0,
+    tablets: 0,
+    accessories: 0,
+  });
 
   useEffect(() => {
     getHighPrices()
@@ -30,6 +35,20 @@ export const HomePage: React.FC = () => {
       .catch((error) => {
         console.error('HomePage Error:', error);
       });
+
+    getAmount('home/productCounts')
+      .then((data) =>
+        setProductCounts(
+          data.counts as {
+            phones: number;
+            tablets: number;
+            accessories: number;
+          },
+        ),
+      )
+      .catch((error) => {
+        console.error('HomePage Product Counts Error:', error);
+      });
   }, []);
 
   return (
@@ -42,7 +61,7 @@ export const HomePage: React.FC = () => {
 
       <ProductsSlider title="Brand new models" phones={brandNew} />
 
-      <ProductCategories />
+      <ProductCategories counts={productCounts} />
 
       <ProductsSlider title="Hot prices" phones={hotPrices} />
     </div>
