@@ -155,6 +155,7 @@ export const ProductPage: React.FC = () => {
                       styles={[
                         'product-page__button',
                         'product-page__button--active',
+                        'product-page__button--dark',
                       ]}
                     />
 

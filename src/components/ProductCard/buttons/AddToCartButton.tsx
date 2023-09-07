@@ -20,6 +20,7 @@ export const AddToCartButton: React.FC<Props> = ({ product, styles }) => {
         type="button"
         className={classNames(styles[0], {
           [styles[1]]: isAddedToCart,
+          [styles[2]]: darkTheme && isAddedToCart,
           'product__add--dark': darkTheme && isAddedToCart,
         })}
         onClick={() => {
