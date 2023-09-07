@@ -14,6 +14,7 @@ const {
   'Form--dark': dark,
   'Form__title--dark': titleLight,
   'Form__label--dark': labelLight,
+  'Form__input--dark': inputLight,
 } = styles;
 
 export const LoginPage: React.FC = () => {
@@ -80,7 +81,7 @@ export const LoginPage: React.FC = () => {
                   type="email"
                   id="email"
                   placeholder="e.g. bobsmith@gmail.com"
-                  className={cn('input', {
+                  className={cn('input', inputLight, {
                     'is-danger': touched.email && errors.email,
                   })}
                 />
@@ -117,7 +118,7 @@ export const LoginPage: React.FC = () => {
                   type="password"
                   id="password"
                   placeholder="*******"
-                  className={cn('input', {
+                  className={cn('input', inputLight, {
                     'is-danger': touched.password && errors.password,
                   })}
                 />

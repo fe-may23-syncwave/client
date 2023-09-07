@@ -1,4 +1,4 @@
-@import 'styles/utils/shared';
+@import "styles/utils/shared";
 
 .Dropdowns {
   display: flex;
@@ -19,7 +19,7 @@
     size: 12px;
     line-height: 15px;
     color: $color-secondary;
-    font-family: 'Montserrat', sans-serif;
+    font-family: "Montserrat", sans-serif;
     margin-bottom: 4px;
     font-weight: 700;
   }
@@ -60,7 +60,7 @@
     }
 
     &__items {
-      font-family: 'Montserrat', sans-serif;
+      font-family: "Montserrat", sans-serif;
       color: $color-primary;
       font-size: 14px !important;
       font-weight: 600;
@@ -97,7 +97,7 @@
     }
 
     &__option {
-      font-family: 'Montserrat', sans-serif;
+      font-family: "Montserrat", sans-serif;
       color: $color-primary;
       font-size: 14px !important;
       font-weight: 500 !important;

@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-wrap-multilines */
 import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Formik, Form, Field } from 'formik';
@@ -17,6 +18,7 @@ const {
   'Form--dark': dark,
   'Form__title--dark': titleLight,
   'Form__label--dark': labelLight,
+  'Form__input--dark': inputLight,
 } = styles;
 
 export const RegistrationPage: React.FC = () => {
@@ -27,12 +29,12 @@ export const RegistrationPage: React.FC = () => {
   if (registered) {
     return (
       <StylishComponent
-        text={(
+        text={
           <>
             <h1>Check your email</h1>
             <p>We have sent you an email with the activation link</p>
           </>
-        )}
+        }
         imageSrc={emailImg}
       />
     );
@@ -109,7 +111,7 @@ export const RegistrationPage: React.FC = () => {
                   type="email"
                   id="email"
                   placeholder="e.g. bobsmith@gmail.com"
-                  className={cn('input', {
+                  className={cn('input', inputLight, {
                     'is-danger': touched.email && errors.email,
                   })}
                 />
@@ -146,7 +148,7 @@ export const RegistrationPage: React.FC = () => {
                   type="password"
                   id="password"
                   placeholder="*******"
-                  className={cn('input', {
+                  className={cn('input', inputLight, {
                     'is-danger': touched.password && errors.password,
                   })}
                 />

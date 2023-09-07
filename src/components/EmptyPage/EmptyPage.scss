@@ -1,4 +1,4 @@
-@import 'styles/utils/shared';
+@import "styles/utils/shared";
 
 .cart {
   &__block {
@@ -7,7 +7,7 @@
   }
 
   &__title {
-    font-family: 'Montserrat', sans-serif;
+    font-family: "Montserrat", sans-serif;
     font-size: 48px;
     font-weight: 600;
     line-height: 56px;
@@ -17,7 +17,7 @@
   }
 
   &__subtitle {
-    font-family: 'Montserrat', sans-serif;
+    font-family: "Montserrat", sans-serif;
     color: $color-primary;
     font-size: 24px;
   }

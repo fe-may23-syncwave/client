@@ -1,4 +1,4 @@
-@import 'styles/utils/shared';
+@import "styles/utils/shared";
 
 * {
   margin: 0;
@@ -7,7 +7,7 @@
 }
 
 html {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   color: $color-primary;
   scroll-behavior: smooth;
 }
