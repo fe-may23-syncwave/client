@@ -30,6 +30,8 @@
   margin-top: 24px;
 
   .swiper {
+    user-select: none;
+
     &,
     &-container {
       overflow: visible;

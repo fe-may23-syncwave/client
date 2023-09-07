@@ -1,4 +1,5 @@
 import 'swiper/swiper-bundle.css';
+import React from 'react';
 import {
   Autoplay,
   Navigation,
@@ -7,12 +8,18 @@ import {
   EffectFade,
 } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { MainContext } from 'context/MainContext';
 import firstBanner from 'assets/images/banners/banner-phones.png';
 import secondBanner from 'assets/images/banners/banner-tablets.png';
 import thirdBanner from 'assets/images/banners/banner-accessories.png';
+import firstBannerDark from 'assets/images/banners/banner-phonesDark.png';
+import secondBannerDark from 'assets/images/banners/banner-tabletsDark.jpg';
+import thirdBannerDark from 'assets/images/banners/baner-accsDark.png';
 import './Slider.scss';
 
 export const Slider = () => {
+  const { darkTheme } = React.useContext(MainContext);
+
   return (
     <div className="fullWidth">
       <div className="main-banner">
@@ -35,7 +42,7 @@ export const Slider = () => {
           <SwiperSlide>
             <img
               className="carousel-img"
-              src={firstBanner}
+              src={darkTheme ? firstBannerDark : firstBanner}
               alt="Phones now available in our store!"
             />
           </SwiperSlide>
@@ -43,7 +50,7 @@ export const Slider = () => {
           <SwiperSlide>
             <img
               className="carousel-img"
-              src={secondBanner}
+              src={darkTheme ? secondBannerDark : secondBanner}
               alt="Tablets now available in our store!"
             />
           </SwiperSlide>
@@ -51,7 +58,7 @@ export const Slider = () => {
           <SwiperSlide>
             <img
               className="carousel-img"
-              src={thirdBanner}
+              src={darkTheme ? thirdBannerDark : thirdBanner}
               alt="Accessories now available in our store!"
             />
           </SwiperSlide>
