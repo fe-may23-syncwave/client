@@ -10,6 +10,7 @@ import { AuthContext, CartContext, MainContext } from 'context';
 import { NavBarRoute } from 'types/NavBarRoute';
 import { getCategoryName } from 'utils/getCategoryName';
 import { CATEGORY_ID } from 'utils/constants';
+import { createId } from 'utils/createId';
 import './CartPage.scss';
 import { orderService } from 'services/orderService';
 import { EmptyPage } from 'components/EmptyPage';
@@ -108,7 +109,7 @@ export const CartPage: React.FC = () => {
                           className="cart__product__image"
                         />
                       </div>
-                      <h2 className="cart__product__title">{`${product.name} (XXXXX)`}</h2>
+                      <h2 className="cart__product__title">{`${product.name}  (${createId(product.itemId || '')})`}</h2>
                     </Link>
                   </div>
 

@@ -14,17 +14,25 @@
     padding-inline: 8px;
     padding-block: 3px;
     border: 1.2px solid $color-buttons;
+    color: $color-primary;
 
     transition: border-color $duration;
-
-    &--current {
-      background-color: $color-buttons;
-      color: $background-color;
-    }
 
     &:hover {
       cursor: pointer;
       border-color: $color-primary;
+      box-shadow: 0px 3px 13px 0px $color-buttons;
+      color: $color-primary;
+    }
+
+    &--current {
+      background-color: $color-buttons;
+      color: $background-color;
+
+      &:hover {
+        color: $color-white;
+        box-shadow: 0px 3px 13px 0px $color-buttons;
+      }
     }
 
     &:active {
