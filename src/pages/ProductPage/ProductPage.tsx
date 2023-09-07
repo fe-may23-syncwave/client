@@ -173,7 +173,10 @@ export const ProductPage: React.FC = () => {
                     {getTechSpecs(typeOfProducts, product)
                       .slice(2)
                       .map((data) => (
-                        <div key={data[0]} className="desription__techspecs--content">
+                        <div
+                          key={data[0]}
+                          className="desription__techspecs--content"
+                        >
                           <p className="desription__techspecs--title">
                             {data[0] === 'ram'
                               ? data[0].toUpperCase()
@@ -201,18 +204,26 @@ export const ProductPage: React.FC = () => {
 
                     {product.description.map((desc) => (
                       <Fragment key={desc.title}>
-                        <h3 className="desription__about--heading" key={desc.title}>
+                        <h3
+                          className="desription__about--heading"
+                          key={desc.title}
+                        >
                           {desc.title}
                         </h3>
 
-                        <p className="desription__about--description">{desc.text}</p>
+                        <p className="desription__about--description">
+                          {desc.text}
+                        </p>
                       </Fragment>
                     ))}
                   </div>
                   <div className="desription__techspecs">
                     <h1 className="desription__title">Tech specs</h1>
                     {getTechSpecs(typeOfProducts, product).map((data) => (
-                      <div key={data[0]} className="desription__techspecs--content">
+                      <div
+                        key={data[0]}
+                        className="desription__techspecs--content"
+                      >
                         <p className="desription__techspecs--title">
                           {data[0] === 'ram'
                             ? data[0].toUpperCase()

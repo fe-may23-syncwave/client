@@ -94,8 +94,9 @@
     justify-content: center;
     border-radius: 50%;
 
-    transition: border-color $duration;
-    transition: transform $duration ease-in-out;
+    transition:
+      border-color $duration ease-in-out,
+      transform $duration ease-in-out;
     transform: scale(1);
 
     &--selected {
