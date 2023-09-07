@@ -109,7 +109,11 @@ export const CartPage: React.FC = () => {
                           className="cart__product__image"
                         />
                       </div>
-                      <h2 className="cart__product__title">{`${product.name}  (${createId(product.itemId || '')})`}</h2>
+                      <h2 className="cart__product__title">
+                        {`${
+                          product.name
+                        }  (${createId(product.itemId || '')})`}
+                      </h2>
                     </Link>
                   </div>
 

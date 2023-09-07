@@ -4,8 +4,7 @@
   &__form {
     display: none;
 
-    @include onTablet {
-      // padding-left: 12px;
+    @media (min-width: 730px) {
       display: flex;
       height: 100%;
       padding-left: 8px;
@@ -14,7 +13,6 @@
     }
 
     @include onDesktop {
-      // padding-left: 16px;
       height: 63px;
     }
 
