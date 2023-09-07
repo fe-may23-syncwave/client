@@ -107,7 +107,7 @@ export const CatalogPage: React.FC<Props> = ({ title, type }) => {
           <p className="catalog__subtitle">{`${productsLength} models`}</p>
         )}
         {hasError && !loading && (
-          <h2 className="catalog__title">There is some problems</h2>
+          <h2 className="catalog__title">There are some problems</h2>
         )}
 
         {products.length > 0 && !hasError && !loading && (
