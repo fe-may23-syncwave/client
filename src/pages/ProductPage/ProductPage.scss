@@ -114,6 +114,11 @@
       background-color: $color-elements;
       color: $color-primary;
     }
+
+    &--dark {
+      background-color: $color-elements;
+      color: $color-white;
+    }
   }
 
   &__favourites {
