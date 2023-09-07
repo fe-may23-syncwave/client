@@ -23,6 +23,14 @@
     }
   }
 
+  &__input {
+    &--dark {
+      &::placeholder {
+        color: $color-elements;
+      }
+    }
+  }
+
   &__link {
     margin-left: 10px;
     text-decoration: underline;
