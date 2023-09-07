@@ -8,12 +8,11 @@
       display: flex;
       height: 100%;
       padding-left: 8px;
-      border-left: 1px solid $color-secondary;
-      border-top: 1px solid $color-secondary;
+      border-left: 1px solid $color-nav-border;
     }
 
     @include onDesktop {
-      height: 63px;
+      height: 64px;
     }
 
     @include onMobile {
@@ -31,8 +30,8 @@
   }
 
   &__button {
-    width: 63px;
-    height: 63px;
+    min-width: 64px;
+    height: 64px;
     background-color: transparent;
     border: none;
 
@@ -41,7 +40,7 @@
     }
 
     @include onDesktop {
-      height: 63px;
+      height: 64px;
     }
   }
 

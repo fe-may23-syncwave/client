@@ -14,7 +14,7 @@ export const ProductCapacity: React.FC<Props> = ({
   const { pathname } = useLocation();
 
   return (
-    <div className="capacity__content">
+    <div className="capacity__group">
       {capacities.map((capacity) => (
         <Link
           to={pathname.replace(

@@ -4,7 +4,7 @@
   position: relative;
   padding-bottom: 24px;
 
-  &__content {
+  &__group {
     display: flex;
     flex-direction: row;
     gap: 8px;
@@ -21,7 +21,7 @@
     &:hover {
       cursor: pointer;
       border-color: $color-primary;
-      box-shadow: 0 3px 13px 0 $color-buttons;
+      box-shadow: 0 2px 3px 0 $color-buttons;
       color: $color-primary;
     }
 
@@ -31,7 +31,7 @@
 
       &:hover {
         color: $color-white;
-        box-shadow: 0 3px 13px 0 $color-buttons;
+        box-shadow: 0 2px 8px 0 $color-buttons;
       }
     }
 

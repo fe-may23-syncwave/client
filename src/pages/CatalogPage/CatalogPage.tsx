@@ -57,6 +57,7 @@ export const CatalogPage: React.FC<Props> = ({ title, type }) => {
 
   useEffect(() => {
     setLoading(true);
+    setHasError(false);
     getProducts(
       `products?category=${type}&page=${activePage}&perPage=${perPage}&sortBy=${sortBy}&search=${search}`,
     )
@@ -106,8 +107,14 @@ export const CatalogPage: React.FC<Props> = ({ title, type }) => {
         {!hasError && !loading && (
           <p className="catalog__subtitle">{`${productsLength} models`}</p>
         )}
-        {hasError && !loading && (
-          <h2 className="catalog__title">There are some problems</h2>
+        {hasError && !loading && search.length === 0 && (
+          <h2 className="catalog__title">There is some problems</h2>
+        )}
+
+        {hasError && !loading && search.length > 0 && (
+          <p className="catalog__no-result">
+            Nothing found &#x1F50D;. Make sure your query is spelled correctly.
+          </p>
         )}
 
         {products.length > 0 && !hasError && !loading && (
@@ -126,12 +133,6 @@ export const CatalogPage: React.FC<Props> = ({ title, type }) => {
               />
             )}
           </>
-        )}
-
-        {products.length === 0 && !loading && (
-          <p className="catalog__no-result">
-            Nothing found &#x1F50D;. Make sure your query is spelled correctly.
-          </p>
         )}
       </div>
     </>
