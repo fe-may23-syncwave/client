@@ -41,12 +41,12 @@ export const Context: React.FC<Props> = ({ children }) => {
 
   const handleLike = (product: Product) => {
     const isFav = favProducts.find(
-      (curr) => curr.productId === product.productId,
+      (curr) => (curr.id === product.id),
     );
 
     if (isFav) {
       const newSet = favProducts.filter(
-        (curr) => curr.productId !== product.productId,
+        (curr) => curr.id !== product.id,
       );
 
       setFavProducts(newSet);

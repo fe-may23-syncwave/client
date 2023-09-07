@@ -15,7 +15,7 @@ export const FavouritesButton: React.FC<Props> = ({ product, styles }) => {
     = React.useContext(MainContext);
 
   const isFav = favProducts.find(
-    (curr) => curr.productId === product.productId,
+    (curr) => curr.id === product.id,
   );
 
   const isAddedToFavs = isFav !== undefined;
