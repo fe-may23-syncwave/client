@@ -1,10 +1,7 @@
-/* eslint-disable max-len */
-/* eslint-disable no-console */
-/* eslint-disable operator-linebreak */
+/* eslint-disable implicit-arrow-linebreak */
 import { BackButton } from 'components/BackButton';
 import React, { useContext, useEffect, useState } from 'react';
 import classNames from 'classnames';
-// import { postOrder } from 'api/orders';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext, CartContext, MainContext } from 'context';
 import { NavBarRoute } from 'types/NavBarRoute';
@@ -18,26 +15,25 @@ import { EmptyPage } from 'components/EmptyPage';
 const CLOUDINARY = process.env.REACT_APP_CLOUDINARY_URL;
 
 export const CartPage: React.FC = () => {
-  const { user, isAuth } = useContext(AuthContext);
-  const { darkTheme, notifyCartDelete, setFavProducts } =
-    useContext(MainContext);
+  const { user } = useContext(AuthContext);
+  // prettier-ignore
+  const { darkTheme, notifyCartDelete, setFavProducts }
+    = useContext(MainContext);
   const navigate = useNavigate();
-
+  // prettier-ignore
   const {
     cart, setCart, handleAdd, handleDelete, handleRemove,
-  } =
-    useContext(CartContext);
+  }
+    = useContext(CartContext);
+
   const [totalPrice, setTotalPrice] = useState(0);
   const [totalItems, setTotalItems] = useState(0);
-
-  const [postError, setPostError] = useState(false);
-
-  console.log('user', user, 'isAuth', isAuth);
-  console.log(postError);
+  const [, setPostError] = useState(false);
 
   useEffect(() => {
     const newTotalPrice = cart.reduce(
-      (acc, product) => acc + product.count * (product.discountPrice || product.fullPrice),
+      (acc, product) =>
+        acc + product.count * (product.discountPrice || product.fullPrice),
       0,
     );
 
@@ -144,8 +140,9 @@ export const CartPage: React.FC = () => {
 
                     <p className="cart__product__price">
                       {`$${
-                        (product.discountPrice || product.fullPrice) *
-                        product.count
+                        // prettier-ignore
+                        (product.discountPrice || product.fullPrice)
+                        * product.count
                       }`}
                     </p>
                   </div>
