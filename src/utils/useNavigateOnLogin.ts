@@ -6,7 +6,7 @@ export function useNavigateOnLogin() {
   const location = useLocation();
 
   const navigateOnLogin = useCallback(() => {
-    navigate(location.state?.from?.pathname || '/cart');
+    navigate(location.state?.from?.pathname || '/cart', { replace: true });
   }, [navigate, location.state?.from?.pathname]);
 
   return navigateOnLogin;
