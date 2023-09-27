@@ -39,10 +39,15 @@ function refresh(): Promise<AxiosResponse<AuthResponse>> {
   return authClient.get<AuthResponse>('/refresh');
 }
 
+function googleAuth(token: string): Promise<AxiosResponse<AuthResponse>> {
+  return authClient.post<AuthResponse>('/google', { token });
+}
+
 export const authService = {
   register,
   login,
   logout,
   activate,
   refresh,
+  googleAuth,
 };

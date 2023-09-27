@@ -1,12 +1,14 @@
 import React, { useContext } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Formik, Form, Field } from 'formik';
 import cn from 'classnames';
 import { Typography } from 'components/common/Typography';
 import { AuthContext, MainContext } from 'context';
 import { usePageError } from 'hooks/usePageError';
 import { validateEmail, validatePassword } from 'utils/validation';
+import { useNavigateOnLogin } from 'utils/useNavigateOnLogin';
 import { NavBarRoute } from 'types/NavBarRoute';
+import GoogleButton from './googleButton/GoogleButton';
 import styles from './Auth.module.scss';
 
 const {
@@ -18,16 +20,11 @@ const {
 } = styles;
 
 export const LoginPage: React.FC = () => {
-  const navigate = useNavigate();
-  const location = useLocation();
+  const navigateOnLogin = useNavigateOnLogin();
   const { darkTheme } = useContext(MainContext);
 
   const [error, setError] = usePageError('');
   const { login } = useContext(AuthContext);
-
-  const navigateOnLogin = () => {
-    navigate(location.state?.from?.pathname || '/cart');
-  };
 
   return (
     <>
@@ -140,7 +137,7 @@ export const LoginPage: React.FC = () => {
                 <p className="help">At least 6 characters</p>
               )}
             </div>
-            <div className="field">
+            <div className="field is-flex is-justify-content-space-between">
               <button
                 type="submit"
                 className={cn('button is-success has-text-weight-bold', {
@@ -150,6 +147,10 @@ export const LoginPage: React.FC = () => {
               >
                 Log in
               </button>
+              <GoogleButton
+                setError={setError}
+                navigateOnLogin={navigateOnLogin}
+              />
             </div>
             <Typography type="text" tagName="span">
               Do not have an account yet?
@@ -160,7 +161,6 @@ export const LoginPage: React.FC = () => {
                 marginLeft: '10px',
                 textDecoration: 'underline',
                 fontWeight: 'bold',
-                // color: '#ee971a',
                 color: '#905bff',
               }}
             >

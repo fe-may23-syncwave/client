@@ -9,9 +9,11 @@ import { authService } from 'services/authService';
 import { validateEmail, validatePassword } from 'utils/validation';
 import { NavBarRoute } from 'types/NavBarRoute';
 import { MainContext } from 'context';
-import styles from './Auth.module.scss';
+import { useNavigateOnLogin } from 'utils/useNavigateOnLogin';
 import emailImg from '../../assets/images/email-marketing.png';
 import { StylishComponent } from '../../components/StylishComponent';
+import GoogleButton from './googleButton/GoogleButton';
+import styles from './Auth.module.scss';
 
 const {
   Form: form,
@@ -22,6 +24,7 @@ const {
 } = styles;
 
 export const RegistrationPage: React.FC = () => {
+  const navigateOnLogin = useNavigateOnLogin();
   const [error, setError] = usePageError('');
   const [registered, setRegistered] = useState(false);
   const { darkTheme } = useContext(MainContext);
@@ -170,7 +173,7 @@ export const RegistrationPage: React.FC = () => {
                 <p className="help">At least 6 characters</p>
               )}
             </div>
-            <div className="field">
+            <div className="field is-flex is-justify-content-space-between">
               <button
                 type="submit"
                 className={cn('button is-success has-text-weight-bold', {
@@ -180,6 +183,10 @@ export const RegistrationPage: React.FC = () => {
               >
                 Sign up
               </button>
+              <GoogleButton
+                setError={setError}
+                navigateOnLogin={navigateOnLogin}
+              />
             </div>
             <Typography type="text" tagName="span">
               Already have an account?
@@ -190,7 +197,6 @@ export const RegistrationPage: React.FC = () => {
                 marginLeft: '10px',
                 textDecoration: 'underline',
                 fontWeight: 'bold',
-                // color: '#ee971a',
                 color: '#905bff',
               }}
             >
