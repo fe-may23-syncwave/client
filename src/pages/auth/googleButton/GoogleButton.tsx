@@ -1,7 +1,10 @@
 import { useCallback, useContext } from 'react';
-import { GoogleLogin } from '@react-oauth/google';
+import { useGoogleLogin, GoogleLogin } from '@react-oauth/google';
 import { authService } from 'services/authService';
 import { AuthContext } from 'context';
+import { ReactComponent as GoogleIcon } from 'assets/icons/google.svg';
+import { Typography } from 'components/common/Typography';
+import './GoogleButton.scss';
 
 type Props = {
   setError: (error: string) => void;
@@ -11,6 +14,7 @@ type Props = {
 const GoogleButton: React.FC<Props> = ({ setError, navigateOnLogin }) => {
   const { checkAuth } = useContext(AuthContext);
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const googleAuth = useCallback(
     async (credential: string) => {
       try {
@@ -27,19 +31,38 @@ const GoogleButton: React.FC<Props> = ({ setError, navigateOnLogin }) => {
     [checkAuth, navigateOnLogin, setError],
   );
 
+  const login = useGoogleLogin({
+    // eslint-disable-next-line no-console
+    onSuccess: (tokenResponse) => googleAuth(tokenResponse.access_token),
+    onError: () => {
+      setError('Google login failed');
+    },
+  });
+
   return (
-    <GoogleLogin
-      onSuccess={(response) => {
-        googleAuth(response.credential as string);
-      }}
-      type="standard"
-      onError={() => {
-        setError('Google login failed');
-      }}
-      theme="filled_blue"
-      locale="en"
-      shape="rectangular"
-    />
+    <>
+      <button type="button" className="button" onClick={() => login()}>
+        <div className="button__text">
+          <Typography type="label">Sign in with Google</Typography>
+        </div>
+        <div className="button__icon">
+          <GoogleIcon />
+        </div>
+      </button>
+
+      <GoogleLogin
+        onSuccess={(response) => {
+          googleAuth(response.credential as string);
+        }}
+        type="standard"
+        onError={() => {
+          setError('Google login failed');
+        }}
+        theme="filled_blue"
+        locale="en"
+        shape="rectangular"
+      />
+    </>
   );
 };
 
